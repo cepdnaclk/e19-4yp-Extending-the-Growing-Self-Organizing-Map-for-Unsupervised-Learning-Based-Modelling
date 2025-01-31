@@ -9,18 +9,17 @@ title:
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Extending the Growing Self Organizing Map (GSOM) for Unsupervised Learning-Based Modelling of Hidden Structures and Patterns in Data
 
 #### Team
 
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
+- E/19/124, Gunasekara M.H., [email](e19124@eng.pdn.ac.lk)
+- E/19/324, Rathnayake R.M.B.D.K., [email](e19324@eng.pdn.ac.lk)
 
 #### Supervisors
 
-- Name, [email](mailto:name@eng.pdn.ac.lk)
-- Name, [email](mailto:name@eng.pdn.ac.lk)
+- Dr. Damayanthi Herath, [email](damayanthiherath@eng.pdn.ac.lk)
+- Prof. Damminda Alahakoon, [email](D.Alahakoon@latrobe.edu.au>)
 
 #### Table of content
 
