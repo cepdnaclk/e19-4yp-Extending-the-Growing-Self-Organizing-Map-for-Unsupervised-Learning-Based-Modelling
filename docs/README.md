@@ -13,13 +13,13 @@ title:
 
 #### Team
 
-- E/19/124, Hirushi Gunasekara, [email](e19124@eng.pdn.ac.lk)
-- E/19/324, Bimbara Rathnayake, [email](e19324@eng.pdn.ac.lk)
+- E/19/124, Hirushi Gunasekara, [e19124@eng.pdn.ac.lk]
+- E/19/324, Bimbara Rathnayake, [e19324@eng.pdn.ac.lk]
 
 #### Supervisors
 
-- Dr. Damayanthi Herath, [email](damayanthiherath@eng.pdn.ac.lk)
-- Prof. Damminda Alahakoon, [email](D.Alahakoon@latrobe.edu.au>)
+- Dr. Damayanthi Herath, [damayanthiherath@eng.pdn.ac.lk]()
+- Prof. Damminda Alahakoon, [D.Alahakoon@latrobe.edu.au]()
 
 #### Table of content
 
