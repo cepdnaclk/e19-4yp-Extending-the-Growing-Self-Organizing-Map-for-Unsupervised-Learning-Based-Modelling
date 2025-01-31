@@ -13,8 +13,8 @@ title:
 
 #### Team
 
-- E/19/124, Gunasekara M.H., [email](e19124@eng.pdn.ac.lk)
-- E/19/324, Rathnayake R.M.B.D.K., [email](e19324@eng.pdn.ac.lk)
+- E/19/124, Hirushi Gunasekara, [email](e19124@eng.pdn.ac.lk)
+- E/19/324, Bimbara Rathnayake, [email](e19324@eng.pdn.ac.lk)
 
 #### Supervisors
 
