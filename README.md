@@ -1,7 +1,5 @@
 ___
-# DELETE THIS INSTRUCTIONS AND ADD A SHORT INTRODUCTION ABOUT YOUR PROJECT
+# Extending the Growing Self Organizing Map (GSOM) for Unsupervised Learning-Based Modelling of Hidden Structures and Patterns in Data
 ___
 
-## Please refer the instructions in below URL:
-
-https://projects.ce.pdn.ac.lk/docs/how-to-add-a-project
+##
