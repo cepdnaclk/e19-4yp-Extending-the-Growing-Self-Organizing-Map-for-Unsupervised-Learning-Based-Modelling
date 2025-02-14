@@ -1,14 +1,15 @@
 {
     "team": [
-        {
-            "name": "Bimbara Rathnayake",
-            "email": "e19324@eng.pdn.ac.lk",
-            "eNumber": "E/19/324"
-        },
+       
         {
             "name": "Hirushi Gunasekara",
             "email": "e19124@eng.pdn.ac.lk",
             "eNumber": "E/19/124"
+        },
+         {
+            "name": "Bimbara Rathnayake",
+            "email": "e19324@eng.pdn.ac.lk",
+            "eNumber": "E/19/324"
         }
     ],
     "supervisors": [
