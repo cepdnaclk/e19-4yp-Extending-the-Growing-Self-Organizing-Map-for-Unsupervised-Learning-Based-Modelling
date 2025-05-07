@@ -13,7 +13,6 @@ def zrehen_measure(weights, lattice_positions, neighbors, neurons):
     preservation. Applied to Shapes and FCPS datasets to compare SOM/GSOM (Pages 12–17).
     """
     N = len(weights)
-    print(f"ZM: {N} weights, {neurons} neurons")
     intruder_count = 0
     for i in range(N):
         for j in neighbors[i]:
@@ -27,8 +26,7 @@ def zrehen_measure(weights, lattice_positions, neighbors, neurons):
                         dist_jk_sq = euclidean(w_j, w_k) ** 2
                         if dist_ik_sq + dist_jk_sq <= dist_ij_sq:
                             intruder_count += 1
-    zm = intruder_count / neurons
-    print(f"ZM: {zm:.4f} (intruders: {intruder_count})")
+    zm = intruder_count / N
     return zm
 
 def c_measure(weights, lattice_positions,neurons, p=2):
@@ -218,10 +216,15 @@ def main():
     gsom_smoothing = 30
     gsom_max_radius = 4  # Matches provided GSOM example
 
+    # SOM and GSOM parameters and results to the output and save to a CSV file
+
+
+
     # Create directories for datasets
     os.makedirs('data/shapes', exist_ok=True)
     os.makedirs('data/fcps', exist_ok=True)
 
+    results = []
     # Process each dataset
     for dataset in shapes_datasets + [name for name, _ in fcps_datasets]:
         # Load data
@@ -261,12 +264,35 @@ def main():
         tp_gsom = topographic_product(weights_gsom, lattice_gsom)
         te_gsom = topographic_error(data, weights_gsom, lattice_gsom, neighbors_gsom)
 
+
+        # Append results to the list
+        results.append({
+            'Dataset': dataset,
+            'Model': 'SOM',
+            'ZM': zm_som,
+            'CM': cm_som,
+            'TP': tp_som,
+            'TE': te_som
+        })
+        results.append({
+            'Dataset': dataset,
+            'Model': 'GSOM',
+            'ZM': zm_gsom,
+            'CM': cm_gsom,
+            'TP': tp_gsom,
+            'TE': te_gsom
+        })
         # Print results
         print(f"\nDataset: {dataset}")
         print("SOM Results:")
         print(f"  ZM: {zm_som:.4f}, CM: {cm_som:.4f}, TP: {tp_som:.4f}, TE: {te_som:.4f}")
         print("GSOM Results:")
         print(f"  ZM: {zm_gsom:.4f}, CM: {cm_gsom:.4f}, TP: {tp_gsom:.4f}, TE: {te_gsom:.4f}")
+
+        # Save results to a CSV file
+        results_df = pd.DataFrame(results)
+        results_df.to_csv('topology_measures_results.csv', index=False)
+        print("\nResults saved to 'topology_measures_results.csv'")
 
 if __name__ == "__main__":
     main()
