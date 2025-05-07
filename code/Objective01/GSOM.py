@@ -396,27 +396,27 @@ class GSOM:
 if __name__ == '__main__':
     np.random.seed(1)
 
-    # === ✅ STEP 1: Load your dataset ===
-    data_path = "data/shapes/circle_radius100_652_points.csv"  # 🔁 Change to your dataset
+    # Load dataset
+    data_path = "data/shapes/triangle_484_points.csv" 
     df = pd.read_csv(data_path)
 
-    # === ✅ STEP 2: Drop non-numeric columns (e.g., labels, names) ===
+    # Drop non-numeric columns (e.g., labels, names) 
     data_numeric = df.select_dtypes(include=[np.number])
 
-    # === ✅ STEP 3: Normalize data to [0, 1] range ===
+    # Normalize data to [0, 1] range
     data_normalized = (data_numeric - data_numeric.min()) / (data_numeric.max() - data_numeric.min() + 1e-10)
 
-    # === ✅ STEP 4: Initialize GSOM ===
+    # Initialize GSOM 
     gsom = GSOM(spred_factor=0.83, dimensions=data_normalized.shape[1], max_radius=4)
 
-    # === ✅ STEP 5: Train GSOM ===
+    # Train GSOM 
     print(f"Training GSOM on: {data_path}")
     gsom.fit(data_normalized.to_numpy(), training_iterations=100, smooth_iterations=50)
 
-    # === ✅ STEP 6: Save outputs ===
+    # Save outputs 
 
-    node_coords_path = "outputs/gsom_circle_node_coordinates.csv"
-    node_weights_path = "outputs/gsom_circle_node_weights.csv"
+    node_coords_path = "outputs/gsom_triangle_node_coordinates.csv"
+    node_weights_path = "outputs/gsom_triangle_node_weights.csv"
 
     # Save node coordinates
     node_coords = pd.DataFrame(gsom.node_coordinate[:gsom.node_count], columns=["x", "y"])
@@ -427,7 +427,7 @@ if __name__ == '__main__':
     node_weights = pd.DataFrame(gsom.node_list[:gsom.node_count], columns=[f"w{i+1}" for i in range(weight_dim)])
     node_weights.to_csv(node_weights_path, index=False)
 
-    print("✅ GSOM training complete.")
-    print(f"📁 Node coordinates saved to: {node_coords_path}")
-    print(f"📁 Node weights saved to:     {node_weights_path}")
+    print("GSOM training complete.")
+    print(f"Node coordinates saved to: {node_coords_path}")
+    print(f"Node weights saved to:     {node_weights_path}")
 
