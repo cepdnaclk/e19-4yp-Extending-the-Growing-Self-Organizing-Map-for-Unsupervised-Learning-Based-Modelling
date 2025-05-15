@@ -4,6 +4,7 @@ import numpy as np
 from minisom import MiniSom
 import gsom  # Assuming GSOM is a custom module
 from scipy.spatial.distance import euclidean, cdist, cityblock
+from scipy.spatial import Delaunay
 import matplotlib.pyplot as plt
 from itertools import combinations
 
@@ -22,19 +23,22 @@ def zrehen_measure_new(weights, grid):
     # Define neighbors in output space (Manhattan distance <= 1)
     def is_neighbor(i, j):
         return cityblock(grid[i], grid[j]) <= 1
+    
     # def is_neighbor(i, j, k=4):
     #     distances = np.array([euclidean(weights[i], weights[m]) for m in range(n_neurons)])
     #     k_nearest = np.argsort(distances)[:k]
     #     return j in k_nearest
     
-    # Check all pairs of neighboring neurons
+    # Check all pairs of neighboring neurons (iterate over all unique pairs of neurons r, r')
     for r, r_prime in combinations(range(n_neurons), 2):
+        # Check if r and r' are neighbors
         if is_neighbor(r, r_prime):
+            # Compute distances
             w_r = weights[r]
             w_r_prime = weights[r_prime]
             dist_rr_prime = euclidean(w_r, w_r_prime) ** 2
             
-            # Check for intruders
+            # Check for intruders (Iterates over all other neurons r" not equal to r or r')
             for r_double_prime in range(n_neurons):
                 if r_double_prime != r and r_double_prime != r_prime:
                     w_r_double_prime = weights[r_double_prime]
@@ -45,7 +49,7 @@ def zrehen_measure_new(weights, grid):
                     if (dist_r_r_double_prime + dist_r_prime_r_double_prime) <= dist_rr_prime:
                         intruders += 1
     
-    # Normalize by number of neurons
+    # Normalize by number of neurons ()
     zm = intruders / n_neurons
     return zm
 
@@ -55,7 +59,7 @@ def c_measure_new(weights, grid, p=1):
     Compute C-Measure (CM) for topology preservation using minimal wiring scheme.
     Args:
         weights: (n_neurons, input_dim) array of weight vectors
-        grid: (n_neurons, 2) array of grid coordinates
+        grid: (n_neurons, 2 or 3) array of grid coordinates
         p: Power for output space distance (default=1, Manhattan distance)
     Returns:
         cm: Normalized C-Measure
@@ -74,6 +78,15 @@ def c_measure_new(weights, grid, p=1):
         distances = np.array([euclidean(weights[i], weights[m]) for m in range(n_neurons)])
         k_nearest = np.argsort(distances)[:k]
         return j in k_nearest
+    
+    # def is_input_neighbor(i, j):
+    #     tri = Delaunay(weights)
+    #     # Check if i, j share an edge in the triangulation
+    #     for simplex in tri.simplices:
+    #         if {i, j}.issubset(set(simplex)):
+    #             return True
+    #     return False
+    
     # Compute cost for all pairs
     for i, j in combinations(range(n_neurons), 2):
         d_A = cityblock(grid[i], grid[j]) ** p  # Output space distance
@@ -208,12 +221,12 @@ def main(dataset_name, is_3d=False):
     using SOM (minisom) and GSOM (gsom library), saving results and parameters to Excel.
     """
     # SOM and GSOM parameters
-    grid_size = 16  # Size of the grid for SOM 
+    grid_size = 20  # Size of the grid for SOM 
     grid_shape = (grid_size, grid_size)
-    som_iterations = 60
-    som_learning_rate = 0.01
-    gsom_spread_factor = 0.5
-    gsom_learning_rate = 0.01
+    som_iterations = 600
+    som_learning_rate = 0.05
+    gsom_spread_factor = 0.3
+    gsom_learning_rate = 0.05
     gsom_iterations = 60
     gsom_smoothing = 30
     gsom_max_radius = 4
@@ -250,6 +263,7 @@ def main(dataset_name, is_3d=False):
     # lattice_som = np.array([[i, j] for i in range(grid_size) for j in range(grid_size)])
     grid_x, grid_y = np.meshgrid(np.arange(grid_size), np.arange(grid_size))
     lattice_som = np.vstack((grid_x.flatten(), grid_y.flatten())).T
+    print(f"Number of neurons in SOM: {weights_som.shape[0]} ")
 
     # Train GSOM
     gsom_map = gsom.GSOM(spred_factor=gsom_spread_factor, 
@@ -260,6 +274,7 @@ def main(dataset_name, is_3d=False):
     weights_gsom = gsom_map.node_list[:gsom_map.node_count]
     lattice_gsom = gsom_map.node_coordinate[:gsom_map.node_count]
     neurons = gsom_map.node_count
+    print(f"Number of neurons in GSOM: {neurons}")
 
 
     # Compute topology preservation measures
@@ -305,10 +320,10 @@ def main(dataset_name, is_3d=False):
     print("\nResults:")
     for result in results:
         print(f"  {result['Model']} - Dataset: {result['Dataset']}")
-        print(f"  CM_new: {result['CM_new']:.4f}, ZM_new:{result['ZM_new']:.4f}, TP_new:{result['TP_new']:.4f}, TE_new: {result['TE_new']:.4f}")
+        print(f"   ZM_new:{result['ZM_new']:.4f},CM_new: {result['CM_new']:.4f}, TP_new:{result['TP_new']:.4f}, TE_new: {result['TE_new']:.4f}")
     
 
 if __name__ == "__main__":
     # Example: Test a single dataset
-    main(dataset_name='Lsun', is_3d=False)
+    main(dataset_name='Target', is_3d=False)
     # main(dataset_name='hepta', is_3d=True)
