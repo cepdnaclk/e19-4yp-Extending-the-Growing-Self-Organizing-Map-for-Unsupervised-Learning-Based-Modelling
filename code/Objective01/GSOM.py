@@ -397,7 +397,7 @@ if __name__ == '__main__':
     np.random.seed(1)
 
     # Load dataset
-    data_path = "data/shapes/circle_radius100_652_points.csv" 
+    data_path = "data/shapes/hexagon_equal_sides_431_points.csv" 
     df = pd.read_csv(data_path)
 
     # Drop non-numeric columns (e.g., labels, names) 
@@ -415,8 +415,8 @@ if __name__ == '__main__':
 
     # Save outputs 
 
-    node_coords_path = "outputs/gsom_circle_node_coordinates.csv"
-    node_weights_path = "outputs/gsom_circle_node_weights.csv"
+    node_coords_path = "outputs/gsom_hexagon_node_coordinates.csv"
+    node_weights_path = "outputs/gsom_hexagon_node_weights.csv"
 
     # Save node coordinates
     node_coords = pd.DataFrame(gsom.node_coordinate[:gsom.node_count], columns=["x", "y"])
