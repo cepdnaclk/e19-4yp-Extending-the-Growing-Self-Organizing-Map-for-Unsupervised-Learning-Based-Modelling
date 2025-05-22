@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 import os
 
 # === USER CONFIGURATION ===
-dataset_path = "data/shapes/circle_radius100_652_points.csv"  # dataset
+dataset_path = "data/shapes/hexagon_equal_sides_431_points.csv"  # dataset
 output_folder = "outputs"
-output_name_prefix = "som_circle"  # different dataset runs
+output_name_prefix = "som_hexagon"  # different dataset runs
 
 map_width = 20  # Width of SOM grid
 map_height = 20  # Height of SOM grid

@@ -67,11 +67,11 @@ def topographic_error(data, weights, positions, neighbors):
     return errors / len(data)
 
 # === File paths ===
-som_weights = load_csv("outputs/som_circle_node_weights.csv")
-som_positions = load_csv("outputs/som_circle_node_coords.csv")
-gsom_weights = load_csv("outputs/gsom_circle_node_weights.csv")
-gsom_positions = load_csv("outputs/gsom_circle_node_coordinates.csv")
-input_data = load_csv("data/shapes/circle_radius100_652_points.csv")[:, :2]  
+som_weights = load_csv("outputs/som_hexagon_node_weights.csv")
+som_positions = load_csv("outputs/som_hexagon_node_coords.csv")
+gsom_weights = load_csv("outputs/gsom_hexagon_node_weights.csv")
+gsom_positions = load_csv("outputs/gsom_hexagon_node_coordinates.csv")
+input_data = load_csv("data/shapes/hexagon_equal_sides_431_points.csv")[:, :2]  
 
 # === Preprocessing ===
 neighbors_som = get_neighbors(som_positions.astype(int))

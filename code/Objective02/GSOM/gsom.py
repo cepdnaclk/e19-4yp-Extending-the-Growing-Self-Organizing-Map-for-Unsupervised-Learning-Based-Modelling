@@ -5,11 +5,16 @@ import scipy
 from tqdm import tqdm
 import math
 from bigtree import Node, findall, find
+from visualize import plot
+from bigtree import findall
+
+
+data_filename = "D:/All_needed/Semester6/Semester 8/FYP/e19-4yp-Extending-the-Growing-Self-Organizing-Map-for-Unsupervised-Learning-Based-Modelling/code/Objective02/Data/zoo.txt"
 
 
 class GSOM:
 
-    def __init__(self, spred_factor, dimensions, distance='euclidean', initialize='random', learning_rate=0.1,
+    def __init__(self, spred_factor, dimensions, distance='euclidean', initialize='random', learning_rate=0.3,
                  smooth_learning_factor=0.8,
                  max_radius=6, FD=0.1, r=3.8, alpha=0.9, initial_node_size=30000):
         """
@@ -385,49 +390,36 @@ class GSOM:
 
         return self.node_labels
         
-        
     def get_paths(self):
         paths = []
-        paths.extend(self.path_tree.get_paths())
+    # Corrected: filter passed as positional arg, not keyword
+        leaves = findall(self.path_tree, lambda node: len(node.children) == 0)
+        
+        for leaf in leaves:
+            path = []
+            node = leaf
+            while node is not None:
+                path.append(node)
+                node = node.parent
+                paths.append(list(reversed(path)))  # from root to leaf
+
         return paths
 
 
 
 if __name__ == '__main__':
     np.random.seed(1)
+    df = pd.read_csv(data_filename)
+    print(df.shape)
+    data_training = df.iloc[:, 1:17]
 
-    # Load dataset
-    data_path = "data/shapes/hexagon_equal_sides_431_points.csv" 
-    df = pd.read_csv(data_path)
+    gsom = GSOM(.83, 16, max_radius=4)
+    gsom.fit(data_training.to_numpy(), 100, 50)
 
-    # Drop non-numeric columns (e.g., labels, names) 
-    data_numeric = df.select_dtypes(include=[np.number])
+    output = gsom.predict(df, "Name", "label")
+    output.to_csv("output.csv", index=False)
 
-    # Normalize data to [0, 1] range
-    data_normalized = (data_numeric - data_numeric.min()) / (data_numeric.max() - data_numeric.min() + 1e-10)
+    # ✅ Call the visualization function here
+    plot(output=output, index_col="Name", gsom_map=gsom, file_name="gsom_output", file_type=".png")
 
-    # Initialize GSOM 
-    gsom = GSOM(spred_factor=0.83, dimensions=data_normalized.shape[1], max_radius=4)
-
-    # Train GSOM 
-    print(f"Training GSOM on: {data_path}")
-    gsom.fit(data_normalized.to_numpy(), training_iterations=100, smooth_iterations=50)
-
-    # Save outputs 
-
-    node_coords_path = "outputs/gsom_hexagon_node_coordinates.csv"
-    node_weights_path = "outputs/gsom_hexagon_node_weights.csv"
-
-    # Save node coordinates
-    node_coords = pd.DataFrame(gsom.node_coordinate[:gsom.node_count], columns=["x", "y"])
-    node_coords.to_csv(node_coords_path, index=False)
-
-    # Save node weights
-    weight_dim = data_normalized.shape[1]
-    node_weights = pd.DataFrame(gsom.node_list[:gsom.node_count], columns=[f"w{i+1}" for i in range(weight_dim)])
-    node_weights.to_csv(node_weights_path, index=False)
-
-    print("GSOM training complete.")
-    print(f"Node coordinates saved to: {node_coords_path}")
-    print(f"Node weights saved to:     {node_weights_path}")
-
+    print("complete")
