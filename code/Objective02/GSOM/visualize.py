@@ -18,7 +18,7 @@ def plot(output, index_col, gsom_map=None, file_name="gsom", file_type=".png",
 
     fig, ax = plt.subplots(figsize=(10, 8))
 
-    # ✅ Draw POS skeleton lines between parent-child nodes
+    # Draw POS skeleton lines between parent-child nodes
     if gsom_map:
         try:
             paths = gsom_map.get_paths()
@@ -30,7 +30,7 @@ def plot(output, index_col, gsom_map=None, file_name="gsom", file_type=".png",
         except Exception as e:
             print("Warning: Failed to draw POS paths:", e)
 
-    # ✅ Draw clustered nodes with hit_count color and labels
+    # Draw clustered nodes with hit_count color and labels
     for _, row in output.iterrows():
         x, y = row["x"], row["y"]
         hit = row["hit_count"]
@@ -47,11 +47,11 @@ def plot(output, index_col, gsom_map=None, file_name="gsom", file_type=".png",
     ax.set_ylabel("Y")
     ax.grid(True)
 
-    # ✅ Save plot
+    # Save plot
     plt.savefig(file_name + file_type, bbox_inches='tight')
-    print(f"✅ Plot saved to {file_name + file_type}")
+    print(f"Plot saved to {file_name + file_type}")
 
-    # ✅ Display plot if requested
+    # Display plot if requested
     if show_plot:
         plt.show()
 
