@@ -419,7 +419,7 @@ if __name__ == '__main__':
     output = gsom.predict(df, "Name", "label")
     output.to_csv("output.csv", index=False)
 
-    # ✅ Call the visualization function here
+    # Call the visualization function here
     plot(output=output, index_col="Name", gsom_map=gsom, file_name="gsom_output", file_type=".png")
 
     print("complete")
