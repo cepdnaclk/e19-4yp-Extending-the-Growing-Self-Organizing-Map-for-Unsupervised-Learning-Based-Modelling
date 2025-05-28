@@ -480,7 +480,7 @@ if __name__ == '__main__':
     #     print(f"Path: {node_names}, Coordinates: {node_coords}")
     
     # Build skeleton and separate clusters
-    clusters, segments, skeleton_connections, pos_edges = gsom.separate_clusters(data_training.to_numpy(), max_clusters=10)
+    clusters, segments, skeleton_connections, pos_edges = gsom.separate_clusters(data_training.to_numpy(), max_clusters=7)
     
     # Plot GSOM map
     plot(output, "Name", gsom_map=gsom, file_name="gsom_map", file_type=".pdf", figure_label="GSOM Map")
@@ -490,20 +490,66 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(figsize=(10, 10))
     for i in range(gsom.node_count):
         x, y = gsom.node_coordinate[i]
-        color = 'red' if i in gsom.node_labels['output'].values else 'gray'
-        size = 50 if i in gsom.node_labels['output'].values else 10
-        ax.scatter(x, y, c=color, s=size, marker='o', alpha=0.6)
+        # color = 'red' if i in gsom.node_labels['output'].values else 'gray'
+        # size = 50 if i in gsom.node_labels['output'].values else 10
+        # alpha = 0.8 if i in gsom.node_labels['output'].values else 0.3
+        if i in gsom.node_labels['output'].values:
+            color = 'blue'
+            size = 30
+            alpha = 0.5
+            marker = 'D'  # Diamond marker for output nodes
+        else:
+            color = 'gray'
+            size = 10
+            alpha = 0.3
+            marker = 'o'  # Circle marker for other nodes
+        ax.scatter(x, y, c=color, s=size, marker=marker, alpha=alpha)
         # if i in gsom.node_labels['output'].values:
         #     ax.scatter(x, y, c='blue', s=20, marker='x', alpha=0.8)
         ax.text(x, y, str(i), fontsize=6)
-    
+
+#################################
+#################################
+    from collections import Counter
+    overlaps = Counter((i, j) for i, j in skeleton_connections)
+
+    # Write overlaps to a CSV file
+    overlap_df = pd.DataFrame([(i, j, count) for (i, j), count in overlaps.items()],
+                            columns=["node1", "node2", "overlap_count"])
+    overlap_df.to_csv("edge_overlaps.csv", index=False)
+
+    counts = np.array(list(overlaps.values()))
+    q1 = np.percentile(counts, 25)  # 25th percentile
+    median = np.percentile(counts, 50)  # 50th percentile (median)
+    q3 = np.percentile(counts, 75)  # 75th percentile
+    print(f"Q1 (25th percentile): {q1}")
+    print(f"Median (50th percentile): {median}")
+    print(f"Q3 (75th percentile): {q3}")
+    mean = np.mean(counts)
+    std = np.std(counts)
+    print(f"Mean: {mean}")
+    print(f"Standard Deviation: {std}")
+
+#################################
+#################################
     for i, j in skeleton_connections:
+        if overlaps[(i, j)] < q3:
+            line_width = 0.2
+            color = 'gray'
+            alpha = 0.3
+            line_style = '--'
+        else:
+            color = 'black' if (i, j) in pos_edges or (j, i) in pos_edges else 'red'
+            alpha = 0.5 if (i, j) in pos_edges or (j, i) in pos_edges else 0.1
+            # line_width = 0.7 if (i, j) in pos_edges or (j, i) in pos_edges else 0.2
+            line_style = '-'
+
         x1, y1 = gsom.node_coordinate[i]
         x2, y2 = gsom.node_coordinate[j]
-        color = 'black' if (i, j) in pos_edges or (j, i) in pos_edges else 'red'
-        ax.plot([x1, x2], [y1, y2], color=color, linestyle='-', alpha=0.5)
+        
+        ax.plot([x1, x2], [y1, y2], color=color, linestyle=line_style, alpha=alpha)
     
-    colors = ['green', 'purple', 'black', 'cyan']
+    colors = ['green', 'red', 'black', 'cyan']
     print("Clusters found:", len(clusters[-1]))
     # Plot clusters
     for idx, cluster in enumerate(clusters[-1]):
@@ -511,7 +557,7 @@ if __name__ == '__main__':
 
         for node_idx in cluster:
             x, y = gsom.node_coordinate[node_idx]
-            ax.scatter(x, y, c=colors[idx % len(colors)], s=30, marker='x', alpha=0.7)
+            ax.scatter(x, y, c=colors[idx % len(colors)], s=20, marker='o', alpha=0.5)
     
     ax.set_title("GSOM Skeleton with Clusters")
     # ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=5)
