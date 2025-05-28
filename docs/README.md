@@ -42,13 +42,13 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 
 ## Abstract
-This research extends the Growing Self-Organizing Map (GSOM) by integrating Data Skeleton Modeling (DSM) to enhance topology preservation, hierarchical clustering, and individual feature modeling for unsupervised learning. GSOM addresses limitations of traditional Self-Organizing Maps (SOM), such as fixed grid structures and topological distortions, by dynamically adapting to data complexity. The study validates GSOM's effectiveness using topology preservation metrics (topographic error, Zrehen measure) and benchmarks its performance against K-Means, HDBSCAN, and deep learning-based models. Real-world applications in biomedical data analysis, text mining, and behavioral analytics are explored to demonstrate GSOM's scalability and interpretability.
+Our research extends the Growing Self-Organizing Map (GSOM) by integrating Data Skeleton Modeling (DSM) to enhance topology preservation, hierarchical clustering, and individual feature modeling for unsupervised learning. GSOM addresses limitations of traditional Self-Organizing Maps (SOM), such as fixed grid structures and topological distortions, by dynamically adapting to data complexity. The study validates GSOM's effectiveness using topology preservation metrics (eg., topographic error, topographic product) and benchmarks its performance against K-Means, HDBSCAN, and deep learning-based models. Real-world applications in biomedical data analysis, text mining, and behavioral analytics are explored to demonstrate GSOM's scalability and interpretability.
 
 ## Related works
 The Self-Organizing Map (SOM), introduced by Kohonen, is a widely used tool for clustering and visualization but is constrained by its fixed grid structure and susceptibility to topological distortions. The Growing Self-Organizing Map (GSOM) improves upon SOM by dynamically adapting to data complexity, enhancing topology preservation and enabling hierarchical clustering. Data Skeleton Modeling (DSM) further refines GSOM’s interpretability by extracting skeletal structures from clusters. While these advancements are promising, empirical validation of GSOM’s topology preservation remains limited, and DSM integration has not been extensively compared to modern techniques like HDBSCAN or deep learning-based clustering methods. This research addresses these gaps by providing a comprehensive evaluation and extension of GSOM.
 
 ## Methodology
-The research adopts a mixed-methods approach with three phases:
+We're tackling this project with a dynamic mixed-methods approach, broken down into three key phases:
 
 1. **Theoretical Validation:** Compare GSOM’s topology preservation with SOM using metrics like topographic error, topographic product, Zrehen measure, and C-measure.
 2. **Experimental Evaluation:** Test GSOM’s hierarchical clustering on benchmark (UCI Zoo, Iris) and real-world datasets, comparing with K-Means, DBSCAN, GMM, and SOM using silhouette score, Davies-Bouldin index, and cluster purity.
@@ -69,7 +69,7 @@ The expected outcomes include:
 * Benchmarking results demonstrating GSOM’s performance relative to K-Means, HDBSCAN, and GMM, analyzed using quantitative metrics like the Davies-Bouldin index.
 
 ## Conclusion
-This research seeks to position GSOM as a robust, scalable, and interpretable tool for unsupervised learning and clustering. By integrating DSM and rigorously benchmarking against alternative methods, the study fills critical gaps in GSOM’s validation and showcases its potential for high-dimensional data analytics in domains such as biomedical research, text mining, and behavioral studies. Future directions may include combining GSOM with deep learning techniques or optimizing it for large-scale datasets.
+We're working to establish GSOM as a robust, scalable, and interpretable tool for unsupervised learning and clustering. By integrating DSM and rigorously benchmarking against alternative methods, the study fills critical gaps in GSOM’s validation and showcases its potential for high-dimensional data analytics in domains such as biomedical research, text mining, and behavioral studies. Future directions may include combining GSOM with deep learning techniques or optimizing it for large-scale datasets.
 
 ## Publications
 [//]: # "Note: Uncomment each once you uploaded the files to the repository"
