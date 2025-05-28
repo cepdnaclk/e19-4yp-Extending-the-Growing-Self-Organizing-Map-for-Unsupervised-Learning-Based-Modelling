@@ -42,10 +42,16 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 
 ## Abstract
+This research extends the Growing Self-Organizing Map (GSOM) by integrating Data Skeleton Modeling (DSM) to enhance topology preservation, hierarchical clustering, and individual feature modeling for unsupervised learning. GSOM addresses limitations of traditional Self-Organizing Maps (SOM), such as fixed grid structures and topological distortions, by dynamically adapting to data complexity. The study validates GSOM's effectiveness using topology preservation metrics (topographic error, Zrehen measure) and benchmarks its performance against K-Means, HDBSCAN, and deep learning-based models. Real-world applications in biomedical data analysis, text mining, and behavioral analytics are explored to demonstrate GSOM's scalability and interpretability.
 
 ## Related works
 
 ## Methodology
+The research adopts a mixed-methods approach with three phases:
+
+1. Theoretical Validation: Compare GSOM’s topology preservation with SOM using metrics like topographic error, quantization error, trustworthiness, and continuity.
+2. Experimental Evaluation: Test GSOM’s hierarchical clustering on benchmark (e.g., UCI Zoo, Iris) and real-world datasets, comparing with K-Means, DBSCAN, GMM, and SOM using silhouette score, Davies-Bouldin index, and cluster purity.
+3. DSM Investigation: Develop a framework to extract and visualize data skeletons, analyzing GSOM’s ability to model internal data structures and idionomic features in complex datasets.
 
 ## Experiment Setup and Implementation
 
