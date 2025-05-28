@@ -49,21 +49,16 @@ Our research extends the Growing Self-Organizing Map (GSOM) by integrating Data 
 * **Growing Self-Organizing Map (GSOM):** GSOM improves on SOM by dynamically expanding its structure based on data complexity, enhancing topology preservation and supporting hierarchical clustering for more flexible data analysis.
 * **Data Skeleton Modeling (DSM):** DSM boosts GSOM’s interpretability by extracting skeletal structures from clusters, refining boundaries, and aiding feature extraction in complex, high-dimensional datasets.
 
-## Research Gaps
-* Limited empirical studies on GSOM’s ability to preserve topology using standard metrics.
-* Insufficient comparisons of GSOM’s hierarchical clustering performance against modern methods like HDBSCAN or deep learning-based clustering techniques.
-* Under-explored potential of DSM integration with GSOM for practical applications in fields like biomedical data analysis, text mining, and behavioral analytics.
-
 ## Methodology
 We're tackling this project with a dynamic mixed-methods approach, broken down into three key phases:
 
 1. **Theoretical Validation:** Compare GSOM’s topology preservation with SOM using metrics like topographic error, topographic product, Zrehen measure, and C-measure.
-2. **Experimental Evaluation:** Test GSOM’s hierarchical clustering on benchmark (UCI Zoo, Iris) and real-world datasets, comparing with K-Means, DBSCAN, GMM, and SOM using silhouette score, Davies-Bouldin index, and cluster purity.
+2. **Experimental Evaluation:** Test GSOM’s hierarchical clustering on benchmark and real-world datasets, comparing with K-Means, DBSCAN, GMM, and SOM using silhouette score, Davies-Bouldin index, and cluster purity.
 3. **DSM Investigation:** Develop a framework to extract and visualize data skeletons, analyzing GSOM’s ability to model internal data structures and idionomic features in complex datasets.
 
 ## Experiment Setup and Implementation
 * **Datasets:** Benchmark datasets from the UCI Repository (e.g., Zoo, Iris) and real-world datasets from Kaggle and open data portals.
-* **Tools:** Python with libraries including NumPy, Pandas, SciPy, PYGSOM for GSOM implementation, Bigtree for hierarchical visualization, and Matplotlib/Seaborn for plotting.
+* **Tools:** Python with libraries including NumPy, Pandas, SciPy, Pygsom for GSOM implementation, Bigtree for hierarchical visualization, and Matplotlib for plotting.
 * **Implementation:** Leverage existing DSM-enhanced GSOM code, with custom modules developed for data preprocessing, topology preservation evaluation, hierarchical representation, and visualization.
 * **Validation:** Multiple datasets will be used, with experiments repeated to ensure reliability, and results compared against state-of-the-art clustering methods.
 
