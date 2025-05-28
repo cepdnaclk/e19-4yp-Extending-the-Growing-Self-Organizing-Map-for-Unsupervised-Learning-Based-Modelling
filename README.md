@@ -1,6 +1,6 @@
 ___
 # 🌐 Extending GSOM for Unsupervised Learning-Based Modeling of Hidden Patterns in Data  
-**Hierarchical Clustering. Idionomic Featuring.**
+**Hierarchical Clustering. Data Skeleton Modelling. Idionomic Featuring.**
 
 ---
 
