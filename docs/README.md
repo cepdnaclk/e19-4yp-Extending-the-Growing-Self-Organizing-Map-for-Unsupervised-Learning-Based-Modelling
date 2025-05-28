@@ -57,11 +57,19 @@ The research adopts a mixed-methods approach with three phases:
 ## Experiment Setup and Implementation
 * **Datasets:** Benchmark datasets from the UCI Repository (e.g., Zoo, Iris) and real-world datasets from Kaggle and open data portals.
 * **Tools:** Python with libraries including NumPy, Pandas, SciPy, PYGSOM for GSOM implementation, Bigtree for hierarchical visualization, and Matplotlib/Seaborn for plotting.
-* Implementation: Leverage existing DSM-enhanced GSOM code, with custom modules developed for data preprocessing, topology preservation evaluation, hierarchical representation, and visualization.
-* Validation: Multiple datasets will be used, with experiments repeated to ensure reliability, and results compared against state-of-the-art clustering methods.
+* **Implementation:** Leverage existing DSM-enhanced GSOM code, with custom modules developed for data preprocessing, topology preservation evaluation, hierarchical representation, and visualization.
+* **Validation:** Multiple datasets will be used, with experiments repeated to ensure reliability, and results compared against state-of-the-art clustering methods.
+
 ## Results and Analysis
+The expected outcomes include:
+
+* Confirmation of GSOM’s superior topology preservation compared to SOM, as measured by topographic error, topographic product, Zrehen measure, and C-measure.
+* Evidence of effective hierarchical clustering across diverse datasets, validated by silhouette score and cluster purity.
+* Improved interpretability through DSM integration, particularly for applications in biomedical and behavioral data.
+* Benchmarking results demonstrating GSOM’s performance relative to K-Means, HDBSCAN, and GMM, analyzed using quantitative metrics like the Davies-Bouldin index.
 
 ## Conclusion
+This research seeks to position GSOM as a robust, scalable, and interpretable tool for unsupervised learning and clustering. By integrating DSM and rigorously benchmarking against alternative methods, the study fills critical gaps in GSOM’s validation and showcases its potential for high-dimensional data analytics in domains such as biomedical research, text mining, and behavioral studies. Future directions may include combining GSOM with deep learning techniques or optimizing it for large-scale datasets.
 
 ## Publications
 [//]: # "Note: Uncomment each once you uploaded the files to the repository"
