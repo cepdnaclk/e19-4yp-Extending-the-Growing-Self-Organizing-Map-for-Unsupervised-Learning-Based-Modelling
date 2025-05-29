@@ -612,7 +612,7 @@ if __name__ == '__main__':
 
         for node_idx in cluster:
             x, y = gsom.node_coordinate[node_idx]
-            ax.scatter(x, y, c=colors[idx % len(colors)], s=20, marker='o', alpha=0.5)
+            ax.scatter(x, y, c=colors[idx % len(colors)], s=10, marker='o', alpha=0.7)
 
     # Convert clusters data to DataFrame and save to CSV
     clusters_df = pd.DataFrame(clusters_data)
