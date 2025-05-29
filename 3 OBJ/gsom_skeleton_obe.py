@@ -497,15 +497,15 @@ if __name__ == '__main__':
     print("Preprocessed data columns:", df.columns.tolist())
     print("Preprocessed data", df.head())
     # Convert to numpy array for GSOM input
-    data_training = df.iloc[:, 0:13]
+    data_training = df.iloc[:, 0:15]
     print(f"Preprocessed data: {data_training.head()}")
     df.to_csv("Data_obe.csv", index=False)
     print(type(data_training))
     # print(f"Feature columns: {features.columns}")
     # Train GSOM
-    gsom = GSOM(0.83, 13, max_radius=4, initial_node_size=30000)  # Use 0.25 to match paper
+    gsom = GSOM(0.83, 15, max_radius=4, initial_node_size=30000)  # Use 0.25 to match paper
     gsom.fit(data_training.to_numpy(), 100, 50)
-    df = df.iloc[:, 0:13]
+    df = df.iloc[:, 0:15]
     df['Index'] = df.index
     df['NObeyesdad'] = labels
     output = gsom.predict(df, "Index", "NObeyesdad")
@@ -617,7 +617,7 @@ if __name__ == '__main__':
     # Convert clusters data to DataFrame and save to CSV
     clusters_df = pd.DataFrame(clusters_data)
     clusters_df.to_csv("clusters_obe.csv", index=False)
-    
+
     ax.set_title("GSOM Skeleton with Clusters")
     # ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=5)
     plt.savefig("gsom_skeleton_obe.pdf")
