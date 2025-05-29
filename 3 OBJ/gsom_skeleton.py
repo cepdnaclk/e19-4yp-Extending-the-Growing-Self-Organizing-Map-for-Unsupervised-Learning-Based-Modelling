@@ -548,14 +548,27 @@ if __name__ == '__main__':
     
     colors = ['green', 'red', 'black', 'cyan']
     print("Clusters found:", len(clusters[-1]))
+    # Save clusters to a CSV file
+    clusters_data = []
     # Plot clusters
     for idx, cluster in enumerate(clusters[-1]):
         print(f"Cluster {idx + 1}: {len(cluster)} nodes : Color {colors[idx % len(colors)]}")
 
+        clusters_data.append({
+        "cluster_id": idx + 1,
+        "node_indices": ";".join(map(str, cluster)),
+        "color": colors[idx % len(colors)],
+        "size": len(cluster)
+        })
+        
         for node_idx in cluster:
             x, y = gsom.node_coordinate[node_idx]
             ax.scatter(x, y, c=colors[idx % len(colors)], s=20, marker='o', alpha=0.5)
     
+    # Convert clusters data to DataFrame and save to CSV
+    clusters_df = pd.DataFrame(clusters_data)
+    clusters_df.to_csv("clusters_zoo.csv", index=False)
+
     ax.set_title("GSOM Skeleton with Clusters")
     # ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=5)
     plt.savefig("gsom_skeleton.pdf")
