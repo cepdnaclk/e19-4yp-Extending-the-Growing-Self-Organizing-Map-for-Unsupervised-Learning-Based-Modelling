@@ -450,19 +450,12 @@ if __name__ == '__main__':
     # Load Zoo dataset
     data_filename = "example/data/zoo.txt".replace('\\', '/')
     df = pd.read_csv(data_filename)
-    # columns = ['Name', 'hair', 'feathers', 'eggs', 'milk', 'airborne', 'aquatic',
-    #            'predator', 'toothed', 'backbone', 'breathes', 'venomous', 'fins',
-    #            'legs', 'tail', 'domestic', 'catsize', 'label']
-    # df = pd.read_csv(data_filename, names=columns)
-    # df['legs'] = (df['legs'] - df['legs'].min()) / (df['legs'].max() - df['legs'].min())
-    
-    # Optional: Subset to 28 animals
-    # selected_animals = ['lion', 'tiger', 'cow', 'shark', 'ant', ...]  # Add 28 names
-    # df = df[df['Name'].isin(selected_animals)]
     
     print("Dataset shape:", df.shape)
     data_training = df.iloc[:, 1:17]
-    
+    print(type(data_training))
+    print("Training data head:", data_training.head())
+    print("Training data shape:", data_training.shape)
     # Train GSOM
     gsom = GSOM(0.83, 16, max_radius=4, initial_node_size=1000)  # Use 0.25 to match paper
     gsom.fit(data_training.to_numpy(), 100, 50)
@@ -473,11 +466,18 @@ if __name__ == '__main__':
     print("Node Count:", gsom.node_count)
     # Get paths of spread
     paths = gsom.get_paths()
-    # print("\nPaths of Spread:")
-    # for path in paths:
-    #     node_names = [node.name for node in path]
-    #     node_coords = [(node.x, node.y) for node in path if hasattr(node, 'x') and hasattr(node, 'y')]
-    #     print(f"Path: {node_names}, Coordinates: {node_coords}")
+
+    # Export paths of spread to a CSV file
+    paths_data = []
+    for path in paths:
+        node_names = [node.name for node in path]
+        node_coords = [(node.x, node.y) for node in path if hasattr(node, 'x') and hasattr(node, 'y')]
+        paths_data.append({
+            "node_names": ";".join(node_names),
+            "node_coords": ";".join([f"({x},{y})" for x, y in node_coords])
+        })
+    paths_df = pd.DataFrame(paths_data)
+    paths_df.to_csv("paths_of_spread.csv", index=False)
     
     # Build skeleton and separate clusters
     clusters, segments, skeleton_connections, pos_edges = gsom.separate_clusters(data_training.to_numpy(), max_clusters=7)
@@ -490,18 +490,15 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(figsize=(10, 10))
     for i in range(gsom.node_count):
         x, y = gsom.node_coordinate[i]
-        # color = 'red' if i in gsom.node_labels['output'].values else 'gray'
-        # size = 50 if i in gsom.node_labels['output'].values else 10
-        # alpha = 0.8 if i in gsom.node_labels['output'].values else 0.3
         if i in gsom.node_labels['output'].values:
             color = 'blue'
             size = 30
-            alpha = 0.5
+            alpha = 0.3
             marker = 'D'  # Diamond marker for output nodes
         else:
             color = 'gray'
             size = 10
-            alpha = 0.3
+            alpha = 0.1
             marker = 'o'  # Circle marker for other nodes
         ax.scatter(x, y, c=color, s=size, marker=marker, alpha=alpha)
         # if i in gsom.node_labels['output'].values:

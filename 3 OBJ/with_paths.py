@@ -271,8 +271,10 @@ class GSOM:
                 collect_paths(child, current_path)
             current_path.pop()
         collect_paths(self.path_tree, [])
+        
         return paths
 
+    
 def plot(output, index_col, gsom_map=None, file_name="gsom", file_type=".pdf", 
          figure_label="GSOM Map with Paths", max_text=3, max_length=30, 
          cmap_colors="Paired", show_index=True, n_nodes=180):
@@ -304,7 +306,7 @@ def plot(output, index_col, gsom_map=None, file_name="gsom", file_type=".pdf",
             txt = ax.text(x, y, label, ha='left', va='center', wrap=True, fontsize=8)
             txt._get_wrap_line_width = lambda: max_length
     ax.set_title(figure_label)
-    # ax.legend()
+    ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=6)
     plt.savefig(file_name + file_type, bbox_inches='tight')
     plt.show()
 
@@ -322,6 +324,7 @@ if __name__ == '__main__':
         data_training = df.iloc[:, 1:17]
         gsom = GSOM(0.83, 16, max_radius=4, initial_node_size=50000)
         gsom.fit(data_training.to_numpy(), 100, 50)
+        print(gsom.node_count)
         output = gsom.predict(df, "Name", "label")
         output.to_csv("output.csv", index=False)
         plot(output, "Name", gsom_map=gsom, file_name="gsom_with_paths",
