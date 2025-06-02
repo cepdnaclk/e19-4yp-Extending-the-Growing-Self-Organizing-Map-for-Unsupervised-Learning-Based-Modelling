@@ -325,5 +325,5 @@ def main(dataset_name, is_3d=False):
 
 if __name__ == "__main__":
     # Example: Test a single dataset
-    main(dataset_name='Target', is_3d=False)
+    main(dataset_name='circle', is_3d=False)
     # main(dataset_name='hepta', is_3d=True)
