@@ -5,6 +5,14 @@ import scipy
 from tqdm import tqdm
 import math
 from bigtree import Node, findall, find
+import numpy as np
+import pandas as pd
+from scipy.cluster.hierarchy import linkage, dendrogram
+import matplotlib.pyplot as plt
+from collections import Counter
+import ast
+
+
 
 data_filename = "example/data/zoo.txt".replace('\\', '/')
 
@@ -394,42 +402,66 @@ class GSOM:
         return paths
 
 
+import numpy as np
+import pandas as pd
+from scipy.cluster.hierarchy import linkage, dendrogram
+import matplotlib.pyplot as plt
+from collections import Counter
+import ast
+
+
+
 if __name__ == '__main__':
-    import numpy as np
-    import pandas as pd
-    from scipy.cluster.hierarchy import linkage, dendrogram
     import matplotlib.pyplot as plt
+    from scipy.cluster.hierarchy import linkage, dendrogram
+    import ast
+    from collections import Counter
 
+    # Set seed for reproducibility
     np.random.seed(1)
-    df = pd.read_csv("example/data/zoo.txt".replace('\\', '/'))
-    print(df.shape)
 
-    # Extract feature data
+    # Load dataset
+    df = pd.read_csv("example/data/zoo.txt".replace('\\', '/'))
+    print("Dataset shape:", df.shape)
+
+    # Extract features
     data_training = df.iloc[:, 1:17]
 
     # Initialize and train GSOM
-    gsom = GSOM(.83, 16, max_radius=4)
-    gsom.fit(data_training.to_numpy(), 100, 50)
+    gsom = GSOM(spred_factor=0.83, dimensions=16, distance='euclidean', max_radius=4)
+    gsom.fit(data_training.to_numpy(), training_iterations=100, smooth_iterations=50)
 
-    #  Hierarchical clustering on GSOM nodes
-    trained_nodes = gsom.node_list[:gsom.node_count]
-    gsom_node_weights = np.array(trained_nodes)
+    # Predict and save clustering output
+    output = gsom.predict(df, "Name", "label")
+    output.to_csv("output_zoo.csv", index=False)
 
-    Z = linkage(gsom_node_weights, method='ward')
+    # Load output and process for clustering
+    df_out = pd.read_csv("output_zoo.csv")
 
-    # Plot and SAVE dendrogram
-    plt.figure(figsize=(12, 6))
-    dendrogram(Z, truncate_mode='level', p=5)
+    # Filter only active nodes (hit_count > 0)
+    active_nodes = df_out[df_out["hit_count"] > 0].copy()
+    active_nodes["label"] = active_nodes["label"].apply(ast.literal_eval)
+
+    # Use most common label in each node
+    def most_common_label(labels):
+        return Counter(labels).most_common(1)[0][0]
+    active_nodes["major_label"] = active_nodes["label"].apply(most_common_label)
+
+    # Prepare GSOM node weights for clustering
+    X = active_nodes[["x", "y"]].to_numpy()
+    Z = linkage(X, method='ward')
+
+    # Plot dendrogram with labels
+    plt.figure(figsize=(14, 7))
+    dendrogram(Z, labels=active_nodes["major_label"].values, leaf_rotation=90)
     plt.title("Hierarchical Clustering on GSOM Nodes (Zoo Dataset)")
-    plt.xlabel("Node Index")
+    plt.xlabel("Dominant Class in Node")
     plt.ylabel("Distance")
     plt.tight_layout()
-    plt.savefig("hierarchical_clustering_with_zoo_dataset.png")  # Save to file
+    plt.savefig("hierarchical_clustering_with_zoo_dataset.png")
     plt.close()
 
-    # Predict and save output
-    output = gsom.predict(df, "Name", "label")
-    output.to_csv("output.csv", index=False)
+    print("Complete – Dendrogram saved as 'hierarchical_clustering_with_zoo_dataset.png'")
 
-    print("complete")
+
 
