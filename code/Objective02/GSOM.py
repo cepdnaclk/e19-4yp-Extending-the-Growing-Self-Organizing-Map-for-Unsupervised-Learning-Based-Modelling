@@ -14,7 +14,7 @@ import ast
 
 
 
-data_filename = "example/data/zoo.txt".replace('\\', '/')
+data_filename = "example/data/GSE5281_numeric.csv".replace('\\', '/')
 
 
 class GSOM:
@@ -403,8 +403,6 @@ class GSOM:
 
 
 
-
-
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
@@ -413,67 +411,65 @@ if __name__ == '__main__':
     import pandas as pd
     import numpy as np
 
-    # Set seed
     np.random.seed(1)
 
     # Load dataset
-    df = pd.read_csv("example/data/zoo.txt".replace('\\', '/'))
+    df = pd.read_csv("example/data/GSE5281_numeric.csv".replace('\\', '/'))
     print("Dataset shape:", df.shape)
 
-    # Extract features
-    data_training = df.iloc[:, 1:17]
+    # Step 1: Split features and keep metadata
+    features = df.drop(columns=["Sample Name:", "Disease State:"])  # Training input
+    full_input = pd.concat([features, df[["Sample Name:", "Disease State:"]]], axis=1)
 
-    # Initialize and train GSOM
-    gsom = GSOM(spred_factor=0.83, dimensions=16, distance='euclidean', max_radius=4)
-    gsom.fit(data_training.to_numpy(), training_iterations=100, smooth_iterations=50)
+    # Step 2: Initialize and train GSOM
+    gsom = GSOM(spred_factor=0.83, dimensions=features.shape[1], distance='euclidean', max_radius=4)
+    gsom.fit(features.to_numpy(), training_iterations=100, smooth_iterations=50)
 
-    # Predict and save clustering output
-    output = gsom.predict(df, "Name", "label")
-    output.to_csv("output_zoo.csv", index=False)
+    # Step 3: Predict using correct input (feature cols + name + label)
+    output = gsom.predict(full_input, "Sample Name:", "Disease State:")
+    output.to_csv("output_gene.csv", index=False)
 
-    # Load and filter active nodes
-    df_out = pd.read_csv("output_zoo.csv")
+    # Step 4: Load and filter active GSOM nodes
+    df_out = pd.read_csv("output_gene.csv")
     active_nodes = df_out[df_out["hit_count"] > 0].copy()
-    active_nodes["label"] = active_nodes["label"].apply(ast.literal_eval)
+    active_nodes["Disease State:"] = active_nodes["Disease State:"].apply(ast.literal_eval)
 
-    # Create detailed label summary for each node
+    # Step 5: Create detailed label summary for each node
     def label_summary(labels, top_n=None):
         counter = Counter(labels)
         total = sum(counter.values())
         items = counter.most_common(top_n) if top_n else counter.items()
         return "; ".join([f"{k}: {v} ({v/total:.1%})" for k, v in items])
 
-    active_nodes["label_summary"] = active_nodes["label"].apply(label_summary)
+    active_nodes["label_summary"] = active_nodes["Disease State:"].apply(label_summary)
 
-    # Hierarchical clustering on GSOM node positions
+    # Step 6: Perform hierarchical clustering on GSOM node positions
     X = active_nodes[["x", "y"]].to_numpy()
     Z = linkage(X, method='ward')
 
-    # Assign cluster labels to each GSOM node
+    # Step 7: Assign clusters to each GSOM node
     num_clusters = 7
     active_nodes["cluster"] = fcluster(Z, num_clusters, criterion='maxclust')
+    active_nodes.to_csv("gsom_node_clusters_gene.csv", index=False)
 
-    # Save clustered GSOM nodes
-    active_nodes.to_csv("gsom_node_clusters.csv", index=False)
-
-    # Plot dendrogram with detailed label summaries
+    # Step 8: Plot dendrogram
     plt.figure(figsize=(14, 7))
     dendrogram(Z, labels=active_nodes["label_summary"].values, leaf_rotation=90)
-    plt.title("Hierarchical Clustering on GSOM Nodes (Zoo Dataset)")
+    plt.title("Hierarchical Clustering on GSOM Nodes (GSE5281 Dataset)")
     plt.xlabel("Class Distribution per Node")
     plt.ylabel("Distance")
     plt.tight_layout()
-    plt.savefig("hierarchical_clustering_with_zoo_dataset.png")
+    plt.savefig("hierarchical_clustering_gse5281.png")
     plt.close()
 
-    # Map each animal to its final cluster
-    data_points = pd.read_csv("output_zoo.csv")
-    node_clusters = pd.read_csv("gsom_node_clusters.csv")
+    # Step 9: Map each sample to its final cluster
+    data_points = pd.read_csv("output_gene.csv")
+    node_clusters = pd.read_csv("gsom_node_clusters_gene.csv")
 
-    # Merge to assign clusters to data points
     merged = pd.merge(data_points, node_clusters[["output", "cluster"]], on="output", how="left")
-    merged.to_csv("animal_cluster_mapping.csv", index=False)
+    merged.to_csv("gene_sample_cluster_mapping.csv", index=False)
 
-    print("✅ Dendrogram saved as 'hierarchical_clustering_with_zoo_dataset.png'")
-    print("✅ Node clusters saved as 'gsom_node_clusters.csv'")
-    print("✅ Animal-cluster mapping saved as 'animal_cluster_mapping.csv'")
+    print("✅ Dendrogram saved as 'hierarchical_clustering_gse5281.png'")
+    print("✅ Node clusters saved as 'gsom_node_clusters_gene.csv'")
+    print("✅ Sample-cluster mapping saved as 'gene_sample_cluster_mapping.csv'")
+

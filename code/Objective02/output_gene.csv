@@ -1,0 +1,93 @@
+output,Sample Name:,Disease State:,hit_count,x,y
+1,"['HIP_affected_2', 'SFG_affected_2']","[0, 0]",2,1.0,0.0
+2,['SFG_affected_18'],[0],1,0.0,1.0
+4,['SFG_affected_20'],[0],1,2.0,0.0
+9,"['SFG_affected_13', 'SFG_affected_15']","[0, 0]",2,-1.0,2.0
+17,"['HIP control 8', 'SFG control 9']","[1, 1]",2,-3.0,1.0
+20,['HIP_affected_8'],[0],1,2.0,-1.0
+21,['SFG_affected_17'],[0],1,1.0,-2.0
+32,['HIP_affected_3'],[0],1,1.0,-3.0
+45,['SFG_affected_5'],[0],1,4.0,-2.0
+58,['SFG_affected_7'],[0],1,-1.0,5.0
+63,['SFG control 3'],[1],1,-4.0,-1.0
+64,['SFG_affected_23'],[0],1,-3.0,-2.0
+66,['SFG_affected_14'],[0],1,4.0,-3.0
+73,"['HIP control 2', 'HIP control 3']","[1, 1]",2,-3.0,-3.0
+77,['HIP control 1'],[1],1,-2.0,3.0
+82,"['HIP_affected_6', 'SFG_affected_12']","[0, 0]",2,-3.0,3.0
+83,['VCX_affected_11'],[0],1,-2.0,4.0
+85,['HIP_affected_7'],[0],1,0.0,-4.0
+90,['VCX_affected_10'],[0],1,3.0,3.0
+91,['VCX control 6'],[1],1,-6.0,1.0
+95,"['HIP control 6', 'HIP control 9']","[1, 1]",2,-4.0,-4.0
+116,['VCX_affected_6'],[0],1,-2.0,6.0
+125,['PC control 7'],[1],1,-8.0,1.0
+128,['PC_affected_9'],[0],1,-1.0,7.0
+130,['HIP control 13'],[1],1,-4.0,-6.0
+133,['VCX control 9'],[1],1,-7.0,-1.0
+155,"['PC_affected_4', 'VCX_affected_3', 'VCX_affected_5']","[0, 0, 0]",3,9.0,2.0
+160,['SFG_affected_21'],[0],1,5.0,-4.0
+163,['VCX control 1'],[1],1,-6.0,3.0
+169,"['HIP control 10', 'SFG control 2', 'HIP_affected_9', 'SFG_affected_19']","[1, 1, 0, 0]",4,-2.0,7.0
+179,['MTG control 6'],[1],1,-9.0,3.0
+184,"['HIP_affected_4', 'SFG_affected_4', 'SFG_affected_6']","[0, 0, 0]",3,3.0,-6.0
+186,['PC control 1'],[1],1,-8.0,4.0
+189,['VCX_affected_2'],[0],1,3.0,4.0
+190,['VCX_affected_19'],[0],1,5.0,5.0
+194,['PC control 10'],[1],1,-9.0,0.0
+198,['EC_affected_7'],[0],1,-2.0,8.0
+207,['VCX_affected_15'],[0],1,-4.0,6.0
+216,"['SFG_affected_3', 'SFG_affected_22']","[0, 0]",2,6.0,-5.0
+218,['VCX_affected_14'],[0],1,3.0,5.0
+221,['VCX control 8'],[1],1,-3.0,8.0
+223,['PC control 2'],[1],1,-9.0,-3.0
+224,['VCX control 2'],[1],1,-8.0,-4.0
+225,"['EC control 8', 'EC control 11', 'MTG control 9']","[1, 1, 1]",3,-10.0,4.0
+230,['MTG_affected_16'],[0],1,-11.0,0.0
+232,"['HIP_affected_1', 'SFG_affected_1']","[0, 0]",2,3.0,-7.0
+247,['MTG_affected_14'],[0],1,-6.0,6.0
+251,['VCX_affected_16'],[0],1,10.0,0.0
+252,"['PC_affected_1', 'VCX_affected_1']","[0, 0]",2,9.0,-1.0
+258,['MTG control 2'],[1],1,-11.0,-1.0
+259,"['SFG control 1', 'SFG control 7']","[1, 1]",2,-6.0,-6.0
+260,['PC control 9'],[1],1,-1.0,10.0
+262,"['EC control 5', 'HIP control 4', 'MTG control 3', 'PC control 3', 'SFG control 5', 'MTG_affected_6', 'SFG_affected_8', 'SFG_affected_10', 'VCX_affected_7']","[1, 1, 1, 1, 1, 0, 0, 0, 0]",9,0.0,11.0
+264,['EC control 7'],[1],1,-1.0,11.0
+269,['VCX_affected_9'],[0],1,8.0,-3.0
+271,"['HIP control 7', 'SFG control 8', 'VCX control 5']","[1, 1, 1]",3,-1.0,-7.0
+274,"['EC control 10', 'MTG control 8', 'MTG_affected_11']","[1, 1, 0]",3,-5.0,7.0
+281,['PC_affected_3'],[0],1,8.0,5.0
+282,"['PC_affected_8', 'VCX_affected_13']","[0, 0]",2,7.0,6.0
+291,"['HIP control 11', 'HIP_affected_10']","[1, 0]",2,3.0,-8.0
+297,"['EC_affected_2', 'EC_affected_8']","[0, 0]",2,-8.0,8.0
+304,['EC_affected_3'],[0],1,2.0,8.0
+310,"['MTG control 10', 'PC control 11', 'MTG_affected_13']","[1, 1, 0]",3,0.0,12.0
+312,"['EC control 3', 'EC control 4', 'EC control 6', 'EC control 9']","[1, 1, 1, 1]",4,-13.0,0.0
+315,"['MTG_affected_3', 'MTG_affected_5']","[0, 0]",2,-2.0,11.0
+319,['VCX_affected_17'],[0],1,9.0,-2.0
+325,['PC_affected_7'],[0],1,3.0,10.0
+327,"['EC control 2', 'MTG control 1']","[1, 1]",2,-9.0,8.0
+329,['VCX_affected_4'],[0],1,9.0,4.0
+333,['PC control 6'],[1],1,-1.0,13.0
+340,"['PC control 5', 'PC control 8']","[1, 1]",2,-10.0,-4.0
+344,"['PC control 12', 'VCX control 11']","[1, 1]",2,-2.0,14.0
+346,"['PC_affected_5', 'VCX_affected_8', 'VCX_affected_12', 'VCX_affected_18']","[0, 0, 0, 0]",4,-1.0,15.0
+349,"['VCX control 4', 'VCX control 7']","[1, 1]",2,-8.0,-6.0
+355,"['EC control 12', 'MTG control 11', 'MTG_affected_15']","[1, 1, 0]",3,-2.0,15.0
+356,"['EC control 1', 'HIP control 5', 'MTG control 4', 'PC control 4', 'SFG control 6', 'VCX control 3']","[1, 1, 1, 1, 1, 1]",6,0.0,15.0
+361,"['EC_affected_5', 'EC_affected_6', 'MTG_affected_4', 'MTG_affected_9']","[0, 0, 0, 0]",4,-13.0,-1.0
+363,['PC control 13'],[1],1,-3.0,12.0
+364,['PC_affected_6'],[0],1,-3.0,15.0
+367,"['HIP_affected_5', 'SFG_affected_9', 'SFG_affected_11', 'SFG_affected_16']","[0, 0, 0, 0]",4,9.0,-4.0
+368,"['HIP control 12', 'SFG control 10']","[1, 1]",2,8.0,-5.0
+375,"['EC_affected_1', 'MTG_affected_1', 'MTG_affected_7', 'MTG_affected_10']","[0, 0, 0, 0]",4,-13.0,4.0
+376,['PC_affected_2'],[0],1,4.0,8.0
+378,"['SFG control 4', 'VCX control 10']","[1, 1]",2,1.0,-10.0
+380,['SFG control 11'],[1],1,-4.0,-7.0
+381,['VCX control 12'],[1],1,-5.0,-8.0
+382,['MTG_affected_8'],[0],1,-9.0,9.0
+386,"['EC control 13', 'MTG control 5', 'MTG control 7', 'MTG control 12']","[1, 1, 1, 1]",4,-12.0,-3.0
+393,['EC_affected_4'],[0],1,-10.0,8.0
+396,['EC_affected_9'],[0],1,-3.0,17.0
+397,"['MTG_affected_2', 'MTG_affected_12']","[0, 0]",2,-4.0,12.0
+399,['EC_affected_10'],[0],1,-14.0,2.0
