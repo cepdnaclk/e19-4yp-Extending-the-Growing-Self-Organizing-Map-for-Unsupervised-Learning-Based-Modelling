@@ -411,6 +411,8 @@ if __name__ == '__main__':
     import pandas as pd
     import numpy as np
 
+    from gsom import GSOM  # Ensure this import matches your file/module structure
+
     np.random.seed(1)
 
     # Load dataset
@@ -465,11 +467,9 @@ if __name__ == '__main__':
     # Step 9: Map each sample to its final cluster
     data_points = pd.read_csv("output_gene.csv")
     node_clusters = pd.read_csv("gsom_node_clusters_gene.csv")
-
     merged = pd.merge(data_points, node_clusters[["output", "cluster"]], on="output", how="left")
     merged.to_csv("gene_sample_cluster_mapping.csv", index=False)
 
-    print("✅ Dendrogram saved as 'hierarchical_clustering_gse5281.png'")
-    print("✅ Node clusters saved as 'gsom_node_clusters_gene.csv'")
-    print("✅ Sample-cluster mapping saved as 'gene_sample_cluster_mapping.csv'")
-
+    print("\u2705 Dendrogram saved as 'hierarchical_clustering_gse5281.png'")
+    print("\u2705 Node clusters saved as 'gsom_node_clusters_gene.csv'")
+    print("\u2705 Sample-cluster mapping saved as 'gene_sample_cluster_mapping.csv'")
