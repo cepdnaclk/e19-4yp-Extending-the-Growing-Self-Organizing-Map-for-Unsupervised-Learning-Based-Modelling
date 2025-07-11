@@ -409,32 +409,30 @@ if __name__ == '__main__':
     import pandas as pd
     import numpy as np
 
-    from gsom import GSOM  # Ensure this import matches your file/module structure
-
     np.random.seed(1)
 
-    # Load dataset
-    df = pd.read_csv("example/data/iris.csv".replace('\\', '/'))  # Replace with actual path if needed
+    # Step 1: Load dataset
+    df = pd.read_csv("example/data/iris.csv".replace('\\', '/'))
     print("Dataset shape:", df.shape)
 
-    # Step 1: Split features and keep metadata
-    features = df.drop(columns=["Id", "Species"])  # Training input
+    # Step 2: Split features and keep metadata
+    features = df.drop(columns=["Id", "Species"])
     full_input = pd.concat([features, df[["Id", "Species"]]], axis=1)
 
-    # Step 2: Initialize and train GSOM
+    # Step 3: Train GSOM
     gsom = GSOM(spred_factor=0.83, dimensions=features.shape[1], distance='euclidean', max_radius=4)
     gsom.fit(features.to_numpy(), training_iterations=100, smooth_iterations=50)
 
-    # Step 3: Predict using correct input (feature cols + name + label)
+    # Step 4: Predict
     output = gsom.predict(full_input, "Id", "Species")
     output.to_csv("output_iris.csv", index=False)
 
-    # Step 4: Load and filter active GSOM nodes
+    # Step 5: Filter active nodes
     df_out = pd.read_csv("output_iris.csv")
     active_nodes = df_out[df_out["hit_count"] > 0].copy()
     active_nodes["Species"] = active_nodes["Species"].apply(ast.literal_eval)
 
-    # Step 5: Create detailed label summary for each node
+    # Step 6: Label summary
     def label_summary(labels, top_n=None):
         counter = Counter(labels)
         total = sum(counter.values())
@@ -443,16 +441,14 @@ if __name__ == '__main__':
 
     active_nodes["label_summary"] = active_nodes["Species"].apply(label_summary)
 
-    # Step 6: Perform hierarchical clustering on GSOM node positions
+    # Step 7: Hierarchical clustering
     X = active_nodes[["x", "y"]].to_numpy()
     Z = linkage(X, method='ward')
-
-    # Step 7: Assign clusters to each GSOM node
-    num_clusters = 3  # Iris has 3 classes
+    num_clusters = 3
     active_nodes["cluster"] = fcluster(Z, num_clusters, criterion='maxclust')
     active_nodes.to_csv("gsom_node_clusters_iris.csv", index=False)
 
-    # Step 8: Plot dendrogram
+    # Step 8: Dendrogram
     plt.figure(figsize=(14, 7))
     dendrogram(Z, labels=active_nodes["label_summary"].values, leaf_rotation=90)
     plt.title("Hierarchical Clustering on GSOM Nodes (Iris Dataset)")
@@ -462,12 +458,64 @@ if __name__ == '__main__':
     plt.savefig("hierarchical_clustering_iris.png")
     plt.close()
 
-    # Step 9: Map each sample to its final cluster
+    # Step 9: Map samples to node cluster
     data_points = pd.read_csv("output_iris.csv")
     node_clusters = pd.read_csv("gsom_node_clusters_iris.csv")
     merged = pd.merge(data_points, node_clusters[["output", "cluster"]], on="output", how="left")
     merged.to_csv("iris_sample_cluster_mapping.csv", index=False)
 
-    print("\u2705 Dendrogram saved as 'hierarchical_clustering_iris.png'")
-    print("\u2705 Node clusters saved as 'gsom_node_clusters_iris.csv'")
-    print("\u2705 Sample-cluster mapping saved as 'iris_sample_cluster_mapping.csv'")
+    print("✅ Dendrogram saved as 'hierarchical_clustering_iris.png'")
+    print("✅ Node clusters saved as 'gsom_node_clusters_iris.csv'")
+    print("✅ Sample-cluster mapping saved as 'iris_sample_cluster_mapping.csv'")
+
+
+    # Step 10: Evaluate clustering performance
+    from sklearn.metrics import (
+        adjusted_rand_score,
+        normalized_mutual_info_score,
+        silhouette_score,
+        calinski_harabasz_score,
+        davies_bouldin_score
+    )
+
+    # Step 10.1: Clean and prepare labels
+    label_map = {"Iris-setosa": 0, "Iris-versicolor": 1, "Iris-virginica": 2}
+    valid_species = list(label_map.keys())
+    merged = merged[merged["Species"].isin(valid_species)].copy()
+    merged = merged.dropna(subset=["cluster"])
+    merged = merged.reset_index(drop=True)
+
+    # Step 10.2: Convert labels
+    true_labels = merged["Species"].map(label_map).values
+    pred_labels = merged["cluster"].astype(int).values
+
+    # Fix column names if needed
+    feature_cols = [col for col in merged.columns if col.startswith("Sepal") or col.startswith("Petal")]
+    X = merged[feature_cols].to_numpy()
+
+    # Step 10.3: Check and compute metrics
+if len(np.unique(pred_labels)) > 1 and len(X) > 0:
+    # Debugging info
+    print("🔍 Unique predicted clusters:", np.unique(pred_labels))
+    print("🔍 Feature matrix shape:", X.shape)
+    print("🔍 True labels shape:", true_labels.shape)
+
+    ari = adjusted_rand_score(true_labels, pred_labels)
+    nmi = normalized_mutual_info_score(true_labels, pred_labels)
+    silhouette = silhouette_score(X, pred_labels)
+    ch = calinski_harabasz_score(X, pred_labels)
+    db = davies_bouldin_score(X, pred_labels)
+
+    metrics = {
+        "Method": "GSOM+HC",
+        "ARI": ari,
+        "NMI": nmi,
+        "Silhouette": silhouette,
+        "CH": ch,
+        "DB": db
+    }
+
+    print("✅ Clustering metrics:", metrics)
+    pd.DataFrame([metrics]).to_csv("gsom_iris_metrics.csv", index=False)
+else:
+    print("⚠️ Not enough clusters or data to compute clustering metrics.")

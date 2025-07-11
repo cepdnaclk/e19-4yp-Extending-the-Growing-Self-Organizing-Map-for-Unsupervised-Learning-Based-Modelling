@@ -1,0 +1,7 @@
+Silhouette Score Results
+========================
+Best Linkage Method: average
+Cophenetic Correlation Coefficient (CCC): 0.7909
+
+Silhouette Score (GSOM Nodes): 0.4306
+Silhouette Score (Samples): 0.4306

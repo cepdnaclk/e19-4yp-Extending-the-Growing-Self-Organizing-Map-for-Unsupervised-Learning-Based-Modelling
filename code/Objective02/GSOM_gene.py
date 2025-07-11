@@ -404,23 +404,26 @@ class GSOM:
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
-    from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+    from scipy.cluster.hierarchy import linkage, dendrogram, fcluster, cophenet
+    from scipy.spatial.distance import pdist
+    from sklearn.metrics import silhouette_score
     import pandas as pd
     import numpy as np
     from collections import Counter
     import ast
+    import os
 
     np.random.seed(1)
 
-    # Step 1: Load the normalized gene expression dataset (161 samples × 22880 genes)
+    # Step 1: Load the normalized gene expression dataset
     df = pd.read_csv("example/data/GSE/GSE5281_normalized_gene_expression.csv", index_col=0)
     print("Dataset shape:", df.shape)
 
-    # Transpose: samples as rows, genes as features (161 × 22880)
+    # Transpose: samples as rows, genes as features
     df = df.T
     df.index.name = "Sample_ID"
 
-    # Step 2: Fake metadata (real labels can be added later)
+    # Step 2: Assign temporary labels
     df["Id"] = df.index
     df["Species"] = ["Alzheimer's Disease" if i < 87 else "Control" for i in range(161)]
 
@@ -441,38 +444,111 @@ if __name__ == '__main__':
     active_nodes = df_out[df_out["hit_count"] > 0].copy()
     active_nodes["Species"] = active_nodes["Species"].apply(ast.literal_eval)
 
-    # Step 7: Label summary
-    def label_summary(labels):
-        counter = Counter(labels)
-        total = sum(counter.values())
-        return "; ".join([f"{k}: {v} ({v/total:.1%})" for k, v in counter.items()])
+    # ✅ Optional: Filter sparse GSOM nodes
+    active_nodes = active_nodes[active_nodes["hit_count"] >= 2].copy()
 
-    active_nodes["label_summary"] = active_nodes["Species"].apply(label_summary)
-
-    # Step 8: Hierarchical clustering on GSOM node positions
+    # Step 7: Hierarchical clustering - evaluate best linkage
     X = active_nodes[["x", "y"]].to_numpy()
-    Z = linkage(X, method='ward')
+    print("📊 Cophenetic Correlation Coefficients for Linkage Methods:")
+    best_coph = 0
+    best_method = None
+    best_Z = None
 
-    # Step 9: Assign clusters
+    for method in ['single', 'complete', 'average', 'ward']:
+        Z_temp = linkage(X, method=method)
+        coph_corr, _ = cophenet(Z_temp, pdist(X))
+        print(f"{method.capitalize():<10} CCC: {coph_corr:.4f}")
+        if coph_corr > best_coph:
+            best_coph = coph_corr
+            best_method = method
+            best_Z = Z_temp
+
+    Z = best_Z
+    print(f"\n✅ Best linkage method: {best_method} with CCC = {best_coph:.4f}")
+
+    # Step 8: Assign clusters
     active_nodes["cluster"] = fcluster(Z, 2, criterion='maxclust')
+
+    # Step 9: Silhouette Scores (Nodes & Samples)
+    os.makedirs("results", exist_ok=True)
+
+    # 9.1 Silhouette Score for GSOM nodes
+    X_nodes = active_nodes[["x", "y"]].to_numpy()
+    labels_nodes = active_nodes["cluster"].to_numpy()
+
+    sil_node_score = None
+    if len(set(labels_nodes)) > 1:
+        sil_node_score = silhouette_score(X_nodes, labels_nodes)
+        print(f"📐 Silhouette Score (GSOM Nodes): {sil_node_score:.4f}")
+    else:
+        print("⚠️ Not enough node clusters to compute Silhouette Score.")
+
+    # 9.2 Silhouette Score for Samples (mapped from GSOM node clusters)
+    data_points = pd.read_csv("output_gse5281.csv")
+    node_clusters = pd.read_csv("gsom_node_clusters_gse5281.csv") if os.path.exists("gsom_node_clusters_gse5281.csv") else active_nodes
+    merged = pd.merge(data_points, node_clusters[["output", "cluster"]], on="output", how="left")
+
+    # Drop samples with NaN cluster assignment
+    merged_valid = merged.dropna(subset=["cluster"]).copy()
+    X_samples = merged_valid[["x", "y"]].to_numpy()
+    labels_samples = merged_valid["cluster"].astype(int).to_numpy()
+
+
+    sil_sample_score = None
+    if len(set(labels_samples)) > 1:
+        sil_sample_score = silhouette_score(X_samples, labels_samples)
+        print(f"📐 Silhouette Score (Samples): {sil_sample_score:.4f}")
+    else:
+        print("⚠️ Not enough sample clusters to compute Silhouette Score.")
+
+    # Step 10: Save metrics
+    with open("results/silhouette_scores.txt", "w") as f:
+        f.write("Silhouette Score Results\n")
+        f.write("========================\n")
+        f.write(f"Best Linkage Method: {best_method}\n")
+        f.write(f"Cophenetic Correlation Coefficient (CCC): {best_coph:.4f}\n\n")
+        if sil_node_score is not None:
+            f.write(f"Silhouette Score (GSOM Nodes): {sil_node_score:.4f}\n")
+        else:
+            f.write("Silhouette Score (GSOM Nodes): Not enough clusters.\n")
+        if sil_sample_score is not None:
+            f.write(f"Silhouette Score (Samples): {sil_sample_score:.4f}\n")
+        else:
+            f.write("Silhouette Score (Samples): Not enough clusters.\n")
+
+    print("✅ Silhouette scores saved to 'results/silhouette_scores.txt'")
+
+    # Step 11: Label summary
+    def formatted_label(row):
+        counter = Counter(row["Species"])
+        ad = counter.get("Alzheimer's Disease", 0)
+        ctrl = counter.get("Control", 0)
+        total = ad + ctrl
+        dominant = "AD" if ad > ctrl else "Control"
+        percent = (max(ad, ctrl) / total) * 100 if total > 0 else 0
+        return f"Cluster {row['cluster']} | {dominant} ({percent:.1f}%) | N={total}"
+
+    active_nodes["label_summary"] = active_nodes.apply(formatted_label, axis=1)
     active_nodes.to_csv("gsom_node_clusters_gse5281.csv", index=False)
 
-    # Step 10: Plot dendrogram
-    plt.figure(figsize=(16, 7))
-    dendrogram(Z, labels=active_nodes["label_summary"].values, leaf_rotation=90)
-    plt.title("Hierarchical Clustering on GSOM Nodes (GSE5281 Dataset)")
-    plt.xlabel("Node label composition (AD vs Control)")
+    # Step 12: Plot dendrogram
+    plt.figure(figsize=(18, 8))
+    dendrogram(
+        Z,
+        labels=active_nodes["label_summary"].values,
+        leaf_rotation=90,
+        leaf_font_size=10
+    )
+    plt.title(f"Hierarchical Clustering on GSOM Nodes (Linkage: {best_method})")
+    plt.xlabel("Clustered GSOM Nodes (AD vs Control)")
     plt.ylabel("Distance")
     plt.tight_layout()
-    plt.savefig("hierarchical_clustering_gse5281.png")
+    plt.savefig("hierarchical_clustering_gse5281_annotated.png")
     plt.close()
 
-    # Step 11: Map each sample to its node's cluster
-    data_points = pd.read_csv("output_gse5281.csv")
-    node_clusters = pd.read_csv("gsom_node_clusters_gse5281.csv")
-    merged = pd.merge(data_points, node_clusters[["output", "cluster"]], on="output", how="left")
+    # Step 13: Map each sample to its node's cluster
     merged.to_csv("gse5281_sample_cluster_mapping.csv", index=False)
 
-    print("✅ Dendrogram saved as 'hierarchical_clustering_gse5281.png'")
+    print("✅ Dendrogram saved as 'hierarchical_clustering_gse5281_annotated.png'")
     print("✅ Node clusters saved as 'gsom_node_clusters_gse5281.csv'")
     print("✅ Sample-cluster mapping saved as 'gse5281_sample_cluster_mapping.csv'")
