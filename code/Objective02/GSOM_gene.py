@@ -24,7 +24,7 @@ if __name__ == '__main__':
     full_input = pd.concat([features, df[["Id", "Species"]]], axis=1)
 
     # Step 4: Train GSOM
-    gsom = GSOM(spred_factor=0.83, dimensions=features.shape[1], distance='euclidean', max_radius=4)
+    gsom = GSOM(spred_factor=0.82, dimensions=features.shape[1], distance='euclidean', max_radius=4)
     gsom.fit(features.to_numpy(), training_iterations=100, smooth_iterations=50)
 
     # Step 5: Predict & save

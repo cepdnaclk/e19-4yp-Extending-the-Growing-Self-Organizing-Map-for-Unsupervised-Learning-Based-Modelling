@@ -1,11 +1,11 @@
 GSOM + Hierarchical Clustering Evaluation
 =========================================
 Best Linkage Method: average
-Cophenetic Correlation Coefficient (CCC): 0.7909
+Cophenetic Correlation Coefficient (CCC): 0.8625
 
-Silhouette Score (GSOM Nodes): 0.4306
+Silhouette Score (GSOM Nodes): 0.4879
 
 Sample-Level Evaluation:
-Silhouette Score (Samples): 0.4306
-Adjusted Rand Index (ARI): -0.1111
-Normalized Mutual Information (NMI): 0.0342
+Silhouette Score (Samples): -0.0158
+Adjusted Rand Index (ARI): 0.0000
+Normalized Mutual Information (NMI): 0.0000
