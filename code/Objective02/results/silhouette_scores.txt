@@ -1,7 +1,18 @@
-Silhouette Score Results
-========================
+GSOM + Hierarchical Clustering Evaluation
+=========================================
+
+📊 Cophenetic Correlation Coefficients for Linkage Methods:
+Single     CCC: 0.7549
+Complete   CCC: 0.7809
+Average    CCC: 0.7909
+Ward       CCC: 0.7225
 Best Linkage Method: average
 Cophenetic Correlation Coefficient (CCC): 0.7909
 
 Silhouette Score (GSOM Nodes): 0.4306
+
+Sample-Level Evaluation:
+------------------------
 Silhouette Score (Samples): 0.4306
+Adjusted Rand Index (ARI): -0.1111
+Normalized Mutual Information (NMI): 0.0342

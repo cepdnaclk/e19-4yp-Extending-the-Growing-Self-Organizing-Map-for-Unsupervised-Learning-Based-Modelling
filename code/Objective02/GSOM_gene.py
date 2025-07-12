@@ -406,7 +406,7 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from scipy.cluster.hierarchy import linkage, dendrogram, fcluster, cophenet
     from scipy.spatial.distance import pdist
-    from sklearn.metrics import silhouette_score
+    from sklearn.metrics import silhouette_score, adjusted_rand_score, normalized_mutual_info_score
     import pandas as pd
     import numpy as np
     from collections import Counter
@@ -483,40 +483,62 @@ if __name__ == '__main__':
     else:
         print("⚠️ Not enough node clusters to compute Silhouette Score.")
 
-    # 9.2 Silhouette Score for Samples (mapped from GSOM node clusters)
+    # 9.2 Silhouette, ARI, NMI for Samples
     data_points = pd.read_csv("output_gse5281.csv")
     node_clusters = pd.read_csv("gsom_node_clusters_gse5281.csv") if os.path.exists("gsom_node_clusters_gse5281.csv") else active_nodes
     merged = pd.merge(data_points, node_clusters[["output", "cluster"]], on="output", how="left")
 
-    # Drop samples with NaN cluster assignment
     merged_valid = merged.dropna(subset=["cluster"]).copy()
     X_samples = merged_valid[["x", "y"]].to_numpy()
     labels_samples = merged_valid["cluster"].astype(int).to_numpy()
 
+    # Map true labels
+    df["label_numeric"] = df["Species"].replace({"Alzheimer's Disease": 1, "Control": 0})
+    # Clean Ids from merged_valid to ensure they match df.index format
+    clean_ids = merged_valid["Id"].apply(
+        lambda x: ast.literal_eval(x)[0] if isinstance(x, str) and x.startswith("[") else x
+    )
 
-    sil_sample_score = None
+    # Ensure all ids are string type
+    clean_ids = clean_ids.astype(str)
+
+    # Extract true labels safely
+    true_labels = df.loc[clean_ids, "label_numeric"].to_numpy()
+
+
+    sil_sample_score = ari_score = nmi_score = None
     if len(set(labels_samples)) > 1:
         sil_sample_score = silhouette_score(X_samples, labels_samples)
+        ari_score = adjusted_rand_score(true_labels, labels_samples)
+        nmi_score = normalized_mutual_info_score(true_labels, labels_samples)
         print(f"📐 Silhouette Score (Samples): {sil_sample_score:.4f}")
+        print(f"🧮 Adjusted Rand Index (ARI): {ari_score:.4f}")
+        print(f"🧠 Normalized Mutual Information (NMI): {nmi_score:.4f}")
     else:
-        print("⚠️ Not enough sample clusters to compute Silhouette Score.")
+        print("⚠️ Not enough sample clusters to compute clustering metrics.")
 
     # Step 10: Save metrics
     with open("results/silhouette_scores.txt", "w") as f:
-        f.write("Silhouette Score Results\n")
-        f.write("========================\n")
+        f.write("GSOM + Hierarchical Clustering Evaluation\n")
+        f.write("=========================================\n")
         f.write(f"Best Linkage Method: {best_method}\n")
         f.write(f"Cophenetic Correlation Coefficient (CCC): {best_coph:.4f}\n\n")
+
         if sil_node_score is not None:
             f.write(f"Silhouette Score (GSOM Nodes): {sil_node_score:.4f}\n")
         else:
             f.write("Silhouette Score (GSOM Nodes): Not enough clusters.\n")
+
+        f.write("\nSample-Level Evaluation:\n")
+        f.write("------------------------\n")
         if sil_sample_score is not None:
             f.write(f"Silhouette Score (Samples): {sil_sample_score:.4f}\n")
+            f.write(f"Adjusted Rand Index (ARI): {ari_score:.4f}\n")
+            f.write(f"Normalized Mutual Information (NMI): {nmi_score:.4f}\n")
         else:
-            f.write("Silhouette Score (Samples): Not enough clusters.\n")
+            f.write("Silhouette / ARI / NMI (Samples): Not enough clusters.\n")
 
-    print("✅ Silhouette scores saved to 'results/silhouette_scores.txt'")
+    print("✅ All evaluation metrics saved to 'results/silhouette_scores.txt'")
 
     # Step 11: Label summary
     def formatted_label(row):
@@ -546,7 +568,7 @@ if __name__ == '__main__':
     plt.savefig("hierarchical_clustering_gse5281_annotated.png")
     plt.close()
 
-    # Step 13: Map each sample to its node's cluster
+    # Step 13: Save final sample-cluster mapping
     merged.to_csv("gse5281_sample_cluster_mapping.csv", index=False)
 
     print("✅ Dendrogram saved as 'hierarchical_clustering_gse5281_annotated.png'")
