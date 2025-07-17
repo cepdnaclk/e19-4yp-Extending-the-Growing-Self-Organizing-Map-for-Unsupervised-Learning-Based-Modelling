@@ -1,0 +1,11 @@
+GSOM + Hierarchical Clustering Evaluation (Iris)
+=========================================
+Best Linkage Method: average
+Cophenetic Correlation Coefficient (CCC): 0.9030
+
+Silhouette Score (GSOM Nodes): 0.5480
+
+Sample-Level Evaluation:
+Silhouette Score (Samples): 0.4878
+Adjusted Rand Index (ARI): 0.0176
+Normalized Mutual Information (NMI): 0.1158

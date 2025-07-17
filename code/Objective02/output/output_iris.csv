@@ -1,0 +1,84 @@
+output,Id,Species,hit_count,x,y
+2,['27'],['Iris-setosa'],1,0.0,1.0
+4,['0'],['Iris-setosa'],1,2.0,1.0
+7,['48'],['Iris-setosa'],1,0.0,-1.0
+8,['7'],['Iris-setosa'],1,0.0,2.0
+13,"['31', '36']","['Iris-setosa', 'Iris-setosa']",2,-1.0,-1.0
+15,['28'],['Iris-setosa'],1,-2.0,1.0
+21,['39'],['Iris-setosa'],1,-3.0,1.0
+31,['10'],['Iris-setosa'],1,0.0,-3.0
+32,['49'],['Iris-setosa'],1,0.0,3.0
+40,['20'],['Iris-setosa'],1,-3.0,-2.0
+44,['35'],['Iris-setosa'],1,1.0,5.0
+54,"['14', '15', '16', '32', '33']","['Iris-setosa', 'Iris-setosa', 'Iris-setosa', 'Iris-setosa', 'Iris-setosa']",5,3.0,-2.0
+64,['17'],['Iris-setosa'],1,3.0,0.0
+71,['2'],['Iris-setosa'],1,3.0,4.0
+73,['4'],['Iris-setosa'],1,4.0,1.0
+74,['19'],['Iris-setosa'],1,5.0,0.0
+79,['26'],['Iris-setosa'],1,-4.0,1.0
+85,['24'],['Iris-setosa'],1,-5.0,2.0
+95,['23'],['Iris-setosa'],1,-5.0,1.0
+100,"['5', '18']","['Iris-setosa', 'Iris-setosa']",2,2.0,-4.0
+106,['42'],['Iris-setosa'],1,4.0,5.0
+107,['99'],['Iris-versicolor'],1,-6.0,-3.0
+122,['40'],['Iris-setosa'],1,4.0,2.0
+132,['71'],['Iris-versicolor'],1,-3.0,-5.0
+137,['56'],['Iris-versicolor'],1,0.0,-9.0
+141,"['51', '58', '65', '75']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor']",4,-2.0,-7.0
+142,['6'],['Iris-setosa'],1,6.0,4.0
+143,['11'],['Iris-setosa'],1,-1.0,5.0
+148,['1'],['Iris-setosa'],1,-1.0,6.0
+149,['46'],['Iris-setosa'],1,6.0,-2.0
+154,['64'],['Iris-versicolor'],1,5.0,-6.0
+155,['88'],['Iris-versicolor'],1,4.0,-7.0
+157,['25'],['Iris-setosa'],1,-5.0,4.0
+168,['47'],['Iris-setosa'],1,6.0,5.0
+171,['74'],['Iris-versicolor'],1,-3.0,-6.0
+172,"['63', '73', '91']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor']",3,-3.0,-7.0
+175,['21'],['Iris-setosa'],1,6.0,-3.0
+182,"['126', '127']","['Iris-virginica', 'Iris-virginica']",2,1.0,-10.0
+186,['45'],['Iris-setosa'],1,1.0,8.0
+187,['3'],['Iris-setosa'],1,2.0,9.0
+191,"['69', '80']","['Iris-versicolor', 'Iris-versicolor']",2,-8.0,-3.0
+196,['85'],['Iris-versicolor'],1,5.0,-7.0
+198,"['70', '138']","['Iris-versicolor', 'Iris-virginica']",2,2.0,-10.0
+201,"['9', '34', '37']","['Iris-setosa', 'Iris-setosa', 'Iris-setosa']",3,-4.0,5.0
+207,['54'],['Iris-versicolor'],1,-3.0,-9.0
+209,['97'],['Iris-versicolor'],1,-4.0,-7.0
+212,"['55', '95', '96']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor']",3,-6.0,-6.0
+213,"['79', '81']","['Iris-versicolor', 'Iris-versicolor']",2,-9.0,-1.0
+219,['41'],['Iris-setosa'],1,4.0,9.0
+221,"['57', '60', '93']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor']",3,-9.0,0.0
+222,['98'],['Iris-versicolor'],1,-8.0,1.0
+224,"['50', '52', '76', '86']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor']",4,-3.0,-10.0
+225,"['123', '133']","['Iris-virginica', 'Iris-virginica']",2,-2.0,-11.0
+228,['124'],['Iris-virginica'],1,0.0,-13.0
+229,"['66', '84']","['Iris-versicolor', 'Iris-versicolor']",2,4.0,-8.0
+230,['8'],['Iris-setosa'],1,5.0,8.0
+232,['43'],['Iris-setosa'],1,7.0,-2.0
+234,['82'],['Iris-versicolor'],1,-8.0,-4.0
+235,"['83', '146', '149']","['Iris-versicolor', 'Iris-virginica', 'Iris-virginica']",3,3.0,-11.0
+242,"['110', '147']","['Iris-virginica', 'Iris-virginica']",2,-2.0,-12.0
+247,['61'],['Iris-versicolor'],1,-6.0,-7.0
+248,"['101', '113', '114', '121', '142']","['Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica']",5,4.0,-10.0
+250,"['72', '119']","['Iris-versicolor', 'Iris-virginica']",2,-4.0,-10.0
+252,"['103', '111', '116', '134', '137']","['Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica']",5,1.0,-13.0
+253,['129'],['Iris-virginica'],1,0.0,-14.0
+254,['78'],['Iris-versicolor'],1,-5.0,-8.0
+257,['104'],['Iris-virginica'],1,2.0,-13.0
+258,"['90', '94']","['Iris-versicolor', 'Iris-versicolor']",2,-8.0,-5.0
+265,['44'],['Iris-setosa'],1,7.0,-3.0
+266,"['112', '139', '141', '145']","['Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica']",4,-2.0,-13.0
+268,"['100', '115', '136', '140', '144', '148']","['Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica']",6,1.0,-14.0
+274,['22'],['Iris-setosa'],1,7.0,3.0
+276,"['53', '59', '89', '106']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-virginica']",4,-9.0,-4.0
+278,"['102', '120', '143']","['Iris-virginica', 'Iris-virginica', 'Iris-virginica']",3,2.0,-14.0
+279,"['13', '38']","['Iris-setosa', 'Iris-setosa']",2,6.0,7.0
+281,"['62', '67', '92']","['Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor']",3,-9.0,-5.0
+282,"['68', '87']","['Iris-versicolor', 'Iris-versicolor']",2,-6.0,-8.0
+283,['77'],['Iris-versicolor'],1,-4.0,-12.0
+285,"['105', '107', '109', '117', '118', '122', '125', '130', '131', '135']","['Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica']",10,1.0,-15.0
+286,['108'],['Iris-virginica'],1,-2.0,-14.0
+287,"['128', '132']","['Iris-virginica', 'Iris-virginica']",2,0.0,-15.0
+289,"['29', '30']","['Iris-setosa', 'Iris-setosa']",2,-4.0,6.0
+291,['12'],['Iris-setosa'],1,0.0,9.0

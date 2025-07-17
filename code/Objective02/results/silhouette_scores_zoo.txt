@@ -1,0 +1,9 @@
+GSOM + Hierarchical Clustering Evaluation (Zoo)
+=========================================
+Best Linkage Method: average
+Cophenetic Correlation Coefficient (CCC): 0.7942
+
+Silhouette Score (GSOM Nodes): 0.4225
+
+Sample-Level Evaluation:
+Silhouette / ARI / NMI (Samples): Not enough clusters.
