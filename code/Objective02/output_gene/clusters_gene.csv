@@ -1,0 +1,8 @@
+cluster_id,node_indices,color,size
+1,0;6;7,green,3
+2,8;1;10;3,red,4
+3,9,black,1
+4,2;4;5,cyan,3
+5,11;12,orange,2
+6,13;14;15,magenta,3
+7,16,green,1
