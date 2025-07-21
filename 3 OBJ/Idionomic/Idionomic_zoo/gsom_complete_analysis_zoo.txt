@@ -1,0 +1,230 @@
+GSOM Complete Analysis Report
+==================================================
+
+DATASET INFORMATION
+--------------------
+Dataset shape: (101, 18)
+Training data shape: (101, 16)
+Feature columns: ['w1', 'w2', 'w3', 'w4', 'w4.1', 'w5', 'w6', 'w7', 'w8', 'w9', 'w10', 'w11', 'w12', 'w13', 'w14', 'w15']
+Node count: 873
+
+CLUSTER NAMES
+--------------------
+Cluster 1: Type 1 (100.0%)
+Cluster 2: Type 2 (26.7%)
+Cluster 3: Type 2 (100.0%)
+Cluster 4: Type 7 (100.0%)
+Cluster 5: Type 7 (85.7%)
+Cluster 6: Type 7 (100.0%)
+Cluster 7: Type 1 (100.0%)
+
+NODE ENTROPY ANALYSIS
+--------------------
+Node 33 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 70 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 74 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 78 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 79 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 94 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 167 (Cluster 4: Type 7 (100.0%)): Entropy = 0.0000
+Node 189 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 198 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 250 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 291 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 349 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 378 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 388 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 425 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 438 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 515 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 517 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 535 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 555 (Cluster 2: Type 2 (26.7%)): Entropy = 1.0000
+Node 588 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 596 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 678 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 679 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 691 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 694 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 709 (Cluster 5: Type 7 (85.7%)): Entropy = 0.0000
+Node 760 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 765 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 772 (Cluster 5: Type 7 (85.7%)): Entropy = 0.0000
+Node 789 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 796 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 798 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 810 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 811 (Cluster 7: Type 1 (100.0%)): Entropy = 0.0000
+Node 823 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 825 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 828 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 830 (Cluster 5: Type 7 (85.7%)): Entropy = 0.0000
+Node 831 (Cluster 5: Type 7 (85.7%)): Entropy = 0.0000
+Node 834 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 836 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 838 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 846 (Cluster 3: Type 2 (100.0%)): Entropy = 0.0000
+Node 853 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 857 (Cluster 1: Type 1 (100.0%)): Entropy = 0.0000
+Node 863 (Cluster 2: Type 2 (26.7%)): Entropy = 0.0000
+Node 870 (Cluster 6: Type 7 (100.0%)): Entropy = 0.0000
+
+OUTLIER DETECTION
+--------------------
+Node 33:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 70:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 74:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 78:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 79:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 94:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 167:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 189:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 198:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 250:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 291:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 349:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 378:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 388:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 425:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 438:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 515:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 517:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 535:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 555:
+  Distance Outliers: []
+  Minority Outliers: ['tortoise']
+Node 588:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 596:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 678:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 679:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 691:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 694:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 709:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 760:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 765:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 772:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 789:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 796:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 798:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 810:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 811:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 823:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 825:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 828:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 830:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 831:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 834:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 836:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 838:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 846:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 853:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 857:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 863:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 870:
+  Distance Outliers: []
+  Minority Outliers: []
+
+REGION ANALYSIS
+--------------------
+Center Node: 349, Radius: 2.0
+Region Entropy: 0.0000
+Region Nodes: [349]
+Deviant Points:
+
+BOUNDARY POINTS SUMMARY
+--------------------
+Total Boundary Points: 84
+Boundary Nodes: [870, 839, 167, 811, 791, 846, 729, 151, 183]
+Number of Clusters: 7
