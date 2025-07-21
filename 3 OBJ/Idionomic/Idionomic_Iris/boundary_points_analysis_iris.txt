@@ -1,0 +1,1372 @@
+GSOM Enhanced Boundary Points Analysis (Iris Dataset)
+============================================================
+
+UNDERSTANDING CLASS BOUNDARIES AND MIXING PATTERNS
+--------------------------------------------------
+
+Total Boundary Points Found: 150
+
+REGIONAL INFORMATION:
+Region 1: Pure (Purity: 90.2%)
+  Classes: {'Iris-versicolor': 4, 'Iris-virginica': 37}
+Region 2: Highly Mixed (Purity: 46.7%)
+  Classes: {'Iris-setosa': 50, 'Iris-versicolor': 46, 'Iris-virginica': 11}
+Region 4: Pure (Purity: 100.0%)
+  Classes: {'Iris-virginica': 2}
+
+CLOSE TO MULTIPLE REGIONS - NATURAL OVERLAP BETWEEN VERSICOLOR AND VIRGINICA (100 points)
+----------------------------------------
+Sample ID: 117, Label: Iris-virginica, Region 4: Iris-virginica (100.0%, Pure)
+  Boundary Score: 0.121
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 2:
+    SepalLengthCm: 0.0020
+    SepalWidthCm: 0.0170
+    PetalLengthCm: 0.0192
+    PetalWidthCm: 0.0049
+----------------------------------------
+Sample ID: 138, Label: Iris-virginica, Region 4: Iris-virginica (100.0%, Pure)
+  Boundary Score: 0.117
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 2:
+    SepalLengthCm: 0.0258
+    SepalWidthCm: 0.0247
+    PetalLengthCm: 0.0192
+    PetalWidthCm: 0.0049
+----------------------------------------
+Sample ID: 78, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.107
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 7:
+    SepalLengthCm: 0.0238
+    SepalWidthCm: 0.0219
+    PetalLengthCm: 0.0150
+    PetalWidthCm: 0.0007
+----------------------------------------
+Sample ID: 140, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.105
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 38:
+    SepalLengthCm: 0.0194
+    SepalWidthCm: 0.0211
+    PetalLengthCm: 0.0286
+    PetalWidthCm: 0.0035
+----------------------------------------
+Sample ID: 87, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.115
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 50:
+    SepalLengthCm: 0.0059
+    SepalWidthCm: 0.0015
+    PetalLengthCm: 0.0002
+    PetalWidthCm: 0.0028
+----------------------------------------
+Sample ID: 77, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.108
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 54:
+    SepalLengthCm: 0.0381
+    SepalWidthCm: 0.0857
+    PetalLengthCm: 0.0253
+    PetalWidthCm: 0.0143
+----------------------------------------
+Sample ID: 51, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.085
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 57:
+    SepalLengthCm: 0.0629
+    SepalWidthCm: 0.0228
+    PetalLengthCm: 0.0050
+    PetalWidthCm: 0.0334
+----------------------------------------
+Sample ID: 53, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.091
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 57:
+    SepalLengthCm: 0.0351
+    SepalWidthCm: 0.0188
+    PetalLengthCm: 0.0289
+    PetalWidthCm: 0.0082
+----------------------------------------
+Sample ID: 146, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.088
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 74:
+    SepalLengthCm: 0.0016
+    SepalWidthCm: 0.0589
+    PetalLengthCm: 0.0352
+    PetalWidthCm: 0.0073
+----------------------------------------
+Sample ID: 125, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.082
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 80:
+    SepalLengthCm: 0.0119
+    SepalWidthCm: 0.0355
+    PetalLengthCm: 0.0230
+    PetalWidthCm: 0.0585
+----------------------------------------
+Sample ID: 142, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.101
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 82:
+    SepalLengthCm: 0.0291
+    SepalWidthCm: 0.0342
+    PetalLengthCm: 0.0648
+    PetalWidthCm: 0.0036
+----------------------------------------
+Sample ID: 66, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.055
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 84:
+    SepalLengthCm: 0.0153
+    SepalWidthCm: 0.0106
+    PetalLengthCm: 0.0309
+    PetalWidthCm: 0.0171
+----------------------------------------
+Sample ID: 134, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.139
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 92:
+    SepalLengthCm: 0.0191
+    SepalWidthCm: 0.0409
+    PetalLengthCm: 0.0331
+    PetalWidthCm: 0.0133
+----------------------------------------
+Sample ID: 55, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.120
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 93:
+    SepalLengthCm: 0.0274
+    SepalWidthCm: 0.0479
+    PetalLengthCm: 0.0145
+    PetalWidthCm: 0.0127
+----------------------------------------
+Sample ID: 148, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.042
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 108:
+    SepalLengthCm: 0.0077
+    SepalWidthCm: 0.0012
+    PetalLengthCm: 0.0318
+    PetalWidthCm: 0.0228
+----------------------------------------
+Sample ID: 52, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.061
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 115:
+    SepalLengthCm: 0.0256
+    SepalWidthCm: 0.0023
+    PetalLengthCm: 0.0183
+    PetalWidthCm: 0.0124
+----------------------------------------
+Sample ID: 59, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.041
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 118:
+    SepalLengthCm: 0.0150
+    SepalWidthCm: 0.0369
+    PetalLengthCm: 0.0104
+    PetalWidthCm: 0.0348
+----------------------------------------
+Sample ID: 127, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.115
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 120:
+    SepalLengthCm: 0.0153
+    SepalWidthCm: 0.0500
+    PetalLengthCm: 0.0219
+    PetalWidthCm: 0.0155
+----------------------------------------
+Sample ID: 113, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.103
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 129:
+    SepalLengthCm: 0.0038
+    SepalWidthCm: 0.0080
+    PetalLengthCm: 0.0160
+    PetalWidthCm: 0.0014
+----------------------------------------
+Sample ID: 76, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.045
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 141:
+    SepalLengthCm: 0.0103
+    SepalWidthCm: 0.0054
+    PetalLengthCm: 0.0179
+    PetalWidthCm: 0.0004
+----------------------------------------
+Sample ID: 75, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.054
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 149:
+    SepalLengthCm: 0.0132
+    SepalWidthCm: 0.0320
+    PetalLengthCm: 0.0234
+    PetalWidthCm: 0.0259
+----------------------------------------
+Sample ID: 111, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.030
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 150:
+    SepalLengthCm: 0.0104
+    SepalWidthCm: 0.0016
+    PetalLengthCm: 0.0131
+    PetalWidthCm: 0.0285
+----------------------------------------
+Sample ID: 128, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.125
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 152:
+    SepalLengthCm: 0.0032
+    SepalWidthCm: 0.0132
+    PetalLengthCm: 0.0127
+    PetalWidthCm: 0.0062
+----------------------------------------
+Sample ID: 139, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.121
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 152:
+    SepalLengthCm: 0.0246
+    SepalWidthCm: 0.0132
+    PetalLengthCm: 0.0297
+    PetalWidthCm: 0.0062
+----------------------------------------
+Sample ID: 150, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.117
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 152:
+    SepalLengthCm: 0.0524
+    SepalWidthCm: 0.0132
+    PetalLengthCm: 0.0212
+    PetalWidthCm: 0.0062
+----------------------------------------
+Sample ID: 129, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.005
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 176:
+    SepalLengthCm: 0.0204
+    SepalWidthCm: 0.0282
+    PetalLengthCm: 0.0053
+    PetalWidthCm: 0.0032
+----------------------------------------
+Sample ID: 133, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.031
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 176:
+    SepalLengthCm: 0.0204
+    SepalWidthCm: 0.0282
+    PetalLengthCm: 0.0053
+    PetalWidthCm: 0.0385
+----------------------------------------
+Sample ID: 104, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.105
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 181:
+    SepalLengthCm: 0.0305
+    SepalWidthCm: 0.0075
+    PetalLengthCm: 0.0195
+    PetalWidthCm: 0.0582
+----------------------------------------
+Sample ID: 106, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.109
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 183:
+    SepalLengthCm: 0.0171
+    SepalWidthCm: 0.0322
+    PetalLengthCm: 0.0121
+    PetalWidthCm: 0.0192
+----------------------------------------
+Sample ID: 121, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.140
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 187:
+    SepalLengthCm: 0.0189
+    SepalWidthCm: 0.0053
+    PetalLengthCm: 0.0039
+    PetalWidthCm: 0.0007
+----------------------------------------
+Sample ID: 144, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.137
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 187:
+    SepalLengthCm: 0.0089
+    SepalWidthCm: 0.0053
+    PetalLengthCm: 0.0378
+    PetalWidthCm: 0.0007
+----------------------------------------
+Sample ID: 98, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.068
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 212:
+    SepalLengthCm: 0.0083
+    SepalWidthCm: 0.0189
+    PetalLengthCm: 0.0175
+    PetalWidthCm: 0.0180
+----------------------------------------
+Sample ID: 136, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.126
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 230:
+    SepalLengthCm: 0.0111
+    SepalWidthCm: 0.0279
+    PetalLengthCm: 0.0547
+    PetalWidthCm: 0.0440
+----------------------------------------
+Sample ID: 103, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.120
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 232:
+    SepalLengthCm: 0.0245
+    SepalWidthCm: 0.0053
+    PetalLengthCm: 0.0127
+    PetalWidthCm: 0.0005
+----------------------------------------
+Sample ID: 112, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.068
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 242:
+    SepalLengthCm: 0.0092
+    SepalWidthCm: 0.0127
+    PetalLengthCm: 0.0094
+    PetalWidthCm: 0.0064
+----------------------------------------
+Sample ID: 115, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.006
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 246:
+    SepalLengthCm: 0.0301
+    SepalWidthCm: 0.0003
+    PetalLengthCm: 0.0152
+    PetalWidthCm: 0.1818
+----------------------------------------
+Sample ID: 122, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.082
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 246:
+    SepalLengthCm: 0.0856
+    SepalWidthCm: 0.0003
+    PetalLengthCm: 0.0187
+    PetalWidthCm: 0.0152
+----------------------------------------
+Sample ID: 72, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.060
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 272:
+    SepalLengthCm: 0.0150
+    SepalWidthCm: 0.0443
+    PetalLengthCm: 0.0488
+    PetalWidthCm: 0.0131
+----------------------------------------
+Sample ID: 116, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.056
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 282:
+    SepalLengthCm: 0.0219
+    SepalWidthCm: 0.0049
+    PetalLengthCm: 0.0142
+    PetalWidthCm: 0.0058
+----------------------------------------
+Sample ID: 107, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.054
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 307:
+    SepalLengthCm: 0.1850
+    SepalWidthCm: 0.0380
+    PetalLengthCm: 0.0387
+    PetalWidthCm: 0.0106
+----------------------------------------
+Sample ID: 105, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 309:
+    SepalLengthCm: 0.0277
+    SepalWidthCm: 0.0263
+    PetalLengthCm: 0.0320
+    PetalWidthCm: 0.0409
+----------------------------------------
+Sample ID: 102, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.091
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 335:
+    SepalLengthCm: 0.0211
+    SepalWidthCm: 0.0063
+    PetalLengthCm: 0.0085
+    PetalWidthCm: 0.0047
+----------------------------------------
+Sample ID: 114, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.072
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 335:
+    SepalLengthCm: 0.0489
+    SepalWidthCm: 0.0770
+    PetalLengthCm: 0.0085
+    PetalWidthCm: 0.0369
+----------------------------------------
+Sample ID: 143, Label: Iris-virginica, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.091
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 335:
+    SepalLengthCm: 0.0211
+    SepalWidthCm: 0.0063
+    PetalLengthCm: 0.0085
+    PetalWidthCm: 0.0047
+----------------------------------------
+Sample ID: 147, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.067
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 340:
+    SepalLengthCm: 0.0303
+    SepalWidthCm: 0.0564
+    PetalLengthCm: 0.0395
+    PetalWidthCm: 0.0174
+----------------------------------------
+Sample ID: 124, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.103
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 341:
+    SepalLengthCm: 0.0035
+    SepalWidthCm: 0.0097
+    PetalLengthCm: 0.0350
+    PetalWidthCm: 0.0103
+----------------------------------------
+Sample ID: 89, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.074
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 347:
+    SepalLengthCm: 0.0319
+    SepalWidthCm: 0.0264
+    PetalLengthCm: 0.0129
+    PetalWidthCm: 0.0097
+----------------------------------------
+Sample ID: 96, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.070
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 349:
+    SepalLengthCm: 0.0155
+    SepalWidthCm: 0.0254
+    PetalLengthCm: 0.0102
+    PetalWidthCm: 0.0302
+----------------------------------------
+Sample ID: 74, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.060
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 370:
+    SepalLengthCm: 0.0277
+    SepalWidthCm: 0.0433
+    PetalLengthCm: 0.0130
+    PetalWidthCm: 0.0737
+----------------------------------------
+Sample ID: 97, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 375:
+    SepalLengthCm: 0.0024
+    SepalWidthCm: 0.0000
+    PetalLengthCm: 0.0026
+    PetalWidthCm: 0.0083
+----------------------------------------
+Sample ID: 141, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.124
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 384:
+    SepalLengthCm: 0.0107
+    SepalWidthCm: 0.0372
+    PetalLengthCm: 0.0010
+    PetalWidthCm: 0.0183
+----------------------------------------
+Sample ID: 90, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.039
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 413:
+    SepalLengthCm: 0.0050
+    SepalWidthCm: 0.0010
+    PetalLengthCm: 0.0157
+    PetalWidthCm: 0.0061
+----------------------------------------
+Sample ID: 67, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.082
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 414:
+    SepalLengthCm: 0.0281
+    SepalWidthCm: 0.0198
+    PetalLengthCm: 0.0037
+    PetalWidthCm: 0.0098
+----------------------------------------
+Sample ID: 85, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.076
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 414:
+    SepalLengthCm: 0.0837
+    SepalWidthCm: 0.0198
+    PetalLengthCm: 0.0037
+    PetalWidthCm: 0.0098
+----------------------------------------
+Sample ID: 64, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.010
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 417:
+    SepalLengthCm: 0.0108
+    SepalWidthCm: 0.0133
+    PetalLengthCm: 0.0144
+    PetalWidthCm: 0.0069
+----------------------------------------
+Sample ID: 92, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.019
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 417:
+    SepalLengthCm: 0.0108
+    SepalWidthCm: 0.0284
+    PetalLengthCm: 0.0025
+    PetalWidthCm: 0.0069
+----------------------------------------
+Sample ID: 110, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.126
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 427:
+    SepalLengthCm: 0.0120
+    SepalWidthCm: 0.0540
+    PetalLengthCm: 0.0135
+    PetalWidthCm: 0.0836
+----------------------------------------
+Sample ID: 56, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.066
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 433:
+    SepalLengthCm: 0.0077
+    SepalWidthCm: 0.0083
+    PetalLengthCm: 0.0336
+    PetalWidthCm: 0.0169
+----------------------------------------
+Sample ID: 65, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.052
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 458:
+    SepalLengthCm: 0.0220
+    SepalWidthCm: 0.0013
+    PetalLengthCm: 0.0632
+    PetalWidthCm: 0.0085
+----------------------------------------
+Sample ID: 86, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.008
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 486:
+    SepalLengthCm: 0.0416
+    SepalWidthCm: 0.0314
+    PetalLengthCm: 0.0213
+    PetalWidthCm: 0.0319
+----------------------------------------
+Sample ID: 54, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.032
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 490:
+    SepalLengthCm: 0.0153
+    SepalWidthCm: 0.0381
+    PetalLengthCm: 0.0141
+    PetalWidthCm: 0.0247
+----------------------------------------
+Sample ID: 100, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.062
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 493:
+    SepalLengthCm: 0.0005
+    SepalWidthCm: 0.0056
+    PetalLengthCm: 0.0108
+    PetalWidthCm: 0.0044
+----------------------------------------
+Sample ID: 57, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.120
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 495:
+    SepalLengthCm: 0.0064
+    SepalWidthCm: 0.0148
+    PetalLengthCm: 0.0169
+    PetalWidthCm: 0.0004
+----------------------------------------
+Sample ID: 84, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.129
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 498:
+    SepalLengthCm: 0.0166
+    SepalWidthCm: 0.0201
+    PetalLengthCm: 0.0067
+    PetalWidthCm: 0.0692
+----------------------------------------
+Sample ID: 62, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.085
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 499:
+    SepalLengthCm: 0.0011
+    SepalWidthCm: 0.0235
+    PetalLengthCm: 0.0468
+    PetalWidthCm: 0.0050
+----------------------------------------
+Sample ID: 108, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.048
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 506:
+    SepalLengthCm: 0.0084
+    SepalWidthCm: 0.0180
+    PetalLengthCm: 0.0289
+    PetalWidthCm: 0.0234
+----------------------------------------
+Sample ID: 118, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.102
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 509:
+    SepalLengthCm: 0.0218
+    SepalWidthCm: 0.0048
+    PetalLengthCm: 0.0297
+    PetalWidthCm: 0.0394
+----------------------------------------
+Sample ID: 132, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.084
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 509:
+    SepalLengthCm: 0.0338
+    SepalWidthCm: 0.0048
+    PetalLengthCm: 0.0212
+    PetalWidthCm: 0.0439
+----------------------------------------
+Sample ID: 68, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.023
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 530:
+    SepalLengthCm: 0.0120
+    SepalWidthCm: 0.0050
+    PetalLengthCm: 0.0147
+    PetalWidthCm: 0.0684
+----------------------------------------
+Sample ID: 83, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.042
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 530:
+    SepalLengthCm: 0.0120
+    SepalWidthCm: 0.0050
+    PetalLengthCm: 0.0192
+    PetalWidthCm: 0.0150
+----------------------------------------
+Sample ID: 71, Label: Iris-versicolor, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.110
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 541:
+    SepalLengthCm: 0.0718
+    SepalWidthCm: 0.0314
+    PetalLengthCm: 0.0107
+    PetalWidthCm: 0.0198
+----------------------------------------
+Sample ID: 91, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.043
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 548:
+    SepalLengthCm: 0.0182
+    SepalWidthCm: 0.0146
+    PetalLengthCm: 0.0288
+    PetalWidthCm: 0.0361
+----------------------------------------
+Sample ID: 95, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.055
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 552:
+    SepalLengthCm: 0.0068
+    SepalWidthCm: 0.0002
+    PetalLengthCm: 0.0047
+    PetalWidthCm: 0.0046
+----------------------------------------
+Sample ID: 58, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.008
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 559:
+    SepalLengthCm: 0.0926
+    SepalWidthCm: 0.0199
+    PetalLengthCm: 0.0483
+    PetalWidthCm: 0.0501
+----------------------------------------
+Sample ID: 61, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.002
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 559:
+    SepalLengthCm: 0.0648
+    SepalWidthCm: 0.1467
+    PetalLengthCm: 0.0144
+    PetalWidthCm: 0.0501
+----------------------------------------
+Sample ID: 94, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.008
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 559:
+    SepalLengthCm: 0.0648
+    SepalWidthCm: 0.0217
+    PetalLengthCm: 0.0483
+    PetalWidthCm: 0.0501
+----------------------------------------
+Sample ID: 99, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.009
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 559:
+    SepalLengthCm: 0.0370
+    SepalWidthCm: 0.0616
+    PetalLengthCm: 0.0992
+    PetalWidthCm: 0.0084
+----------------------------------------
+Sample ID: 81, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.015
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 561:
+    SepalLengthCm: 0.0284
+    SepalWidthCm: 0.0004
+    PetalLengthCm: 0.0032
+    PetalWidthCm: 0.0240
+----------------------------------------
+Sample ID: 82, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.003
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 561:
+    SepalLengthCm: 0.0284
+    SepalWidthCm: 0.0004
+    PetalLengthCm: 0.0138
+    PetalWidthCm: 0.0657
+----------------------------------------
+Sample ID: 145, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.120
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 574:
+    SepalLengthCm: 0.0023
+    SepalWidthCm: 0.0140
+    PetalLengthCm: 0.0071
+    PetalWidthCm: 0.0277
+----------------------------------------
+Sample ID: 137, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.066
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 592:
+    SepalLengthCm: 0.0065
+    SepalWidthCm: 0.0145
+    PetalLengthCm: 0.0034
+    PetalWidthCm: 0.0086
+----------------------------------------
+Sample ID: 149, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.034
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 593:
+    SepalLengthCm: 0.0125
+    SepalWidthCm: 0.0149
+    PetalLengthCm: 0.0259
+    PetalWidthCm: 0.0186
+----------------------------------------
+Sample ID: 79, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.003
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 599:
+    SepalLengthCm: 0.0041
+    SepalWidthCm: 0.0102
+    PetalLengthCm: 0.0083
+    PetalWidthCm: 0.0090
+----------------------------------------
+Sample ID: 63, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.012
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 600:
+    SepalLengthCm: 0.0938
+    SepalWidthCm: 0.0586
+    PetalLengthCm: 0.0178
+    PetalWidthCm: 0.1114
+----------------------------------------
+Sample ID: 70, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.020
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 618:
+    SepalLengthCm: 0.0208
+    SepalWidthCm: 0.0470
+    PetalLengthCm: 0.0036
+    PetalWidthCm: 0.0128
+----------------------------------------
+Sample ID: 93, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.039
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 619:
+    SepalLengthCm: 0.0294
+    SepalWidthCm: 0.0225
+    PetalLengthCm: 0.0015
+    PetalWidthCm: 0.0117
+----------------------------------------
+Sample ID: 80, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.002
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 620:
+    SepalLengthCm: 0.0018
+    SepalWidthCm: 0.0183
+    PetalLengthCm: 0.0599
+    PetalWidthCm: 0.0483
+----------------------------------------
+Sample ID: 119, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.107
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 624:
+    SepalLengthCm: 0.0071
+    SepalWidthCm: 0.0741
+    PetalLengthCm: 0.0315
+    PetalWidthCm: 0.0660
+----------------------------------------
+Sample ID: 123, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.088
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 624:
+    SepalLengthCm: 0.0071
+    SepalWidthCm: 0.0092
+    PetalLengthCm: 0.0024
+    PetalWidthCm: 0.0590
+----------------------------------------
+Sample ID: 135, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.119
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 634:
+    SepalLengthCm: 0.0272
+    SepalWidthCm: 0.0167
+    PetalLengthCm: 0.0584
+    PetalWidthCm: 0.0649
+----------------------------------------
+Sample ID: 60, Label: Iris-versicolor, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.045
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 639:
+    SepalLengthCm: 0.0697
+    SepalWidthCm: 0.0585
+    PetalLengthCm: 0.0266
+    PetalWidthCm: 0.0337
+----------------------------------------
+Sample ID: 69, Label: Iris-versicolor, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.052
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 641:
+    SepalLengthCm: 0.0118
+    SepalWidthCm: 0.0581
+    PetalLengthCm: 0.0458
+    PetalWidthCm: 0.0026
+----------------------------------------
+Sample ID: 88, Label: Iris-versicolor, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.008
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 641:
+    SepalLengthCm: 0.0395
+    SepalWidthCm: 0.0165
+    PetalLengthCm: 0.0628
+    PetalWidthCm: 0.0808
+----------------------------------------
+Sample ID: 120, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.084
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 641:
+    SepalLengthCm: 0.0438
+    SepalWidthCm: 0.0581
+    PetalLengthCm: 0.0389
+    PetalWidthCm: 0.0026
+----------------------------------------
+Sample ID: 73, Label: Iris-versicolor, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.115
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 642:
+    SepalLengthCm: 0.0335
+    SepalWidthCm: 0.0235
+    PetalLengthCm: 0.0005
+    PetalWidthCm: 0.0152
+----------------------------------------
+Sample ID: 101, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.087
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 647:
+    SepalLengthCm: 0.0065
+    SepalWidthCm: 0.0139
+    PetalLengthCm: 0.0427
+    PetalWidthCm: 0.0369
+----------------------------------------
+Sample ID: 109, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.030
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 661:
+    SepalLengthCm: 0.0159
+    SepalWidthCm: 0.0799
+    PetalLengthCm: 0.0209
+    PetalWidthCm: 0.0083
+----------------------------------------
+Sample ID: 131, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.063
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 665:
+    SepalLengthCm: 0.0099
+    SepalWidthCm: 0.0265
+    PetalLengthCm: 0.0263
+    PetalWidthCm: 0.0246
+----------------------------------------
+Sample ID: 130, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.014
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 685:
+    SepalLengthCm: 0.0143
+    SepalWidthCm: 0.0136
+    PetalLengthCm: 0.0352
+    PetalWidthCm: 0.0741
+----------------------------------------
+Sample ID: 126, Label: Iris-virginica, Region 1: Iris-virginica (90.2%, Pure)
+  Boundary Score: 0.045
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 686:
+    SepalLengthCm: 0.0192
+    SepalWidthCm: 0.0803
+    PetalLengthCm: 0.0134
+    PetalWidthCm: 0.0169
+----------------------------------------
+
+CLOSE TO MULTIPLE REGIONS (50 points)
+----------------------------------------
+Sample ID: 45, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.067
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 387:
+    SepalLengthCm: 0.0507
+    SepalWidthCm: 0.0125
+    PetalLengthCm: 0.0363
+    PetalWidthCm: 0.0234
+----------------------------------------
+Sample ID: 32, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.081
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 403:
+    SepalLengthCm: 0.0215
+    SepalWidthCm: 0.0050
+    PetalLengthCm: 0.0481
+    PetalWidthCm: 0.0012
+----------------------------------------
+Sample ID: 21, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.084
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 404:
+    SepalLengthCm: 0.0052
+    SepalWidthCm: 0.0348
+    PetalLengthCm: 0.0232
+    PetalWidthCm: 0.0252
+----------------------------------------
+Sample ID: 37, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.083
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 404:
+    SepalLengthCm: 0.0329
+    SepalWidthCm: 0.0068
+    PetalLengthCm: 0.0446
+    PetalWidthCm: 0.0252
+----------------------------------------
+Sample ID: 24, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.076
+  Key Discriminative Features: ['SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 407:
+    SepalLengthCm: 0.0051
+    SepalWidthCm: 0.0340
+    PetalLengthCm: 0.0237
+    PetalWidthCm: 0.0173
+----------------------------------------
+Sample ID: 44, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.068
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 407:
+    SepalLengthCm: 0.0329
+    SepalWidthCm: 0.0494
+    PetalLengthCm: 0.0407
+    PetalWidthCm: 0.0590
+----------------------------------------
+Sample ID: 27, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.076
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 408:
+    SepalLengthCm: 0.0033
+    SepalWidthCm: 0.0056
+    PetalLengthCm: 0.0116
+    PetalWidthCm: 0.0235
+----------------------------------------
+Sample ID: 15, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 429:
+    SepalLengthCm: 0.0340
+    SepalWidthCm: 0.0473
+    PetalLengthCm: 0.0251
+    PetalWidthCm: 0.0220
+----------------------------------------
+Sample ID: 19, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.074
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 479:
+    SepalLengthCm: 0.0628
+    SepalWidthCm: 0.0289
+    PetalLengthCm: 0.0084
+    PetalWidthCm: 0.0110
+----------------------------------------
+Sample ID: 34, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.066
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 538:
+    SepalLengthCm: 0.0224
+    SepalWidthCm: 0.0054
+    PetalLengthCm: 0.0026
+    PetalWidthCm: 0.0234
+----------------------------------------
+Sample ID: 17, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.069
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 543:
+    SepalLengthCm: 0.0046
+    SepalWidthCm: 0.0046
+    PetalLengthCm: 0.0410
+    PetalWidthCm: 0.0266
+----------------------------------------
+Sample ID: 7, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 577:
+    SepalLengthCm: 0.0837
+    SepalWidthCm: 0.0125
+    PetalLengthCm: 0.0433
+    PetalWidthCm: 0.0020
+----------------------------------------
+Sample ID: 12, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.076
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 577:
+    SepalLengthCm: 0.0281
+    SepalWidthCm: 0.0125
+    PetalLengthCm: 0.0094
+    PetalWidthCm: 0.0396
+----------------------------------------
+Sample ID: 25, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.075
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 577:
+    SepalLengthCm: 0.0281
+    SepalWidthCm: 0.0125
+    PetalLengthCm: 0.0414
+    PetalWidthCm: 0.0396
+----------------------------------------
+Sample ID: 18, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.078
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalLengthCm']
+  Feature Differences from Node 579:
+    SepalLengthCm: 0.0052
+    SepalWidthCm: 0.0051
+    PetalLengthCm: 0.0106
+    PetalWidthCm: 0.0131
+----------------------------------------
+Sample ID: 1, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 580:
+    SepalLengthCm: 0.0109
+    SepalWidthCm: 0.0065
+    PetalLengthCm: 0.0072
+    PetalWidthCm: 0.0144
+----------------------------------------
+Sample ID: 28, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.081
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 580:
+    SepalLengthCm: 0.0168
+    SepalWidthCm: 0.0065
+    PetalLengthCm: 0.0097
+    PetalWidthCm: 0.0144
+----------------------------------------
+Sample ID: 29, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.082
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 580:
+    SepalLengthCm: 0.0168
+    SepalWidthCm: 0.0351
+    PetalLengthCm: 0.0072
+    PetalWidthCm: 0.0144
+----------------------------------------
+Sample ID: 40, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.081
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 580:
+    SepalLengthCm: 0.0109
+    SepalWidthCm: 0.0351
+    PetalLengthCm: 0.0097
+    PetalWidthCm: 0.0144
+----------------------------------------
+Sample ID: 5, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.077
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 581:
+    SepalLengthCm: 0.0065
+    SepalWidthCm: 0.0343
+    PetalLengthCm: 0.0060
+    PetalWidthCm: 0.0179
+----------------------------------------
+Sample ID: 23, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.072
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 581:
+    SepalLengthCm: 0.1176
+    SepalWidthCm: 0.0343
+    PetalLengthCm: 0.0618
+    PetalWidthCm: 0.0179
+----------------------------------------
+Sample ID: 41, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.077
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 581:
+    SepalLengthCm: 0.0065
+    SepalWidthCm: 0.0074
+    PetalLengthCm: 0.0110
+    PetalWidthCm: 0.0238
+----------------------------------------
+Sample ID: 6, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.068
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 588:
+    SepalLengthCm: 0.0010
+    SepalWidthCm: 0.0035
+    PetalLengthCm: 0.0100
+    PetalWidthCm: 0.0243
+----------------------------------------
+Sample ID: 22, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 605:
+    SepalLengthCm: 0.0283
+    SepalWidthCm: 0.0082
+    PetalLengthCm: 0.0143
+    PetalWidthCm: 0.0169
+----------------------------------------
+Sample ID: 26, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 612:
+    SepalLengthCm: 0.0573
+    SepalWidthCm: 0.0224
+    PetalLengthCm: 0.0073
+    PetalWidthCm: 0.0216
+----------------------------------------
+Sample ID: 46, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.075
+  Key Discriminative Features: ['PetalLengthCm', 'SepalWidthCm', 'PetalWidthCm']
+  Feature Differences from Node 612:
+    SepalLengthCm: 0.0017
+    SepalWidthCm: 0.0224
+    PetalLengthCm: 0.0266
+    PetalWidthCm: 0.0200
+----------------------------------------
+Sample ID: 33, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.069
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 631:
+    SepalLengthCm: 0.0436
+    SepalWidthCm: 0.0275
+    PetalLengthCm: 0.0037
+    PetalWidthCm: 0.0521
+----------------------------------------
+Sample ID: 4, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.074
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 644:
+    SepalLengthCm: 0.0329
+    SepalWidthCm: 0.0041
+    PetalLengthCm: 0.0035
+    PetalWidthCm: 0.0059
+----------------------------------------
+Sample ID: 43, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 644:
+    SepalLengthCm: 0.0885
+    SepalWidthCm: 0.0458
+    PetalLengthCm: 0.0304
+    PetalWidthCm: 0.0059
+----------------------------------------
+Sample ID: 48, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.074
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 644:
+    SepalLengthCm: 0.0329
+    SepalWidthCm: 0.0458
+    PetalLengthCm: 0.0135
+    PetalWidthCm: 0.0059
+----------------------------------------
+Sample ID: 16, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.055
+  Key Discriminative Features: ['SepalWidthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 652:
+    SepalLengthCm: 0.0164
+    SepalWidthCm: 0.0472
+    PetalLengthCm: 0.0055
+    PetalWidthCm: 0.0270
+----------------------------------------
+Sample ID: 20, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 664:
+    SepalLengthCm: 0.0351
+    SepalWidthCm: 0.0184
+    PetalLengthCm: 0.0139
+    PetalWidthCm: 0.0073
+----------------------------------------
+Sample ID: 47, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.073
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 664:
+    SepalLengthCm: 0.0351
+    SepalWidthCm: 0.0184
+    PetalLengthCm: 0.0030
+    PetalWidthCm: 0.0344
+----------------------------------------
+Sample ID: 2, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.079
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalLengthCm']
+  Feature Differences from Node 668:
+    SepalLengthCm: 0.0308
+    SepalWidthCm: 0.0315
+    PetalLengthCm: 0.0148
+    PetalWidthCm: 0.0033
+----------------------------------------
+Sample ID: 10, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 668:
+    SepalLengthCm: 0.0308
+    SepalWidthCm: 0.0101
+    PetalLengthCm: 0.0022
+    PetalWidthCm: 0.0383
+----------------------------------------
+Sample ID: 13, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.079
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 668:
+    SepalLengthCm: 0.0030
+    SepalWidthCm: 0.0315
+    PetalLengthCm: 0.0148
+    PetalWidthCm: 0.0383
+----------------------------------------
+Sample ID: 35, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 668:
+    SepalLengthCm: 0.0308
+    SepalWidthCm: 0.0101
+    PetalLengthCm: 0.0022
+    PetalWidthCm: 0.0383
+----------------------------------------
+Sample ID: 38, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['PetalWidthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 668:
+    SepalLengthCm: 0.0308
+    SepalWidthCm: 0.0101
+    PetalLengthCm: 0.0022
+    PetalWidthCm: 0.0383
+----------------------------------------
+Sample ID: 36, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.081
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 669:
+    SepalLengthCm: 0.0423
+    SepalWidthCm: 0.0064
+    PetalLengthCm: 0.0541
+    PetalWidthCm: 0.0161
+----------------------------------------
+Sample ID: 31, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.077
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 670:
+    SepalLengthCm: 0.0045
+    SepalWidthCm: 0.0048
+    PetalLengthCm: 0.0151
+    PetalWidthCm: 0.0064
+----------------------------------------
+Sample ID: 8, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.079
+  Key Discriminative Features: ['PetalWidthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 675:
+    SepalLengthCm: 0.0031
+    SepalWidthCm: 0.0090
+    PetalLengthCm: 0.0206
+    PetalWidthCm: 0.0409
+----------------------------------------
+Sample ID: 50, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.080
+  Key Discriminative Features: ['PetalLengthCm', 'PetalWidthCm', 'SepalLengthCm']
+  Feature Differences from Node 676:
+    SepalLengthCm: 0.0188
+    SepalWidthCm: 0.0053
+    PetalLengthCm: 0.0302
+    PetalWidthCm: 0.0299
+----------------------------------------
+Sample ID: 9, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.070
+  Key Discriminative Features: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 677:
+    SepalLengthCm: 0.0746
+    SepalWidthCm: 0.0429
+    PetalLengthCm: 0.0068
+    PetalWidthCm: 0.0045
+----------------------------------------
+Sample ID: 14, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.072
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 677:
+    SepalLengthCm: 0.1024
+    SepalWidthCm: 0.0013
+    PetalLengthCm: 0.0576
+    PetalWidthCm: 0.0462
+----------------------------------------
+Sample ID: 39, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.071
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 677:
+    SepalLengthCm: 0.0746
+    SepalWidthCm: 0.0013
+    PetalLengthCm: 0.0238
+    PetalWidthCm: 0.0045
+----------------------------------------
+Sample ID: 42, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.060
+  Key Discriminative Features: ['SepalWidthCm', 'SepalLengthCm', 'PetalWidthCm']
+  Feature Differences from Node 677:
+    SepalLengthCm: 0.0468
+    SepalWidthCm: 0.2929
+    PetalLengthCm: 0.0238
+    PetalWidthCm: 0.0372
+----------------------------------------
+Sample ID: 11, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.078
+  Key Discriminative Features: ['SepalLengthCm', 'PetalWidthCm', 'SepalWidthCm']
+  Feature Differences from Node 684:
+    SepalLengthCm: 0.0261
+    SepalWidthCm: 0.0108
+    PetalLengthCm: 0.0053
+    PetalWidthCm: 0.0170
+----------------------------------------
+Sample ID: 49, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.077
+  Key Discriminative Features: ['PetalWidthCm', 'SepalWidthCm', 'PetalLengthCm']
+  Feature Differences from Node 684:
+    SepalLengthCm: 0.0017
+    SepalWidthCm: 0.0108
+    PetalLengthCm: 0.0053
+    PetalWidthCm: 0.0170
+----------------------------------------
+Sample ID: 3, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.076
+  Key Discriminative Features: ['PetalLengthCm', 'SepalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 687:
+    SepalLengthCm: 0.0268
+    SepalWidthCm: 0.0136
+    PetalLengthCm: 0.0364
+    PetalWidthCm: 0.0102
+----------------------------------------
+Sample ID: 30, Label: Iris-setosa, Region 2: Iris-setosa (46.7%, Highly Mixed)
+  Boundary Score: 0.076
+  Key Discriminative Features: ['SepalLengthCm', 'PetalLengthCm', 'SepalWidthCm']
+  Feature Differences from Node 687:
+    SepalLengthCm: 0.0268
+    SepalWidthCm: 0.0136
+    PetalLengthCm: 0.0144
+    PetalWidthCm: 0.0102
+----------------------------------------
+
