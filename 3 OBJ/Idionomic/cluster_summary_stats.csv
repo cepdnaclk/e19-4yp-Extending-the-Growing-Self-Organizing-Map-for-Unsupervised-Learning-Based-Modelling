@@ -1,0 +1,8 @@
+,distance_to_centroid,distance_to_centroid,distance_to_centroid,distance_to_centroid,distance_to_centroid
+,mean,std,min,max,count
+cluster_id,,,,,
+0,1.2207,0.3084,0.9113,1.8864,34
+1,2.8215,0.8707,1.6217,5.3877,61
+2,0.6263,,0.6263,0.6263,1
+4,0.511,,0.511,0.511,1
+6,0.811,0.0838,0.7499,0.9065,3
