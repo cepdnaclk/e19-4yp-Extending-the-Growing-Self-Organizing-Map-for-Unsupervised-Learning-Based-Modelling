@@ -1,0 +1,471 @@
+GSOM Complete Analysis Report (Iris Dataset)
+==================================================
+
+DATASET INFORMATION
+--------------------
+Dataset shape: (150, 6)
+Training data shape: (150, 4)
+Feature columns: ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+Node count: 688
+
+CLUSTER NAMES
+--------------------
+Cluster 1: Iris-virginica (90.2%)
+Cluster 2: Iris-setosa (46.7%)
+Cluster 3: Empty
+Cluster 4: Iris-virginica (100.0%)
+
+NODE ENTROPY ANALYSIS
+--------------------
+Node 2 (Cluster 4: Iris-virginica (100.0%)): Entropy = 0.0000
+Node 7 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 38 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 50 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 54 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 57 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 74 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 80 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 82 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 84 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 92 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 93 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 108 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 115 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 118 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 120 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 129 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 141 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 149 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 150 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 152 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 176 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 181 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 183 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 187 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 212 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 230 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 232 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 242 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 246 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 272 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 282 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 307 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 309 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 335 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 340 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 341 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 347 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 349 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 370 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 375 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 384 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 387 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 403 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 404 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 407 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 408 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 413 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 414 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 417 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 427 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 429 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 433 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 458 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 479 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 486 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 490 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 493 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 495 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 498 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 499 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 506 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 509 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 530 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 538 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 541 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 543 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 548 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 552 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 559 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 561 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 574 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 577 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 579 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 580 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 581 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 588 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 592 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 593 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 599 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 600 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 605 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 612 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 618 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 619 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 620 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 624 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 631 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 634 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 639 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 641 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.9183
+Node 642 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 644 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 647 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 652 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 661 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 664 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 665 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 668 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 669 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 670 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 675 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 676 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 677 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 684 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+Node 685 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 686 (Cluster 1: Iris-virginica (90.2%)): Entropy = 0.0000
+Node 687 (Cluster 2: Iris-setosa (46.7%)): Entropy = 0.0000
+
+CLASSIFICATION ACCURACY
+--------------------
+Accuracy: 30.7%
+
+OUTLIER DETECTION
+--------------------
+Node 2:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 7:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 38:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 50:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 54:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 57:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 74:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 80:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 82:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 84:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 92:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 93:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 108:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 115:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 118:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 120:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 129:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 141:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 149:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 150:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 152:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 176:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 181:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 183:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 187:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 212:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 230:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 232:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 242:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 246:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 272:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 282:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 307:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 309:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 335:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 340:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 341:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 347:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 349:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 370:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 375:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 384:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 387:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 403:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 404:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 407:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 408:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 413:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 414:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 417:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 427:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 429:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 433:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 458:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 479:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 486:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 490:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 493:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 495:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 498:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 499:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 506:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 509:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 530:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 538:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 541:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 543:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 548:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 552:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 559:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 561:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 574:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 577:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 579:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 580:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 581:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 588:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 592:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 593:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 599:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 600:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 605:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 612:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 618:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 619:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 620:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 624:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 631:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 634:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 639:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 641:
+  Distance Outliers: []
+  Minority Outliers: [120]
+Node 642:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 644:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 647:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 652:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 661:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 664:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 665:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 668:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 669:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 670:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 675:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 676:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 677:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 684:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 685:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 686:
+  Distance Outliers: []
+  Minority Outliers: []
+Node 687:
+  Distance Outliers: []
+  Minority Outliers: []
+
+REGION ANALYSIS
+--------------------
+Center Node: 668, Radius: 2.0
+Region Entropy: 0.0000
+Region Nodes: [612, 644, 668, 669, 670, 677]
+Deviant Points:
+
+BOUNDARY POINTS SUMMARY
+--------------------
+Total Boundary Points: 150
+Boundary Nodes: [212, 239]
+Number of Clusters: 4
