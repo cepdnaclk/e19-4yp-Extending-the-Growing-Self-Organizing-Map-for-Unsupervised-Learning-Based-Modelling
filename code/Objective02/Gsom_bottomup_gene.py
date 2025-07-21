@@ -41,11 +41,9 @@ if __name__ == '__main__':
     # === Hierarchical Clustering ===
     node_embeddings = gsom.node_list[:gsom.node_count]
     node_coords = gsom.node_coordinate[:gsom.node_count]
-
-    # Compute linkage
     Z = linkage(node_embeddings, method='average')
 
-    # Plot dendrogram once
+    # === Save Original Dendrogram ===
     plt.figure(figsize=(12, 6))
     dendrogram(Z, labels=[str(i) for i in range(gsom.node_count)], leaf_rotation=90)
     plt.title("Dendrogram: Hierarchical Clustering of GSOM Nodes")
@@ -95,7 +93,7 @@ if __name__ == '__main__':
         summary_df.to_csv(os.path.join(output_folder, summary_file), index=False)
         print(f"✅ Saved: {summary_file}")
 
-        # Optional: save GSOM map for one value (k=4) as example
+        # === Optional: save GSOM map for one value (k=4) ===
         if k == 4:
             plt.figure(figsize=(10, 10))
             for i in range(1, k + 1):
@@ -108,3 +106,33 @@ if __name__ == '__main__':
             plt.grid(True)
             plt.savefig(os.path.join(output_folder, f"gsom_hierarchical_clusters_k{k}.png"))
             plt.show()
+
+    # === Annotated Dendrogram for k=10 ===
+    print("\n📌 Generating annotated dendrogram...")
+    summary_df = pd.read_csv(os.path.join(output_folder, "gsom_cluster_summary_k10.csv"))
+
+    # Build mapping: node index → label string
+    node_label_map = {}
+    for _, row in summary_df.iterrows():
+        node_ids = ast.literal_eval(row["Node IDs"])
+        for node_id in node_ids:
+            node_label_map[int(node_id)] = f"Node {node_id}\n{row['Dominant Label']}\n{row['% Purity']}"
+
+    # Generate custom labels for all GSOM nodes
+    custom_labels = []
+    for i in range(gsom.node_count):
+        if i in node_label_map:
+            custom_labels.append(node_label_map[i])
+        else:
+            custom_labels.append(f"Node {i}\n(no data)")
+
+    # Plot annotated dendrogram
+    plt.figure(figsize=(14, 7))
+    dendrogram(Z, labels=custom_labels, leaf_rotation=90)
+    plt.title("Annotated Dendrogram: GSOM Node Clustering with Dominant Labels")
+    plt.xlabel("GSOM Nodes with Cluster Info")
+    plt.ylabel("Distance")
+    plt.tight_layout()
+    plt.savefig(os.path.join(output_folder, "dendrogram_gsom_nodes_annotated.png"))
+    plt.show()
+
