@@ -1,0 +1,124 @@
+output,Index,NObeyesdad,hit_count,x,y
+5,[281],['Normal_Weight'],1,1.0,-1.0
+18,[247],['Normal_Weight'],1,5.0,0.0
+24,[298],['Normal_Weight'],1,0.0,-2.0
+26,"[458, 485, 67]","['Normal_Weight', 'Normal_Weight', 'Obesity_Type_I']",3,1.0,-3.0
+27,[1102],['Overweight_Level_II'],1,-1.0,2.0
+31,"[1053, 1519]","['Overweight_Level_II', 'Obesity_Type_II']",2,0.0,2.0
+36,[367],['Overweight_Level_I'],1,5.0,1.0
+47,"[251, 69]","['Overweight_Level_II', 'Normal_Weight']",2,0.0,3.0
+48,"[290, 374]","['Normal_Weight', 'Normal_Weight']",2,-1.0,-3.0
+51,[299],['Overweight_Level_I'],1,-5.0,-1.0
+55,[383],['Obesity_Type_I'],1,-1.0,4.0
+72,[128],['Normal_Weight'],1,2.0,-6.0
+88,[527],['Insufficient_Weight'],1,0.0,-8.0
+90,[433],['Normal_Weight'],1,1.0,-9.0
+103,[289],['Normal_Weight'],1,2.0,3.0
+116,"[514, 651]","['Insufficient_Weight', 'Insufficient_Weight']",2,6.0,4.0
+124,"[29, 486]","['Normal_Weight', 'Normal_Weight']",2,-5.0,-2.0
+133,"[744, 56, 599]","['Insufficient_Weight', 'Normal_Weight', 'Insufficient_Weight']",3,-1.0,8.0
+134,[478],['Normal_Weight'],1,-2.0,-6.0
+138,"[582, 535]","['Insufficient_Weight', 'Insufficient_Weight']",2,5.0,-3.0
+141,[1594],['Obesity_Type_II'],1,-11.0,0.0
+143,[1616],['Obesity_Type_II'],1,-11.0,-1.0
+150,"[1242, 1355, 1414, 1356]","['Obesity_Type_I', 'Obesity_Type_I', 'Obesity_Type_I', 'Obesity_Type_I']",4,2.0,-12.0
+152,[1783],['Obesity_Type_II'],1,-11.0,-2.0
+157,[782],['Overweight_Level_I'],1,4.0,-10.0
+161,"[602, 736]","['Insufficient_Weight', 'Insufficient_Weight']",2,6.0,5.0
+168,[324],['Overweight_Level_I'],1,2.0,-13.0
+172,"[184, 552]","['Overweight_Level_I', 'Insufficient_Weight']",2,-6.0,-2.0
+173,"[1615, 1531, 1687, 1789]","['Obesity_Type_II', 'Obesity_Type_II', 'Obesity_Type_II', 'Obesity_Type_II']",4,-12.0,-2.0
+175,"[710, 548, 630, 707]","['Insufficient_Weight', 'Insufficient_Weight', 'Insufficient_Weight', 'Insufficient_Weight']",4,-4.0,-8.0
+180,[529],['Insufficient_Weight'],1,6.0,6.0
+183,"[909, 817]","['Overweight_Level_I', 'Overweight_Level_I']",2,-1.0,9.0
+193,[567],['Insufficient_Weight'],1,6.0,-4.0
+195,[1359],['Obesity_Type_I'],1,-13.0,-2.0
+202,"[674, 538]","['Insufficient_Weight', 'Insufficient_Weight']",2,-4.0,-9.0
+214,"[865, 879, 963]","['Overweight_Level_I', 'Overweight_Level_I', 'Overweight_Level_I']",3,-5.0,-9.0
+254,"[275, 307]","['Normal_Weight', 'Normal_Weight']",2,5.0,-7.0
+256,[752],['Overweight_Level_I'],1,-5.0,6.0
+266,"[1087, 1157]","['Overweight_Level_II', 'Overweight_Level_II']",2,2.0,-16.0
+275,"[1624, 1542]","['Obesity_Type_II', 'Obesity_Type_II']",2,-11.0,3.0
+277,"[544, 584]","['Insufficient_Weight', 'Insufficient_Weight']",2,10.0,0.0
+279,[65],['Overweight_Level_I'],1,9.0,-1.0
+285,[382],['Normal_Weight'],1,7.0,-8.0
+298,"[51, 480, 585]","['Normal_Weight', 'Normal_Weight', 'Insufficient_Weight']",3,-2.0,-11.0
+308,[617],['Insufficient_Weight'],1,-6.0,2.0
+330,[1351],['Obesity_Type_I'],1,-1.0,-15.0
+340,[332],['Normal_Weight'],1,-17.0,-3.0
+351,[100],['Normal_Weight'],1,-4.0,-13.0
+354,"[634, 120]","['Insufficient_Weight', 'Overweight_Level_I']",2,11.0,0.0
+356,"[70, 306]","['Overweight_Level_II', 'Normal_Weight']",2,10.0,-1.0
+363,[420],['Insufficient_Weight'],1,-5.0,2.0
+403,[1668],['Obesity_Type_II'],1,-9.0,-11.0
+404,[1543],['Obesity_Type_II'],1,-6.0,7.0
+406,[1890],['Obesity_Type_III'],1,6.0,-15.0
+418,[471],['Obesity_Type_I'],1,-7.0,-14.0
+440,[1342],['Obesity_Type_I'],1,-11.0,-10.0
+442,"[1655, 1001, 1452]","['Obesity_Type_II', 'Overweight_Level_II', 'Obesity_Type_I']",3,-10.0,-11.0
+444,"[409, 231]","['Normal_Weight', 'Normal_Weight']",2,-3.0,-16.0
+453,"[211, 483, 240]","['Normal_Weight', 'Overweight_Level_I', 'Normal_Weight']",3,-7.0,-15.0
+464,"[1563, 1782, 1701]","['Obesity_Type_II', 'Obesity_Type_II', 'Obesity_Type_II']",3,-17.0,1.0
+465,[1699],['Obesity_Type_II'],1,-16.0,2.0
+484,[196],['Normal_Weight'],1,1.0,5.0
+505,[1635],['Obesity_Type_II'],1,-12.0,-9.0
+513,[1582],['Obesity_Type_II'],1,-9.0,3.0
+531,"[1524, 1646]","['Obesity_Type_II', 'Obesity_Type_II']",2,-11.0,-5.0
+545,"[1652, 1560, 1774]","['Obesity_Type_II', 'Obesity_Type_II', 'Obesity_Type_II']",3,-10.0,-7.0
+579,"[1540, 1234]","['Obesity_Type_II', 'Obesity_Type_I']",2,-11.0,-6.0
+581,[1969],['Obesity_Type_III'],1,6.0,-14.0
+582,[1040],['Overweight_Level_II'],1,-17.0,-4.0
+589,[1586],['Obesity_Type_II'],1,-7.0,5.0
+595,"[1456, 1455]","['Obesity_Type_I', 'Obesity_Type_I']",2,-2.0,-20.0
+596,[787],['Overweight_Level_I'],1,10.0,-9.0
+598,[1442],['Obesity_Type_I'],1,-11.0,-7.0
+608,[1128],['Overweight_Level_II'],1,-18.0,-4.0
+613,[1210],['Obesity_Type_I'],1,-8.0,8.0
+615,[2096],['Obesity_Type_III'],1,7.0,-17.0
+642,[321],['Normal_Weight'],1,-15.0,3.0
+650,[1876],['Obesity_Type_III'],1,1.0,-23.0
+653,"[1673, 1592]","['Obesity_Type_II', 'Obesity_Type_II']",2,-19.0,0.0
+660,[297],['Overweight_Level_I'],1,-15.0,7.0
+666,"[1411, 1113]","['Obesity_Type_I', 'Overweight_Level_II']",2,-10.0,8.0
+674,[237],['Normal_Weight'],1,-11.0,-15.0
+675,"[1233, 1499]","['Obesity_Type_I', 'Obesity_Type_I']",2,-17.0,-5.0
+677,[620],['Insufficient_Weight'],1,4.0,9.0
+680,"[2043, 1861]","['Obesity_Type_III', 'Obesity_Type_III']",2,7.0,-14.0
+683,[1431],['Obesity_Type_I'],1,-9.0,-18.0
+685,"[1393, 1317, 1225]","['Obesity_Type_I', 'Obesity_Type_I', 'Obesity_Type_I']",3,-23.0,-2.0
+707,"[1910, 2029]","['Obesity_Type_III', 'Obesity_Type_III']",2,0.0,-25.0
+718,"[1873, 1945]","['Obesity_Type_III', 'Obesity_Type_III']",2,3.0,-22.0
+731,[859],['Overweight_Level_I'],1,-1.0,12.0
+735,[1044],['Overweight_Level_II'],1,6.0,12.0
+738,[1753],['Obesity_Type_II'],1,-10.0,4.0
+748,"[1987, 1905]","['Obesity_Type_III', 'Obesity_Type_III']",2,6.0,-21.0
+768,"[1358, 1357]","['Obesity_Type_I', 'Obesity_Type_I']",2,-16.0,-10.0
+772,[1640],['Obesity_Type_II'],1,-6.0,10.0
+777,[1564],['Obesity_Type_II'],1,-22.0,1.0
+782,[233],['Overweight_Level_II'],1,11.0,-7.0
+785,"[1709, 1780]","['Obesity_Type_II', 'Obesity_Type_II']",2,-20.0,3.0
+798,"[432, 124]","['Normal_Weight', 'Overweight_Level_II']",2,-16.0,7.0
+803,[239],['Normal_Weight'],1,-6.0,-21.0
+811,"[109, 1221, 874, 1395]","['Obesity_Type_I', 'Obesity_Type_I', 'Overweight_Level_I', 'Obesity_Type_I']",4,-7.0,-19.0
+815,"[1491, 1494]","['Obesity_Type_I', 'Obesity_Type_I']",2,-16.0,-9.0
+816,[1163],['Overweight_Level_II'],1,-22.0,-4.0
+818,[1336],['Obesity_Type_I'],1,-4.0,13.0
+830,"[2100, 1988]","['Obesity_Type_III', 'Obesity_Type_III']",2,7.0,-19.0
+834,"[1449, 111]","['Obesity_Type_I', 'Normal_Weight']",2,-12.0,-19.0
+835,"[254, 993, 212, 1118]","['Normal_Weight', 'Overweight_Level_II', 'Overweight_Level_II', 'Overweight_Level_II']",4,-14.0,-15.0
+837,"[1826, 1994, 2103]","['Obesity_Type_III', 'Obesity_Type_III', 'Obesity_Type_III']",3,-2.0,-25.0
+839,[1831],['Obesity_Type_III'],1,9.0,-14.0
+845,"[730, 564]","['Insufficient_Weight', 'Insufficient_Weight']",2,-19.0,-8.0
+861,"[1972, 2081, 1879, 1840]","['Obesity_Type_III', 'Obesity_Type_III', 'Obesity_Type_III', 'Obesity_Type_III']",4,-2.0,-23.0
+864,[416],['Overweight_Level_I'],1,-15.0,8.0
+867,[507],['Insufficient_Weight'],1,0.0,13.0
+868,[508],['Insufficient_Weight'],1,-1.0,14.0
+871,"[1091, 368]","['Overweight_Level_II', 'Overweight_Level_II']",2,-14.0,-19.0
+872,[1454],['Obesity_Type_I'],1,-6.0,13.0
+877,"[1000, 1005]","['Overweight_Level_II', 'Overweight_Level_II']",2,5.0,-24.0
+878,[1394],['Obesity_Type_I'],1,-23.0,-4.0
+879,[581],['Insufficient_Weight'],1,-22.0,-6.0
+882,"[1900, 2003, 2034, 1882]","['Obesity_Type_III', 'Obesity_Type_III', 'Obesity_Type_III', 'Obesity_Type_III']",4,7.0,-20.0
+885,[361],['Obesity_Type_I'],1,-15.0,-19.0
+887,[680],['Insufficient_Weight'],1,-25.0,0.0
+888,[1506],['Obesity_Type_I'],1,-24.0,1.0
