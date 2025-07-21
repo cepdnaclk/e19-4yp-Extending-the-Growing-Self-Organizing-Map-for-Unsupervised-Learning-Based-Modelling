@@ -221,12 +221,12 @@ def main(dataset_name, is_3d=False):
     using SOM (minisom) and GSOM (gsom library), saving results and parameters to Excel.
     """
     # SOM and GSOM parameters
-    grid_size = 20  # Size of the grid for SOM 
+    grid_size = 36  # Size of the grid for SOM 
     grid_shape = (grid_size, grid_size)
     som_iterations = 600
-    som_learning_rate = 0.05
+    som_learning_rate = 0.1
     gsom_spread_factor = 0.3
-    gsom_learning_rate = 0.05
+    gsom_learning_rate = 0.1
     gsom_iterations = 60
     gsom_smoothing = 30
     gsom_max_radius = 4
@@ -325,5 +325,5 @@ def main(dataset_name, is_3d=False):
 
 if __name__ == "__main__":
     # Example: Test a single dataset
-    main(dataset_name='Target', is_3d=False)
+    main(dataset_name='Golfball', is_3d=False)
     # main(dataset_name='hepta', is_3d=True)
