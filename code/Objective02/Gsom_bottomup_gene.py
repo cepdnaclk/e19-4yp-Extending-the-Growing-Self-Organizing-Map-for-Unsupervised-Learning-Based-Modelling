@@ -3,11 +3,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import pdist, squareform
-from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+from scipy.cluster.hierarchy import linkage, dendrogram, fcluster, cophenet
+from sklearn.metrics import silhouette_score
 from collections import Counter
 import ast
 
-from GSOM import GSOM  
+from GSOM import GSOM
 
 if __name__ == '__main__':
     np.random.seed(1)
@@ -43,6 +44,11 @@ if __name__ == '__main__':
     node_coords = gsom.node_coordinate[:gsom.node_count]
     Z = linkage(node_embeddings, method='average')
 
+    # === CCC ===
+    dist_matrix = pdist(node_embeddings)
+    coph_corr, _ = cophenet(Z, dist_matrix)
+    print(f"\n✅ Cophenetic Correlation Coefficient (CCC): {coph_corr:.4f}")
+
     # === Save Original Dendrogram ===
     plt.figure(figsize=(12, 6))
     dendrogram(Z, labels=[str(i) for i in range(gsom.node_count)], leaf_rotation=90)
@@ -59,8 +65,15 @@ if __name__ == '__main__':
 
     # === Loop over multiple k values ===
     for k in range(2, 11):
-        print(f"\n📊 Generating summary for k = {k} clusters...")
+        print(f"\n Generating summary for k = {k} clusters...")
         cluster_labels = fcluster(Z, t=k, criterion='maxclust')
+
+        # === Silhouette Score ===
+        if len(set(cluster_labels)) > 1:
+            sil_score = silhouette_score(node_embeddings, cluster_labels)
+            print(f"✅ Silhouette Score for k={k}: {sil_score:.4f}")
+        else:
+            print(f"⚠️ Cannot compute silhouette score for k={k}: only one cluster")
 
         output_df["Cluster"] = output_df["output"].map(
             lambda x: cluster_labels[int(x)] if int(x) < len(cluster_labels) else -1
@@ -91,7 +104,7 @@ if __name__ == '__main__':
         summary_df = pd.DataFrame(cluster_summary)
         summary_file = f"gsom_cluster_summary_k{k}.csv"
         summary_df.to_csv(os.path.join(output_folder, summary_file), index=False)
-        print(f"✅ Saved: {summary_file}")
+        print(f" Saved: {summary_file}")
 
         # === Optional: save GSOM map for one value (k=4) ===
         if k == 4:
@@ -107,18 +120,26 @@ if __name__ == '__main__':
             plt.savefig(os.path.join(output_folder, f"gsom_hierarchical_clusters_k{k}.png"))
             plt.show()
 
-    # === Annotated Dendrogram for k=10 ===
-    print("\n📌 Generating annotated dendrogram...")
+    # === Annotated Dendrogram for k=10 with for >90% Purity ===
+    print("\n Generating annotated dendrogram with high-purity clusters marked...")
     summary_df = pd.read_csv(os.path.join(output_folder, "gsom_cluster_summary_k10.csv"))
 
-    # Build mapping: node index → label string
     node_label_map = {}
     for _, row in summary_df.iterrows():
         node_ids = ast.literal_eval(row["Node IDs"])
-        for node_id in node_ids:
-            node_label_map[int(node_id)] = f"Node {node_id}\n{row['Dominant Label']}\n{row['% Purity']}"
+        purity_str = row["% Purity"].replace('%', '')
+        try:
+            purity_val = float(purity_str)
+        except:
+            purity_val = 0.0
 
-    # Generate custom labels for all GSOM nodes
+        for node_id in node_ids:
+            if purity_val >= 90.0:
+                label = f"\u2b50 Node {node_id}\n{row['Dominant Label']}\n{row['% Purity']}"
+            else:
+                label = f"Node {node_id}\n{row['Dominant Label']}\n{row['% Purity']}"
+            node_label_map[int(node_id)] = label
+
     custom_labels = []
     for i in range(gsom.node_count):
         if i in node_label_map:
@@ -126,13 +147,13 @@ if __name__ == '__main__':
         else:
             custom_labels.append(f"Node {i}\n(no data)")
 
-    # Plot annotated dendrogram
     plt.figure(figsize=(14, 7))
     dendrogram(Z, labels=custom_labels, leaf_rotation=90)
-    plt.title("Annotated Dendrogram: GSOM Node Clustering with Dominant Labels")
+    plt.title("Annotated Dendrogram: GSOM Node Clustering (\u2b50 = ≥90% Purity)")
     plt.xlabel("GSOM Nodes with Cluster Info")
     plt.ylabel("Distance")
     plt.tight_layout()
-    plt.savefig(os.path.join(output_folder, "dendrogram_gsom_nodes_annotated.png"))
+    plt.savefig(os.path.join(output_folder, "dendrogram_gsom_nodes_annotated_highlighted.png"))
     plt.show()
+
 
