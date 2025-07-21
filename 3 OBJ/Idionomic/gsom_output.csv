@@ -1,0 +1,43 @@
+output,Name,label,hit_count,x,y
+1,['tortoise'],[3],1,1.0,0.0
+6,['tuatara'],[3],1,-1.0,1.0
+9,"['frog', 'frog', 'newt', 'toad']","[5, 5, 5, 5]",4,-1.0,2.0
+30,['ostrich'],[2],1,4.0,5.0
+34,['platypus'],[1],1,-3.0,0.0
+63,"['mole', 'opossum']","[1, 1]",2,-5.0,0.0
+75,"['lark', 'pheasant', 'sparrow', 'wren']","[2, 2, 2, 2]",4,5.0,0.0
+108,"['crab', 'starfish']","[7, 7]",2,0.0,-2.0
+117,['pussycat'],[1],1,-7.0,-1.0
+119,"['penguin', 'rhea']","[2, 2]",2,7.0,7.0
+131,"['antelope', 'buffalo', 'deer', 'elephant', 'giraffe', 'oryx']","[1, 1, 1, 1, 1, 1]",6,-9.0,1.0
+145,['kiwi'],[2],1,7.0,8.0
+162,"['slug', 'worm']","[7, 7]",2,2.0,10.0
+163,"['cavy', 'hamster', 'hare', 'vole']","[1, 1, 1, 1]",4,-10.0,1.0
+164,"['calf', 'goat', 'pony', 'reindeer']","[1, 1, 1, 1]",4,-9.0,2.0
+169,['vulture'],[2],1,5.0,4.0
+170,['flamingo'],[2],1,4.0,3.0
+183,['squirrel'],[1],1,-2.0,6.0
+184,"['fruitbat', 'vampire']","[1, 1]",2,-3.0,7.0
+188,"['crow', 'hawk']","[2, 2]",2,9.0,1.0
+192,['mink'],[1],1,-5.0,-2.0
+196,['clam'],[7],1,2.0,11.0
+208,"['honeybee', 'housefly', 'moth', 'wasp']","[6, 6, 6, 6]",4,0.0,-5.0
+211,"['duck', 'swan']","[2, 2]",2,9.0,2.0
+216,"['gorilla', 'wallaby']","[1, 1]",2,-6.0,7.0
+228,"['boar', 'cheetah', 'leopard', 'lion', 'lynx', 'mongoose', 'polecat', 'puma', 'raccoon', 'wolf']","[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]",10,-6.0,-4.0
+230,['seawasp'],[7],1,2.0,12.0
+253,"['gull', 'skimmer', 'skua']","[2, 2, 2]",3,10.0,0.0
+257,"['aardvark', 'bear']","[1, 1]",2,-5.0,-4.0
+258,"['bass', 'catfish', 'chub', 'herring', 'piranha']","[4, 4, 4, 4, 4]",5,12.0,9.0
+261,"['flea', 'gnat', 'ladybird', 'termite']","[6, 6, 6, 6]",4,0.0,-7.0
+266,"['girl', 'sealion']","[1, 1]",2,-8.0,7.0
+278,"['chicken', 'dove', 'parakeet']","[2, 2, 2]",3,5.0,-1.0
+293,"['crayfish', 'lobster', 'octopus', 'scorpion']","[7, 7, 7, 7]",4,0.0,-8.0
+308,['pitviper'],[3],1,-6.0,12.0
+311,['carp'],[4],1,11.0,14.0
+315,['seasnake'],[3],1,-1.0,15.0
+323,"['haddock', 'seahorse', 'sole']","[4, 4, 4]",3,7.0,15.0
+325,"['dogfish', 'pike', 'tuna']","[4, 4, 4]",3,2.0,17.0
+330,['stingray'],[4],1,3.0,20.0
+333,"['dolphin', 'porpoise', 'seal']","[1, 1, 1]",3,14.0,4.0
+340,['slowworm'],[3],1,-12.0,12.0
