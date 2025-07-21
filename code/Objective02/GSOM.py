@@ -10,8 +10,6 @@ from matplotlib import cm
 from matplotlib import colors
 import networkx as nx
 import pydot
-from bigtree import Node, tree_to_dot
-import pandas as pd
 
 class GSOM:
     def __init__(self, spred_factor, dimensions, distance='euclidean', initialize='random', learning_rate=0.3,
@@ -248,29 +246,55 @@ class GSOM:
         return out.argmin(axis=0)
 
     def predict(self, data, index_col, label_col=None):
+        import numpy as np
+        import pandas as pd
+        import scipy.spatial
+
+    # === Select feature columns ===
         weight_columns = list(data.columns.values)
         output_columns = [index_col]
+
         if label_col:
             weight_columns.remove(label_col)
             output_columns.append(label_col)
         weight_columns.remove(index_col)
+
+    # === Extract features and metadata ===
         data_n = data[weight_columns].to_numpy()
         data_out = pd.DataFrame(data[output_columns])
-        out = scipy.spatial.distance.cdist(self.node_list[:self.node_count], data_n, self.distance)
+
+    # === Convert node_list to 2D matrix ===
+        try:
+            node_matrix = np.stack([np.asarray(n).flatten() for n in self.node_list[:self.node_count]])
+        except Exception as e:
+            print("❌ Failed to stack node_list. Check node dimensions.")
+            raise e
+
+    # === Final shape check ===
+        if node_matrix.shape[1] != data_n.shape[1]:
+            raise ValueError(
+                f"❌ Shape mismatch: node dim = {node_matrix.shape[1]}, input dim = {data_n.shape[1]}"
+         )
+
+    # === Calculate distances and BMU assignment ===
+        out = scipy.spatial.distance.cdist(node_matrix, data_n, self.distance)
         data_out["output"] = out.argmin(axis=0)
 
+    # === Group output ===
         grp_output = data_out.groupby("output")
-        dn = grp_output[index_col].apply(list).reset_index()
-        dn = dn.set_index("output")
+        dn = grp_output[index_col].apply(list).reset_index().set_index("output")
         if label_col:
             dn[label_col] = grp_output[label_col].apply(list)
+
         dn = dn.reset_index()
         dn["hit_count"] = dn[index_col].apply(lambda x: len(x))
         dn["x"] = dn["output"].apply(lambda x: self.node_coordinate[x, 0])
         dn["y"] = dn["output"].apply(lambda x: self.node_coordinate[x, 1])
+
         self.node_labels = dn
         self.output = data_out
         return self.node_labels
+
 
     def get_paths(self):
         paths = []
@@ -370,4 +394,3 @@ class GSOM:
                 if len(clusters[-1]) >= max_clusters:
                     break
         return clusters, segments, remaining_connections, pos_edges
-
