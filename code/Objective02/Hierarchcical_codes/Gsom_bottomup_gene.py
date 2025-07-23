@@ -14,11 +14,11 @@ if __name__ == '__main__':
     np.random.seed(1)
 
     # === Output Folder ===
-    output_folder = "output_gene_bottomup"
+    output_folder = "../output_gene_bottomup"
     os.makedirs(output_folder, exist_ok=True)
 
     # === Load Dataset ===
-    data_filename = "example/data/GSE/GSE5281_merged_expression_metadata.csv"
+    data_filename = "../example/data/GSE/GSE5281_merged_expression_metadata.csv"
     df = pd.read_csv(data_filename)
     print("Dataset shape:", df.shape)
 
@@ -154,6 +154,29 @@ if __name__ == '__main__':
     plt.ylabel("Distance")
     plt.tight_layout()
     plt.savefig(os.path.join(output_folder, "dendrogram_gsom_nodes_annotated_highlighted.png"))
+    plt.show()
+
+        # === Additional Dendrogram: All Data Points Mapped via GSOM Embeddings ===
+    print("\n📊 Generating dendrogram for all 161 data points mapped through GSOM...")
+
+    # Map each data point to the weight vector of its assigned GSOM node
+    data_embeddings = output_df['output'].apply(lambda nid: gsom.map[nid].weights).to_list()
+    data_embeddings = np.array(data_embeddings)
+    sample_ids = output_df['Sample_ID'].tolist()
+
+    # Perform hierarchical clustering on these mapped vectors
+    Z_mapped_data = linkage(data_embeddings, method='average')
+    ccc_mapped_data, _ = cophenet(Z_mapped_data, pdist(data_embeddings))
+    print(f"✅ CCC for GSOM-mapped data (all samples): {ccc_mapped_data:.4f}")
+
+    # Plot the dendrogram with all sample labels
+    plt.figure(figsize=(14, 6))
+    dendrogram(Z_mapped_data, labels=sample_ids, leaf_rotation=90, leaf_font_size=6)
+    plt.title("Dendrogram: All Data Points Mapped via GSOM Embeddings")
+    plt.xlabel("Sample ID")
+    plt.ylabel("Distance")
+    plt.tight_layout()
+    plt.savefig(os.path.join(output_folder, "dendrogram_all_data_gsom_mapped.png"), dpi=300)
     plt.show()
 
 

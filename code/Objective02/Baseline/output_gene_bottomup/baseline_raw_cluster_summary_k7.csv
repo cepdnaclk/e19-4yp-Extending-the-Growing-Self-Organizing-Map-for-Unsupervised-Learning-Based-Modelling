@@ -1,0 +1,8 @@
+Cluster,Dominant Label,% Purity,Total Count
+1,Alzheimer's Disease,78.0%,82
+2,Alzheimer's Disease,100.0%,7
+3,normal,100.0%,7
+4,normal,100.0%,3
+5,normal,73.3%,60
+6,normal,100.0%,1
+7,normal,100.0%,1
