@@ -14,11 +14,11 @@ if __name__ == '__main__':
     np.random.seed(1)
 
     # === Output Folder ===
-    output_folder = "../output_gene_bottomup"
+    output_folder = "../output_gene_newdata"
     os.makedirs(output_folder, exist_ok=True)
 
     # === Load Dataset ===
-    data_filename = "../example/data/GSE/GSE5281_merged_expression_metadata.csv"
+    data_filename = "../example/data/GSE/GSE5281_normalized_gene_expression.csv"
     df = pd.read_csv(data_filename)
     print("Dataset shape:", df.shape)
 
