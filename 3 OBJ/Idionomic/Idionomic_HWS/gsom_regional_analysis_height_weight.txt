@@ -1,0 +1,2004 @@
+GSOM Regional Analysis Report (Height_weight Dataset)
+============================================================
+
+UNDERSTANDING DATA STRUCTURE THROUGH SPATIAL ORGANIZATION
+-------------------------------------------------------
+
+DATASET OVERVIEW
+--------------------
+Dataset shape: (200, 4)
+Feature columns: ['Height', 'Weight']
+Node count: 612
+Classification accuracy: 6.5%
+
+REGIONAL PURITY ANALYSIS
+-------------------------
+Regions are spatial groupings that may contain multiple classes.
+Pure regions indicate natural class separation, mixed regions show overlap.
+
+Region 1: Pure
+  Purity: 90.0%
+  Total samples: 10
+  Dominant class: Male
+  Class distribution: {'Male': 9, 'Female': 1}
+
+Region 2: Mostly Pure
+  Purity: 80.0%
+  Total samples: 5
+  Dominant class: Female
+  Class distribution: {'Male': 1, 'Female': 4}
+
+Region 3: Mostly Pure
+  Purity: 79.6%
+  Total samples: 98
+  Dominant class: Male
+  Class distribution: {'Male': 78, 'Female': 20}
+
+Region 4: Mostly Pure
+  Purity: 86.2%
+  Total samples: 87
+  Dominant class: Female
+  Class distribution: {'Male': 12, 'Female': 75}
+
+QUANTIZE DIFFERENCE ANALYSIS
+------------------------------
+Quantize difference measures spatial coherence within nodes.
+Low values indicate tight clustering, high values indicate spreading.
+
+Node 0:
+  Quantize Difference: 0.014
+  Spatial spread: 0.014 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 3:
+  Quantize Difference: 0.016
+  Spatial spread: 0.016 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 5:
+  Quantize Difference: 0.004
+  Spatial spread: 0.004 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 10:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 15:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 18:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 22:
+  Quantize Difference: 0.015
+  Spatial spread: 0.015 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 23:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 25:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.005
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 32:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 36:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 50:
+  Quantize Difference: 0.019
+  Spatial spread: 0.019 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 55:
+  Quantize Difference: 0.014
+  Spatial spread: 0.014 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 62:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.002
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 66:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 69:
+  Quantize Difference: 0.018
+  Spatial spread: 0.018 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 73:
+  Quantize Difference: 0.002
+  Spatial spread: 0.002 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 78:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 82:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 83:
+  Quantize Difference: 0.005
+  Spatial spread: 0.002 ± 0.002
+  Label entropy: 1.000
+  Sample count: 2
+  Unique classes: 2
+  Classification: Mixed
+
+Node 84:
+  Quantize Difference: 0.017
+  Spatial spread: 0.017 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 88:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 93:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 97:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 98:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 100:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 103:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 104:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.001
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 105:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 107:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 109:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 118:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.004
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 119:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.002
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 121:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 123:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 138:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 139:
+  Quantize Difference: 0.004
+  Spatial spread: 0.004 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 143:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 152:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 153:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 154:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 161:
+  Quantize Difference: 0.017
+  Spatial spread: 0.017 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 167:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 169:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 173:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.002
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 175:
+  Quantize Difference: 0.019
+  Spatial spread: 0.019 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 178:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 179:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 180:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 184:
+  Quantize Difference: 0.016
+  Spatial spread: 0.016 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 188:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 189:
+  Quantize Difference: 0.014
+  Spatial spread: 0.014 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 193:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 195:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 198:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 201:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 202:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 207:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.002
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 216:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 228:
+  Quantize Difference: 0.031
+  Spatial spread: 0.031 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 232:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 233:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 234:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 247:
+  Quantize Difference: 0.015
+  Spatial spread: 0.015 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 248:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.003
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 251:
+  Quantize Difference: 0.026
+  Spatial spread: 0.013 ± 0.001
+  Label entropy: 1.000
+  Sample count: 2
+  Unique classes: 2
+  Classification: Mixed
+
+Node 252:
+  Quantize Difference: 0.013
+  Spatial spread: 0.007 ± 0.001
+  Label entropy: 1.000
+  Sample count: 2
+  Unique classes: 2
+  Classification: Mixed
+
+Node 253:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.004
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 257:
+  Quantize Difference: 0.001
+  Spatial spread: 0.001 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 272:
+  Quantize Difference: 0.015
+  Spatial spread: 0.015 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 277:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 282:
+  Quantize Difference: 0.020
+  Spatial spread: 0.020 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 285:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 294:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 297:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 298:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 300:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 304:
+  Quantize Difference: 0.016
+  Spatial spread: 0.016 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 309:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 310:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 318:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 321:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 327:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 332:
+  Quantize Difference: 0.017
+  Spatial spread: 0.017 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 335:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 345:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 348:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 350:
+  Quantize Difference: 0.003
+  Spatial spread: 0.003 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 351:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 353:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 355:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 356:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 358:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 370:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 371:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 373:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 378:
+  Quantize Difference: 0.013
+  Spatial spread: 0.013 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 385:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 387:
+  Quantize Difference: 0.018
+  Spatial spread: 0.018 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 389:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.002
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 390:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 398:
+  Quantize Difference: 0.016
+  Spatial spread: 0.016 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 416:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 417:
+  Quantize Difference: 0.003
+  Spatial spread: 0.003 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 418:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 419:
+  Quantize Difference: 0.020
+  Spatial spread: 0.020 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 425:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 428:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 431:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.001
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 435:
+  Quantize Difference: 0.014
+  Spatial spread: 0.014 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 439:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 440:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 441:
+  Quantize Difference: 0.048
+  Spatial spread: 0.048 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 443:
+  Quantize Difference: 0.009
+  Spatial spread: 0.009 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 444:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 454:
+  Quantize Difference: 0.018
+  Spatial spread: 0.018 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 462:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 464:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 468:
+  Quantize Difference: 0.015
+  Spatial spread: 0.015 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 474:
+  Quantize Difference: 0.019
+  Spatial spread: 0.019 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 478:
+  Quantize Difference: 0.016
+  Spatial spread: 0.016 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 479:
+  Quantize Difference: 0.004
+  Spatial spread: 0.004 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 494:
+  Quantize Difference: 0.019
+  Spatial spread: 0.019 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 497:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 504:
+  Quantize Difference: 0.014
+  Spatial spread: 0.014 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 508:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 515:
+  Quantize Difference: 0.006
+  Spatial spread: 0.006 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 517:
+  Quantize Difference: 0.047
+  Spatial spread: 0.047 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 524:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 525:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 528:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 535:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 539:
+  Quantize Difference: 0.004
+  Spatial spread: 0.004 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 541:
+  Quantize Difference: 0.010
+  Spatial spread: 0.010 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 542:
+  Quantize Difference: 0.052
+  Spatial spread: 0.052 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 545:
+  Quantize Difference: 0.046
+  Spatial spread: 0.046 ± 0.038
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 551:
+  Quantize Difference: 0.027
+  Spatial spread: 0.027 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 554:
+  Quantize Difference: 0.041
+  Spatial spread: 0.020 ± 0.008
+  Label entropy: 1.000
+  Sample count: 2
+  Unique classes: 2
+  Classification: Mixed
+
+Node 561:
+  Quantize Difference: 0.021
+  Spatial spread: 0.021 ± 0.010
+  Label entropy: 0.000
+  Sample count: 4
+  Unique classes: 1
+  Classification: Pure
+
+Node 567:
+  Quantize Difference: 0.008
+  Spatial spread: 0.008 ± 0.004
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 569:
+  Quantize Difference: 0.012
+  Spatial spread: 0.012 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 571:
+  Quantize Difference: 0.036
+  Spatial spread: 0.036 ± 0.013
+  Label entropy: 0.000
+  Sample count: 4
+  Unique classes: 1
+  Classification: Pure
+
+Node 573:
+  Quantize Difference: 0.022
+  Spatial spread: 0.022 ± 0.003
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 575:
+  Quantize Difference: 0.017
+  Spatial spread: 0.017 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 576:
+  Quantize Difference: 0.020
+  Spatial spread: 0.020 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 577:
+  Quantize Difference: 0.020
+  Spatial spread: 0.020 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 579:
+  Quantize Difference: 0.005
+  Spatial spread: 0.005 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 580:
+  Quantize Difference: 0.033
+  Spatial spread: 0.033 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 582:
+  Quantize Difference: 0.056
+  Spatial spread: 0.056 ± 0.020
+  Label entropy: 0.000
+  Sample count: 3
+  Unique classes: 1
+  Classification: Pure
+
+Node 584:
+  Quantize Difference: 0.003
+  Spatial spread: 0.003 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 586:
+  Quantize Difference: 0.021
+  Spatial spread: 0.021 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 587:
+  Quantize Difference: 0.024
+  Spatial spread: 0.024 ± 0.013
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+Node 590:
+  Quantize Difference: 0.015
+  Spatial spread: 0.015 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 591:
+  Quantize Difference: 0.011
+  Spatial spread: 0.011 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 592:
+  Quantize Difference: 0.149
+  Spatial spread: 0.076 ± 0.058
+  Label entropy: 0.971
+  Sample count: 5
+  Unique classes: 2
+  Classification: Mixed
+
+Node 593:
+  Quantize Difference: 0.007
+  Spatial spread: 0.007 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 595:
+  Quantize Difference: 0.003
+  Spatial spread: 0.003 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 597:
+  Quantize Difference: 0.026
+  Spatial spread: 0.026 ± 0.005
+  Label entropy: 0.000
+  Sample count: 3
+  Unique classes: 1
+  Classification: Pure
+
+Node 601:
+  Quantize Difference: 0.084
+  Spatial spread: 0.042 ± 0.002
+  Label entropy: 1.000
+  Sample count: 2
+  Unique classes: 2
+  Classification: Mixed
+
+Node 603:
+  Quantize Difference: 0.004
+  Spatial spread: 0.004 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 605:
+  Quantize Difference: 0.016
+  Spatial spread: 0.016 ± 0.000
+  Label entropy: 0.000
+  Sample count: 1
+  Unique classes: 1
+  Classification: Pure
+
+Node 611:
+  Quantize Difference: 0.004
+  Spatial spread: 0.004 ± 0.000
+  Label entropy: 0.000
+  Sample count: 2
+  Unique classes: 1
+  Classification: Pure
+
+OUTLIER EXPLANATIONS
+--------------------
+Understanding why outliers occur provides insights into data structure.
+
+Node 0 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 3 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 5 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 10 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 15 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 18 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 22 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 23 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 25 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 0.99
+
+Node 32 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 36 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 50 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 55 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 62 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 66 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 69 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 73 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 78 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 82 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 83 Analysis:
+  Region purity: 50.0%
+  Spatial compactness: 1.00
+
+Node 84 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 88 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 93 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 97 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 98 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 100 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 103 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 104 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 105 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 107 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 109 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 118 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 119 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 121 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 123 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 138 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 139 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 143 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 152 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 153 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 154 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 161 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 167 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 169 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 173 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 175 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 178 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 179 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 180 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 184 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 188 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 189 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 193 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 195 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 198 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 201 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 202 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 207 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 216 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 228 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 232 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 233 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 234 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 247 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 248 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 251 Analysis:
+  Region purity: 50.0%
+  Spatial compactness: 1.00
+
+Node 252 Analysis:
+  Region purity: 50.0%
+  Spatial compactness: 1.00
+
+Node 253 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 257 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 272 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 277 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 282 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 285 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 294 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 297 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 298 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 300 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 304 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 309 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 310 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 318 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 321 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 327 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 332 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 335 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 345 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 348 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 350 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 351 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 353 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 355 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 356 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 358 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 370 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 371 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 373 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 378 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 385 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 387 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 389 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 390 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 398 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 416 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 417 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 418 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 419 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 425 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 428 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 431 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 435 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 439 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 440 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 441 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 443 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 444 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 454 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 462 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 464 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 468 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 474 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 478 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 479 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 494 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 497 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 504 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 508 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 515 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 517 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 524 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 525 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 528 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 535 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 539 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 541 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 542 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 545 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 0.96
+
+Node 551 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 554 Analysis:
+  Region purity: 50.0%
+  Spatial compactness: 0.99
+
+Node 561 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 0.99
+
+Node 567 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 569 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 571 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 0.99
+
+Node 573 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 575 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 576 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 577 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 579 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 580 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 582 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 0.98
+
+Node 584 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 586 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 587 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 0.99
+
+Node 590 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 591 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 592 Analysis:
+  Region purity: 60.0%
+  Spatial compactness: 0.95
+
+Node 593 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 595 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 597 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 601 Analysis:
+  Region purity: 50.0%
+  Spatial compactness: 1.00
+
+Node 603 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 605 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+Node 611 Analysis:
+  Region purity: 100.0%
+  Spatial compactness: 1.00
+
+INTERPRETATION NOTES
+--------------------
+For Height-Weight dataset:
+- Males typically have higher height and weight (but with overlap)
+- Boundary points show where male/female characteristics overlap
+- Mixed regions indicate height-weight combinations common to both sexes
+- Node weights represent spatial positions and are meaningful for comparison
+- Regional analysis shows data structure beyond simple classification
+- Outliers indicate interesting cases that need further investigation

@@ -1,0 +1,160 @@
+🧬 GSOM BOUNDARY ANALYSIS - SEPARATE PLOTS DOCUMENTATION FOR CROHN'S DISEASE
+===========================================================================
+
+Generated: Current Analysis Run
+Dataset: Crohn's Disease Genetic Data (387 samples, 206 genetic features)
+Analysis Method: Growing Self-Organizing Map (GSOM) with Boundary Detection
+
+📊 SEPARATE PLOT FILES CREATED:
+===============================
+
+1. 📈 gsom_boundary_analysis_crohn_gsom_map.pdf
+   ------------------------------------------------
+   CONTENT:
+   • GSOM 2D visualization showing spatial organization of genetic data
+   • Color-coded clusters (Green: No_Crohns, Red: Crohns)
+   • Node entropy visualization (higher alpha = higher genetic diversity)
+   • Skeleton connections showing genetic data topology
+   • Boundary nodes highlighted in purple circles
+   • Boundary points marked with magenta stars
+   • Region entropy information
+   
+   INTERPRETATION:
+   • Shows HOW genetic patterns are spatially organized
+   • Reveals WHERE genetic confusion occurs in the map
+   • Entropy values indicate genetic complexity at each node
+   • Boundary markers show diagnostically challenging cases
+
+2. 📊 gsom_boundary_analysis_crohn_confusion_matrix.pdf
+   -----------------------------------------------------
+   CONTENT:
+   • Heatmap showing classification accuracy
+   • Actual vs Predicted disease status
+   • Sample counts in each category
+   • Overall accuracy metrics
+   • Cluster names with purity percentages
+   
+   INTERPRETATION:
+   • Cluster 1: No_Crohns (91.0%) - High purity cluster
+   • Cluster 2: Crohns (85.9%) - Good purity cluster
+   • Shows classification performance of GSOM
+   • Identifies misclassification patterns
+
+3. 🧬 gsom_boundary_analysis_crohn_boundary_features.pdf
+   ------------------------------------------------------
+   CONTENT:
+   QUADRANT 1: Feature Importance Ranking (Horizontal Bar Chart)
+   • Top 15 genetic markers causing boundary confusion
+   • Horizontal bars for better readability of genetic marker names
+   • Color-coded using plasma colormap
+   • Shows which genetic loci contribute most to diagnostic uncertainty
+   
+   QUADRANT 2: Genetic Pattern Comparison
+   • Side-by-side comparison of boundary vs non-boundary patients
+   • Bar chart showing mean genetic values for top 5 markers
+   • Direct comparison reveals WHY boundary patients are confusing
+   • Shows actual genetic value differences between groups
+   
+   QUADRANT 3: Feature Variability Analysis
+   • Coefficient of variation for top 10 genetic markers
+   • Higher values = more heterogeneous genetic patterns
+   • Shows which markers have inconsistent patterns in boundary cases
+   • Color intensity indicates relative variability
+   
+   QUADRANT 4: Cluster-Specific Feature Analysis
+   • Shows which features distinguish boundary patients in each cluster
+   • Separate bars for each disease cluster (No_Crohns vs Crohns)
+   • Reveals cluster-specific genetic boundary patterns
+   • Helps understand disease-specific genetic confusion
+   
+   INTERPRETATION:
+   • EXPLAINS HOW genetic differences cause boundary classification
+   • Shows WHICH genetic markers create diagnostic challenges
+   • Compares boundary patients with normal cases directly
+   • Reveals genetic heterogeneity within boundary cases
+   • Provides actionable insights for genetic marker selection
+
+4. 🔬 gsom_boundary_analysis_crohn_boundary_features_extended.pdf
+   ----------------------------------------------------------------
+   CONTENT:
+   QUADRANT 1: Boundary Points Distribution by Cluster
+   • Bar chart showing how boundary cases distribute across clusters
+   • Percentage labels for each cluster
+   
+   QUADRANT 2: Distance Distribution to Cluster Centroids
+   • Box plots of genetic distances to each cluster center
+   • Shows how "close" boundary cases are to each disease group
+   
+   QUADRANT 3: Feature Variability Heatmap
+   • Heatmap of top 20 most variable genetic markers
+   • Shows 20 representative boundary patients
+   • Color intensity = feature difference magnitude
+   
+   QUADRANT 4: Cluster Separation Quality
+   • Quality metric for how well clusters are separated
+   • Higher values = better genetic separation
+   
+   INTERPRETATION:
+   • Comprehensive view of boundary case characteristics
+   • Shows genetic heterogeneity in boundary patients
+   • Evaluates cluster quality and separation
+
+===================================================================
+
+📋 ANALYSIS SUMMARY:
+===================
+
+BOUNDARY DETECTION RESULTS:
+   • Total boundary points: 132 (34.1% of all patients)
+   • Boundary nodes: 2 GSOM nodes contain boundary cases
+   • Region entropy: 0.32 (moderate genetic diversity)
+   • Method used: Fixed threshold (0.3)
+
+KEY GENETIC INSIGHTS:
+   • No_Crohns cluster: 73.3% separability (some genetic overlap)
+   • Crohns cluster: 60.4% separability (significant genetic mixing)
+   • 36 mixed nodes where genetic patterns overlap
+   • Average genetic region purity: 80.7%
+
+CLINICAL IMPLICATIONS:
+   • 132 patients show ambiguous genetic patterns
+   • These cases require additional clinical evaluation
+   • Genetic markers alone insufficient for definitive diagnosis
+   • GSOM reveals underlying genetic structure and relationships
+
+===================================================================
+
+🎯 RECOMMENDED USAGE:
+====================
+
+FOR RESEARCHERS:
+   • Use gsom_map.pdf to understand overall genetic structure
+   • Analyze boundary_features.pdf to identify key genetic markers
+   • Review extended analysis for comprehensive genetic insights
+
+FOR CLINICIANS:
+   • Focus on confusion_matrix.pdf for diagnostic accuracy
+   • Use boundary points information for challenging cases
+   • Consider additional testing for identified boundary patients
+
+FOR GENETICISTS:
+   • Examine feature importance in boundary_features.pdf
+   • Analyze genetic variability patterns in extended analysis
+   • Use insights for genetic marker discovery and validation
+
+===================================================================
+
+📈 TECHNICAL SPECIFICATIONS:
+============================
+
+• High-resolution PDFs (300 DPI)
+• Publication-ready quality
+• Color-coded for clarity
+• Statistical annotations included
+• Comprehensive legends and labels
+
+All plots are designed to be self-contained and publication-ready, 
+providing different perspectives on the same genetic boundary analysis.
+
+✅ ANALYSIS COMPLETE: Four separate visualization files provide comprehensive 
+   insights into genetic structure and disease classification boundaries.

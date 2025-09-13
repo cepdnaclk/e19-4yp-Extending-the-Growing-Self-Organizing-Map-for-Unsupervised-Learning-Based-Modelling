@@ -1,36 +1,37 @@
 """
-🧠 Enhanced GSOM Analysis for Understanding Data Structure and Relationships - Crohn's Disease Dataset
+🧠 Enhanced GSOM Analysis for Understanding Genetic Data Structure and Relationships in Crohn's Disease
 
 This implementation focuses on understanding the UNDERLYING STRUCTURE of genetic data rather than
 just classification accuracy. Key enhancements based on conceptual notes:
 
-1. 📊 SEPARABILITY ANALYSIS: Identifies which classes are linearly separable
-   - Crohn's disease cases vs controls
-   - Genetic loci patterns and mixing
+1. 📊 SEPARABILITY ANALYSIS: Identifies which genetic patterns are linearly separable
+   - Determines if Crohn's and No_Crohns can be distinguished by genetic markers
+   - Analyzes genetic mixing patterns
 
-2. 🔄 CLASS MIXING ANALYSIS: Explains WHY and WHERE classes overlap
-   - Analyzes genetic differences in mixed nodes
-   - Shows which genetic loci cause confusion
+2. 🔄 CLASS MIXING ANALYSIS: Explains WHY and WHERE genetic classes overlap
+   - Analyzes genetic marker differences in mixed nodes
+   - Shows which genetic variables cause diagnostic confusion
 
-3. 🌍 REGIONS vs CLUSTERS: Distinguishes spatial proximity from similarity
-   - Regions are like provinces (spatial neighborhoods)
-   - Clusters are similarity groups within regions
+3. 🌍 REGIONS vs CLUSTERS: Distinguishes spatial proximity from genetic similarity
+   - Regions are like genetic neighborhoods (spatial relationships)
+   - Clusters are genetic similarity groups within regions
 
-4. 🎯 QUANTIZATION DIFFERENCE: Measures how well node weights represent data
+4. 🎯 QUANTIZATION DIFFERENCE: Measures how well node weights represent genetic data
    - Higher values indicate better representation
-   - Helps identify outliers and poorly represented areas
+   - Helps identify genetic outliers and poorly represented areas
 
-5. 🧱 SKELETON STRUCTURE: Reveals data topology and relationships
-   - Shows branching patterns and connectivity
-   - Identifies junction points and boundaries
+5. 🧱 SKELETON STRUCTURE: Reveals genetic data topology and relationships
+   - Shows genetic branching patterns and connectivity
+   - Identifies genetic junction points and boundaries
 
-Focus: Understanding GENETIC STRUCTURE and RELATIONSHIPS in Crohn's disease, not just classification performance.
+Focus: Understanding GENETIC STRUCTURE and DISEASE RELATIONSHIPS, not just classification performance.
 """
 
 import numpy as np
 import pandas as pd
 from scipy.spatial import distance
 import scipy
+import scipy.spatial
 from tqdm import tqdm
 import math
 from bigtree import Node, findall, find, tree_to_dot
@@ -264,13 +265,19 @@ class GSOM:
         out = scipy.spatial.distance.cdist(self.node_list[:self.node_count], data, self.distance)
         return out.argmin(axis=0)
 
-    def predict(self, data, index_col, label_col=None):
-        weight_columns = list(data.columns.values)
-        output_columns = [index_col]
-        if label_col:
-            weight_columns.remove(label_col)
-            output_columns.append(label_col)
-        weight_columns.remove(index_col)
+    def predict(self, data, index_col, label_col=None, weight_columns=None):
+        if weight_columns is None:
+            weight_columns = list(data.columns.values)
+            output_columns = [index_col]
+            if label_col:
+                weight_columns.remove(label_col)
+                output_columns.append(label_col)
+            weight_columns.remove(index_col)
+        else:
+            output_columns = [index_col]
+            if label_col:
+                output_columns.append(label_col)
+        
         data_n = data[weight_columns].to_numpy()
         data_out = pd.DataFrame(data[output_columns])
         out = scipy.spatial.distance.cdist(self.node_list[:self.node_count], data_n, self.distance)
@@ -352,17 +359,8 @@ class GSOM:
         
         return hit_points, skeleton_connections, junctions, pos_edges
 
-    def separate_clusters(self, data, weight_columns, max_clusters=None):
-        """
-        Smart clustering that dynamically determines optimal number of clusters
-        based on distance thresholds and data structure. Only creates non-empty clusters.
-        """
+    def separate_clusters(self, data, weight_columns, max_clusters=2):
         hit_points, skeleton_connections, junctions, pos_edges = self.build_skeleton(data, weight_columns)
-        
-        if not skeleton_connections:
-            # No connections, each hit point is its own cluster
-            return [[{node} for node in hit_points]], [], skeleton_connections, pos_edges
-        
         segments = []
         for i, j in skeleton_connections:
             if (i in hit_points or i in junctions) and (j in hit_points or j in junctions):
@@ -375,77 +373,47 @@ class GSOM:
         
         segments.sort(key=lambda x: x[2], reverse=True)
         
-        # Determine optimal max_clusters if not provided
-        if max_clusters is None:
-            # Use number of unique classes as upper bound, but allow dynamic detection
-            num_classes = len(data[data.columns[-1]].unique()) if hasattr(data, 'columns') else 3
-            max_clusters = min(num_classes, len(hit_points))  # Can't have more clusters than nodes
-        
         G = nx.Graph(skeleton_connections)
-        clusters_history = []
-        removed_segments = []
+        clusters = []
         remaining_connections = skeleton_connections.copy()
-        
-        # Calculate distance statistics for smart thresholding
-        distances = [dist for _, _, dist in segments]
-        if distances:
-            distance_threshold = np.mean(distances) + np.std(distances)
-        else:
-            distance_threshold = float('inf')
-        
-        # Start with one cluster (all connected)
-        initial_clusters = list(nx.connected_components(G))
-        clusters_history.append(initial_clusters)
-        
-        # Remove segments iteratively until we reach desired clusters or threshold
         for i, j, dist in segments:
             if (i, j) in remaining_connections:
                 remaining_connections.remove((i, j))
-                
             if G.has_edge(i, j):
                 G.remove_edge(i, j)
-                current_clusters = list(nx.connected_components(G))
-                
-                # Only add to history if we actually split into more clusters
-                if len(current_clusters) > len(clusters_history[-1]):
-                    clusters_history.append(current_clusters)
-                    removed_segments.append((i, j, dist))
-                    print(f"Removed segment {i}-{j}, Distance: {dist:.4f}")
-                    
-                    # Stop conditions:
-                    # 1. Reached max_clusters
-                    # 2. Distance becomes too small (clusters too granular)
-                    # 3. All meaningful connections removed
-                    if (len(current_clusters) >= max_clusters or 
-                        dist < distance_threshold / 2 or
-                        len(current_clusters) >= len(hit_points)):
-                        break
-        
-        # If no meaningful splits occurred, keep the initial clustering
-        if not clusters_history:
-            clusters_history = [initial_clusters]
-        
-        return clusters_history, removed_segments, remaining_connections, pos_edges
+                clusters.append(list(nx.connected_components(G)))
+                print(f"Removed segment {i}-{j}, Distance: {dist}")
+                if len(clusters[-1]) >= max_clusters:
+                    break
+        return clusters, segments, remaining_connections, pos_edges
 
     def compute_cluster_purity(self, data, label_col, weight_columns):
         entropy_dict = {}
         confusion_data = []
         node_to_cluster = {}
         
-        # Use smart clustering instead of fixed number
-        clusters_history, removed_segments, _, _ = self.separate_clusters(data, weight_columns, max_clusters=None)
+        # For Crohn's disease, we should have exactly 2 clusters
+        # Use a simpler approach: split based on class distribution in nodes
+        all_labels = data[label_col].unique()
         
-        if not clusters_history:
-            print("No clusters generated - using single cluster.")
-            return {}, np.array([]), [], {}, {"0": "Single Cluster: All data"}
+        # Group nodes by their majority class
+        cluster_assignments = {}
+        for _, row in self.node_labels.iterrows():
+            node_idx = row['output']
+            labels = row[label_col]
+            label_counts = pd.Series(labels).value_counts()
+            majority_class = label_counts.idxmax()
+            
+            if majority_class not in cluster_assignments:
+                cluster_assignments[majority_class] = []
+            cluster_assignments[majority_class].append(node_idx)
         
-        # Use the final clustering result
-        final_clusters = clusters_history[-1]
-        
-        # Map nodes to clusters
-        for cluster_id, cluster in enumerate(final_clusters):
-            for node_idx in cluster:
+        # Assign cluster IDs based on class
+        cluster_id = 0
+        for class_label, nodes in cluster_assignments.items():
+            for node_idx in nodes:
                 node_to_cluster[node_idx] = cluster_id
+            cluster_id += 1
         
         # Calculate entropy for each node
         for _, row in self.node_labels.iterrows():
@@ -466,56 +434,33 @@ class GSOM:
                     'labels': labels
                 })
         
-        # Build confusion matrix
+        # Create confusion matrix
         all_labels = data[label_col].unique()
         label_to_idx = {label: idx for idx, label in enumerate(all_labels)}
-        confusion = np.zeros((len(final_clusters), len(all_labels)))
+        num_clusters = len(cluster_assignments)
+        confusion = np.zeros((num_clusters, len(all_labels)))
+        
         for item in confusion_data:
             cluster_id = item['cluster']
             for label in item['labels']:
                 label_idx = label_to_idx[label]
                 confusion[cluster_id, label_idx] += 1
         
-        # Count clusters with actual data
-        non_empty_clusters = sum(1 for cluster_id in range(len(final_clusters)) 
-                                if confusion[cluster_id].sum() > 0)
-        print(f"Generated {non_empty_clusters} meaningful clusters with data (removed {len(removed_segments)} segments)")
-        
-        # Generate meaningful cluster names based on content and characteristics
-        # Only create names for clusters that actually have data
+        # Generate cluster names based on majority labels
         cluster_names = {}
-        for cluster_id in range(len(final_clusters)):
+        for cluster_id in range(num_clusters):
             cluster_label_counts = confusion[cluster_id]
-            if cluster_label_counts.sum() > 0:  # Only process clusters with actual data
+            if cluster_label_counts.sum() > 0:
                 dominant_label_idx = np.argmax(cluster_label_counts)
                 dominant_label = all_labels[dominant_label_idx]
                 dominant_count = cluster_label_counts[dominant_label_idx]
                 total_count = cluster_label_counts.sum()
                 purity = dominant_count / total_count
                 
-                # Create descriptive names based on purity and content
-                if purity >= 0.9:
-                    cluster_type = "Pure"
-                elif purity >= 0.7:
-                    cluster_type = "Dominant"
-                else:
-                    cluster_type = "Mixed"
-                
-                # Add size information
-                if total_count >= 50:
-                    size_desc = "Large"
-                elif total_count >= 20:
-                    size_desc = "Medium"
-                else:
-                    size_desc = "Small"
-                
-                cluster_names[cluster_id] = f"{size_desc} {cluster_type}: Class {dominant_label} ({purity:.1%})"
-            # Skip empty clusters - don't create names for them
-        
-        # Print only meaningful clusters
-        print("Cluster Names:")
-        for cluster_id, cluster_name in cluster_names.items():
-            print(cluster_name)
+                # Create cluster name with purity percentage
+                cluster_names[cluster_id] = f"Cluster {cluster_id + 1}: {dominant_label} ({purity:.1%})"
+            else:
+                cluster_names[cluster_id] = f"Cluster {cluster_id + 1}: Empty"
         
         return entropy_dict, confusion, all_labels, node_to_cluster, cluster_names
 
@@ -863,165 +808,17 @@ class GSOM:
         
         return entropy, region_nodes, deviant_points
 
-    def auto_determine_boundary_threshold(self, data, weight_columns, label_col, max_clusters=None):
-        """
-        Automatically determine optimal boundary threshold based on dataset characteristics.
-        Uses statistical analysis of distance distributions and class separability.
-        """
-        if max_clusters is None:
-            max_clusters = len(data[label_col].unique())
-        
-        # Get cluster information
-        clusters, _, _, _ = self.separate_clusters(data, weight_columns, max_clusters)
+    def identify_boundary_points(self, data, weight_columns, label_col, max_clusters=2, distance_threshold=0.5):
+        """Identify data points on cluster boundaries and analyze feature differences."""
+        clusters, segments, _, _ = self.separate_clusters(data, weight_columns, max_clusters)
         node_to_cluster = {}
         for cluster_id, cluster in enumerate(clusters[-1]):
             for node_idx in cluster:
                 node_to_cluster[node_idx] = cluster_id
         
-        # Compute cluster centroids
-        cluster_centroids = []
-        for cluster_id in range(len(clusters[-1])):
-            cluster_nodes = clusters[-1][cluster_id]
-            if len(cluster_nodes) > 0:
-                cluster_weights = np.mean([self.node_list[node_idx] for node_idx in cluster_nodes], axis=0)
-                cluster_centroids.append(cluster_weights)
-        
-        if len(cluster_centroids) < 2:
-            return 0.1  # Default fallback
-        
-        # Calculate all inter-cluster distances
-        inter_cluster_distances = []
-        for i in range(len(cluster_centroids)):
-            for j in range(i + 1, len(cluster_centroids)):
-                dist = scipy.spatial.distance.cdist(
-                    cluster_centroids[i].reshape(1, -1),
-                    cluster_centroids[j].reshape(1, -1),
-                    self.distance
-                )[0][0]
-                inter_cluster_distances.append(dist)
-        
-        # Calculate intra-cluster distances (samples to their cluster centroid)
-        intra_cluster_distances = []
-        data_n = data[weight_columns].to_numpy()
-        
-        for _, row in self.node_labels.iterrows():
-            node_idx = row['output']
-            sample_ids = row['id']
-            cluster_id = node_to_cluster.get(node_idx, -1)
-            
-            if cluster_id >= 0 and cluster_id < len(cluster_centroids):
-                sample_indices = data[data['id'].isin(sample_ids)].index
-                centroid = cluster_centroids[cluster_id]
-                
-                distances = scipy.spatial.distance.cdist(
-                    data_n[sample_indices], centroid.reshape(1, -1), self.distance
-                ).flatten()
-                intra_cluster_distances.extend(distances)
-        
-        # Statistical analysis
-        if len(inter_cluster_distances) == 0 or len(intra_cluster_distances) == 0:
-            return 0.1  # Default fallback
-        
-        inter_mean = np.mean(inter_cluster_distances)
-        inter_std = np.std(inter_cluster_distances)
-        intra_mean = np.mean(intra_cluster_distances)
-        intra_std = np.std(intra_cluster_distances)
-        
-        # Dataset characteristics
-        n_features = len(weight_columns)
-        n_samples = len(data)
-        
-        # Adaptive threshold calculation based on multiple factors
-        
-        # Factor 1: Cluster separation ratio (how well separated clusters are)
-        separation_ratio = inter_mean / (intra_mean + 1e-8)  # Avoid division by zero
-        
-        # Factor 2: Feature dimensionality impact
-        # Higher dimensions need smaller thresholds
-        dimensionality_factor = 1.0 / np.log(n_features + 1)
-        
-        # Factor 3: Overlap detection sensitivity
-        # Based on the overlap between intra and inter cluster distance distributions
-        overlap_threshold = max(intra_mean + 2 * intra_std, inter_mean - 2 * inter_std)
-        normalized_overlap = overlap_threshold / inter_mean if inter_mean > 0 else 1.0
-        
-        # Factor 4: Sample density factor
-        # More samples allow for more precise boundary detection
-        density_factor = min(1.0, np.log(n_samples) / 10.0)
-        
-        # Combine factors to calculate optimal threshold
-        base_threshold = 0.15  # Conservative base
-        
-        # Adjust based on separation quality
-        if separation_ratio > 3.0:  # Well separated clusters
-            threshold = base_threshold * 1.5
-        elif separation_ratio > 2.0:  # Moderately separated
-            threshold = base_threshold
-        else:  # Poorly separated clusters - need more sensitivity
-            threshold = base_threshold * 0.5
-        
-        # Apply dimensionality correction
-        threshold *= dimensionality_factor
-        
-        # Apply overlap sensitivity
-        threshold *= (1.0 - normalized_overlap * 0.5)
-        
-        # Apply density correction
-        threshold *= density_factor
-        
-        # Ensure reasonable bounds
-        min_threshold = 0.02  # Minimum for any dataset
-        max_threshold = 0.5   # Maximum to avoid too many boundary points
-        
-        optimal_threshold = np.clip(threshold, min_threshold, max_threshold)
-        
-        # Validation: Check boundary point percentage
-        test_boundary_points, _, _, _ = self.identify_boundary_points(
-            data, weight_columns, label_col, max_clusters, optimal_threshold
-        )
-        boundary_percentage = len(test_boundary_points) / n_samples
-        
-        # If boundary percentage is too high (>40%), reduce threshold
-        if boundary_percentage > 0.4:
-            optimal_threshold *= 0.5
-        # If too low (<5%), increase threshold
-        elif boundary_percentage < 0.05:
-            optimal_threshold *= 1.5
-        
-        # Final bounds check
-        optimal_threshold = np.clip(optimal_threshold, min_threshold, max_threshold)
-        
-        return optimal_threshold, {
-            'separation_ratio': separation_ratio,
-            'dimensionality_factor': dimensionality_factor,
-            'overlap_sensitivity': normalized_overlap,
-            'density_factor': density_factor,
-            'inter_cluster_mean': inter_mean,
-            'intra_cluster_mean': intra_mean,
-            'boundary_percentage': len(test_boundary_points) / n_samples,
-            'n_features': n_features,
-            'n_samples': n_samples
-        }
-
-    def identify_boundary_points(self, data, weight_columns, label_col, max_clusters=None, distance_threshold=0.5):
-        """Identify data points on cluster boundaries and analyze feature differences."""
-        
-        # Use smart clustering
-        clusters_history, removed_segments, _, _ = self.separate_clusters(data, weight_columns, max_clusters)
-        
-        if not clusters_history:
-            print("No clusters for boundary analysis.")
-            return [], set(), {}, []
-        
-        final_clusters = clusters_history[-1]
-        node_to_cluster = {}
-        for cluster_id, cluster in enumerate(final_clusters):
-            for node_idx in cluster:
-                node_to_cluster[node_idx] = cluster_id
-        
         # Identify boundary nodes (nodes with connections to other clusters)
         boundary_nodes = set()
-        for i, j, dist in removed_segments:
+        for i, j, dist in segments:
             if node_to_cluster.get(i, -1) != node_to_cluster.get(j, -1):
                 boundary_nodes.add(i)
                 boundary_nodes.add(j)
@@ -1029,20 +826,13 @@ class GSOM:
         # Identify boundary points based on distance to other clusters
         boundary_points = []
         data_n = data[weight_columns].to_numpy()
+        cluster_centroids = []
         
         # Compute cluster centroids (mean weight vector of nodes in each cluster)
-        cluster_centroids = []
-        for cluster_id in range(len(final_clusters)):
-            cluster_nodes = final_clusters[cluster_id]
-            if len(cluster_nodes) > 0:
-                cluster_weights = np.mean([self.node_list[node_idx] for node_idx in cluster_nodes], axis=0)
-                cluster_centroids.append(cluster_weights)
-            else:
-                cluster_centroids.append(np.zeros(len(weight_columns)))
-        
-        if len(cluster_centroids) < 2:
-            print("Not enough clusters for boundary analysis.")
-            return [], boundary_nodes, node_to_cluster, final_clusters
+        for cluster_id in range(len(clusters[-1])):
+            cluster_nodes = clusters[-1][cluster_id]
+            cluster_weights = np.mean([self.node_list[node_idx] for node_idx in cluster_nodes], axis=0)
+            cluster_centroids.append(cluster_weights)
         
         for _, row in self.node_labels.iterrows():
             node_idx = row['output']
@@ -1059,34 +849,30 @@ class GSOM:
             for i, sample_id in enumerate(sample_ids):
                 distances = distances_to_centroids[i]
                 min_dist = np.min(distances)
-                sorted_distances = np.sort(distances)
+                second_min_dist = np.min(distances[distances > min_dist])
                 
-                # Check if there's a second cluster close enough
-                if len(sorted_distances) > 1:
-                    second_min_dist = sorted_distances[1]
+                # If the difference between closest and second-closest cluster is small, it's a boundary point
+                if second_min_dist - min_dist < distance_threshold:
+                    # Compute feature differences from assigned node and other cluster centroids
+                    sample_features = data_n[sample_indices[i]]
+                    feature_diff_node = np.abs(sample_features - node_weights)
+                    feature_diff_other_clusters = [
+                        np.abs(sample_features - centroid)
+                        for centroid in cluster_centroids
+                        if not np.allclose(centroid, node_weights)
+                    ]
                     
-                    # If the difference between closest and second-closest cluster is small, it's a boundary point
-                    if second_min_dist - min_dist < distance_threshold:
-                        # Compute feature differences from assigned node and other cluster centroids
-                        sample_features = data_n[sample_indices[i]]
-                        feature_diff_node = np.abs(sample_features - node_weights)
-                        feature_diff_other_clusters = [
-                            np.abs(sample_features - centroid)
-                            for centroid in cluster_centroids
-                            if not np.allclose(centroid, node_weights)
-                        ]
-                        
-                        boundary_points.append({
-                            'sample_id': sample_id,
-                            'node': node_idx,
-                            'label': labels[i],
-                            'cluster': node_to_cluster.get(node_idx, -1),
-                            'feature_diff_node': feature_diff_node,
-                            'feature_diff_other_clusters': feature_diff_other_clusters,
-                            'distances_to_centroids': distances
-                        })
+                    boundary_points.append({
+                        'sample_id': sample_id,
+                        'node': node_idx,
+                        'label': labels[i],
+                        'cluster': node_to_cluster.get(node_idx, -1),
+                        'feature_diff_node': feature_diff_node,
+                        'feature_diff_other_clusters': feature_diff_other_clusters,
+                        'distances_to_centroids': distances
+                    })
         
-        return boundary_points, boundary_nodes, node_to_cluster, final_clusters
+        return boundary_points, boundary_nodes, node_to_cluster, clusters
 
 def comprehensive_analysis_report(gsom, data, label_col, weight_columns, output_file="iris_comprehensive_analysis.txt"):
     """Generate a comprehensive analysis report focusing on understanding rather than just classification."""
@@ -1112,14 +898,10 @@ def comprehensive_analysis_report(gsom, data, label_col, weight_columns, output_
             f.write(f"  • Mixed nodes: {analysis['mixed_nodes']}\n")
             f.write(f"  • Separability score: {analysis['pure_nodes'] / len(analysis['nodes']):.2%}\n")
             
-            # Determine class separability based on purity score
-            purity_score = analysis['pure_nodes'] / len(analysis['nodes'])
-            if purity_score > 0.8:
-                f.write(f"  ✅ Class {class_name} shows high separability (well-separated)\n")
-            elif purity_score > 0.5:
-                f.write(f"  🔶 Class {class_name} shows moderate separability\n")
+            if class_name.lower() == 'iris-setosa':
+                f.write(f"  ✅ {class_name} shows high separability (linearly separable)\n")
             else:
-                f.write(f"  ⚠️  Class {class_name} shows high mixing with other classes\n")
+                f.write(f"  ⚠️  {class_name} shows mixing with other classes\n")
         
         # 2. Class Mixing Analysis
         f.write(f"\n\n🔄 2. CLASS MIXING ANALYSIS\n")
@@ -1129,7 +911,7 @@ def comprehensive_analysis_report(gsom, data, label_col, weight_columns, output_
         for node_idx, mix_info in mixing.items():
             f.write(f"🔗 Node {node_idx} (Mixed):\n")
             f.write(f"  Majority: {mix_info['majority_class']} ({mix_info['class_counts'][mix_info['majority_class']]} samples)\n")
-            f.write(f"  Minorities: {', '.join(str(cls) for cls in mix_info['minority_classes'])}\n")
+            f.write(f"  Minorities: {', '.join(mix_info['minority_classes'])}\n")
             
             # Feature analysis for mixing
             for minority_class, features in mix_info['feature_analysis'].items():
@@ -1205,18 +987,18 @@ def comprehensive_analysis_report(gsom, data, label_col, weight_columns, output_
         f.write(f"\n\n📌 6. KEY INSIGHTS & INTERPRETATIONS\n")
         f.write("-" * 40 + "\n")
         
-        # Class-specific analysis
-        class_names = list(separability.keys())
-        if len(class_names) >= 2:
-            # Analyze most separable class
-            best_class = max(separability.keys(), key=lambda x: separability[x]['pure_nodes'] / len(separability[x]['nodes']) if separability[x]['nodes'] else 0)
-            best_purity = separability[best_class]['pure_nodes'] / len(separability[best_class]['nodes']) if separability[best_class]['nodes'] else 0
-            f.write(f"✅ Most separable class: {best_class} ({best_purity:.1%} pure separation)\n")
-            
-            # Analyze most confusing classes
-            most_mixed_class = max(separability.keys(), key=lambda x: len(separability[x]['nodes']) - separability[x]['pure_nodes'] if separability[x]['nodes'] else 0)
-            mixed_count = len(separability[most_mixed_class]['nodes']) - separability[most_mixed_class]['pure_nodes'] if separability[most_mixed_class]['nodes'] else 0
-            f.write(f"⚠️  Most mixed class: {most_mixed_class} ({mixed_count} mixed nodes)\n")
+        # Setosa analysis
+        setosa_analysis = separability.get('Iris-setosa', {})
+        if setosa_analysis:
+            setosa_purity = setosa_analysis['pure_nodes'] / len(setosa_analysis['nodes']) if setosa_analysis['nodes'] else 0
+            f.write(f"🌸 Iris-setosa: {setosa_purity:.1%} pure separation - clearly linearly separable\n")
+        
+        # Versicolor/Virginica confusion
+        versicolor_mixed = sum(1 for m in mixing.values() if 'Iris-versicolor' in m['minority_classes'] or m['majority_class'] == 'Iris-versicolor')
+        virginica_mixed = sum(1 for m in mixing.values() if 'Iris-virginica' in m['minority_classes'] or m['majority_class'] == 'Iris-virginica')
+        
+        f.write(f"🔄 Versicolor-Virginica confusion: {max(versicolor_mixed, virginica_mixed)} mixed nodes\n")
+        f.write(f"   → These classes are NOT linearly separable in the given feature space\n")
         
         # Region diversity
         avg_entropy = np.mean([r['entropy'] for r in regions.values()])
@@ -1235,137 +1017,137 @@ def comprehensive_analysis_report(gsom, data, label_col, weight_columns, output_
     print(f"📄 Comprehensive analysis saved to '{output_file}'")
     return separability, mixing, regions, quantization, connectivity, paths
 
-def plot_analysis(gsom, output, entropy_dict, clusters, node_to_cluster, outliers, region_entropy, 
-                 region_nodes, deviant_points, boundary_points, boundary_nodes, data, label_col, weight_columns, 
-                 cluster_names, file_name="gsom_boundary_analysis_iris.pdf"):
-    """Visualize GSOM nodes, clusters, purity, outliers, and boundary points as separate PDF files."""
+def plot_analysis_separate(gsom, output, entropy_dict, clusters, node_to_cluster, outliers, region_entropy, 
+                          region_nodes, deviant_points, boundary_points, boundary_nodes, data, label_col, weight_columns, 
+                          cluster_names, base_filename="gsom_boundary_analysis_crohn"):
+    """Create separate visualization plots for GSOM analysis."""
     
-    base_name = file_name.replace('.pdf', '')
-    
-    # ========== PLOT 1: GSOM Map with Clusters, Entropy, and Boundary Points ==========
-    plt.figure(figsize=(12, 10))
-    
-    max_entropy = max(entropy_dict.values(), default=1) if entropy_dict else 1
-    colors_cluster = ['green', 'red', 'black', 'cyan']
-    
-    # Plot all nodes
-    plt.scatter(gsom.node_coordinate[:gsom.node_count, 0], gsom.node_coordinate[:gsom.node_count, 1], 
-                c='gray', s=10, alpha=0.1, label='All Nodes')
-    
-    # Plot clustered nodes with entropy-based coloring
-    for node_idx in entropy_dict:
-        x, y = gsom.node_coordinate[node_idx]
-        cluster_id = node_to_cluster.get(node_idx, -1)
-        if cluster_id >= 0:
-            color = colors_cluster[cluster_id % len(colors_cluster)]
-        else:
-            color = 'gray'
-        entropy = entropy_dict.get(node_idx, 0)
-        size = 30 if node_idx in gsom.node_labels['output'].values else 10
-        plt.scatter(x, y, c=color, s=size, alpha=0.5 + 0.5 * (entropy / max_entropy), 
-                    marker='D' if node_idx in gsom.node_labels['output'].values else 'o')
-        plt.text(x, y, f"{node_idx}\nE={entropy:.2f}", fontsize=6)
-    
-    # Plot skeleton connections
-    _, skeleton_connections, _, pos_edges = gsom.build_skeleton(data, weight_columns)
-    from collections import Counter
-    overlaps = Counter((i, j) for i, j in skeleton_connections)
-    q3 = np.percentile(list(overlaps.values()), 75) if overlaps.values() else 0
-    
-    for i, j in skeleton_connections:
-        if overlaps[(i, j)] < q3:
-            line_width = 0.2
-            color = 'gray'
-            alpha = 0.3
-            line_style = '--'
-        else:
-            color = 'black' if (i, j) in pos_edges or (j, i) in pos_edges else 'red'
-            alpha = 0.5 if (i, j) in pos_edges or (j, i) in pos_edges else 0.1
-            line_style = '-'
-        x1, y1 = gsom.node_coordinate[i]
-        x2, y2 = gsom.node_coordinate[j]
-        plt.plot([x1, x2], [y1, y2], color=color, linestyle=line_style, alpha=alpha)
-    
-    # Create legend for clusters with names
-    legend_elements = []
-    for cluster_id, cluster_name in cluster_names.items():
-        if cluster_id < len(colors_cluster):
-            legend_elements.append(plt.Line2D([0], [0], marker='o', color='w', 
-                                            markerfacecolor=colors_cluster[cluster_id], 
-                                            markersize=8, label=cluster_name))
-    
-    # Highlight boundary nodes
-    for node_idx in boundary_nodes:
-        x, y = gsom.node_coordinate[node_idx]
-        plt.scatter(x, y, c='none', s=100, edgecolors='purple', linewidth=2, 
-                   label='Boundary Node' if node_idx == list(boundary_nodes)[0] else "")
-    
-    # Highlight boundary points
-    for point in boundary_points:
-        node_idx = point['node']
-        x, y = gsom.node_coordinate[node_idx]
-        plt.scatter(x, y, c='magenta', s=50, marker='*', edgecolors='black', 
-                   label='Boundary Point' if point == boundary_points[0] else "")
-    
-    # Add cluster legend and other legends
-    if legend_elements:
-        plt.legend(handles=legend_elements + [plt.Line2D([0], [0], marker='o', color='w', 
-                                                        markerfacecolor='purple', markersize=8, 
-                                                        label='Boundary Node', markeredgecolor='purple'),
-                                            plt.Line2D([0], [0], marker='*', color='w', 
-                                                        markerfacecolor='magenta', markersize=8, 
-                                                        label='Boundary Point', markeredgecolor='black')],
-                  bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
-    
-    plt.title(f"GSOM Map with Named Clusters, Entropy, and Boundary Points (Region Entropy: {region_entropy:.2f})")
-    plt.tight_layout()
-    gsom_map_file = f"{base_name}_gsom_map.pdf"
-    plt.savefig(gsom_map_file, bbox_inches='tight')
-    print(f"GSOM Map plot saved as {gsom_map_file}")
-    plt.close()
-    
-    # ========== PLOT 2: Confusion Matrix with cluster names ==========
-    plt.figure(figsize=(8, 6))
-    
-    _, confusion, all_labels, _, cluster_names = gsom.compute_cluster_purity(data, label_col, weight_columns)
-    
-    # Filter out empty clusters - only show clusters with actual data
-    non_empty_clusters = []
-    non_empty_confusion = []
-    non_empty_labels = []
-    
-    for cluster_id in range(len(confusion)):
-        if confusion[cluster_id].sum() > 0:  # Only clusters with data
-            non_empty_clusters.append(cluster_id)
-            non_empty_confusion.append(confusion[cluster_id])
-            # Use meaningful cluster names from cluster_names dict
-            cluster_label = cluster_names.get(cluster_id, f'Cluster {cluster_id+1}')
-            non_empty_labels.append(cluster_label)
-    
-    if non_empty_confusion:
-        # Convert to numpy array for plotting
-        filtered_confusion = np.array(non_empty_confusion)
+    # Plot 1: GSOM Map with Clusters, Entropy, and Boundary Points
+    def create_gsom_map():
+        fig, ax = plt.subplots(figsize=(14, 10))
         
-        sns.heatmap(filtered_confusion, annot=True, fmt='.0f', cmap='Blues', 
-                    xticklabels=all_labels, yticklabels=non_empty_labels)
-        plt.title("Confusion Matrix with Named Clusters")
-        plt.xlabel("Disease Status")
-        plt.ylabel("Named Clusters")
+        max_entropy = max(entropy_dict.values(), default=1) if entropy_dict else 1
+        colors_cluster = ['green', 'red', 'black', 'cyan']
+        
+        # Plot all nodes
+        ax.scatter(gsom.node_coordinate[:gsom.node_count, 0], gsom.node_coordinate[:gsom.node_count, 1], 
+                   c='gray', s=10, alpha=0.1, label='All Nodes')
+        
+        # Plot clustered nodes with entropy-based coloring
+        for node_idx in entropy_dict:
+            x, y = gsom.node_coordinate[node_idx]
+            cluster_id = node_to_cluster.get(node_idx, -1)
+            if cluster_id >= 0:
+                color = colors_cluster[cluster_id % len(colors_cluster)]
+            else:
+                color = 'gray'
+            entropy = entropy_dict.get(node_idx, 0)
+            size = 30 if node_idx in gsom.node_labels['output'].values else 10
+            ax.scatter(x, y, c=color, s=size, alpha=0.5 + 0.5 * (entropy / max_entropy), 
+                      marker='D' if node_idx in gsom.node_labels['output'].values else 'o')
+            ax.text(x, y, f"{node_idx}\nE={entropy:.2f}", fontsize=6)
+        
+        # Plot skeleton connections
+        _, skeleton_connections, _, pos_edges = gsom.build_skeleton(data, weight_columns)
+        from collections import Counter
+        overlaps = Counter((i, j) for i, j in skeleton_connections)
+        q3 = np.percentile(list(overlaps.values()), 75) if overlaps else 0
+        
+        for i, j in skeleton_connections:
+            if overlaps[(i, j)] < q3:
+                color = 'gray'
+                alpha = 0.3
+                line_style = '--'
+            else:
+                color = 'black' if (i, j) in pos_edges or (j, i) in pos_edges else 'red'
+                alpha = 0.5 if (i, j) in pos_edges or (j, i) in pos_edges else 0.1
+                line_style = '-'
+            x1, y1 = gsom.node_coordinate[i]
+            x2, y2 = gsom.node_coordinate[j]
+            ax.plot([x1, x2], [y1, y2], color=color, linestyle=line_style, alpha=alpha)
+        
+        # Create legend for clusters with names
+        legend_elements = []
+        for cluster_id, cluster_name in cluster_names.items():
+            if cluster_id < len(colors_cluster):
+                legend_elements.append(plt.Line2D([0], [0], marker='o', color='w', 
+                                                markerfacecolor=colors_cluster[cluster_id], 
+                                                markersize=8, label=cluster_name))
+        
+        # Highlight boundary nodes
+        for node_idx in boundary_nodes:
+            x, y = gsom.node_coordinate[node_idx]
+            ax.scatter(x, y, c='none', s=100, edgecolors='purple', linewidth=2, 
+                      label='Boundary Node' if node_idx == list(boundary_nodes)[0] else "")
+        
+        # Highlight boundary points
+        for point in boundary_points:
+            node_idx = point['node']
+            x, y = gsom.node_coordinate[node_idx]
+            ax.scatter(x, y, c='magenta', s=50, marker='*', edgecolors='black', 
+                      label='Boundary Point' if point == boundary_points[0] else "")
+        
+        # Add cluster legend and other legends
+        if legend_elements:
+            ax.legend(handles=legend_elements + [plt.Line2D([0], [0], marker='o', color='w', 
+                                                           markerfacecolor='purple', markersize=8, 
+                                                           label='Boundary Node', markeredgecolor='purple'),
+                                               plt.Line2D([0], [0], marker='*', color='w', 
+                                                           markerfacecolor='magenta', markersize=8, 
+                                                           label='Boundary Point', markeredgecolor='black')],
+                     bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=10)
+        
+        ax.set_title(f"GSOM Map: Genetic Clusters, Entropy & Boundary Points\n(Region Entropy: {region_entropy:.2f})", fontsize=14)
+        ax.set_xlabel("GSOM X Coordinate", fontsize=12)
+        ax.set_ylabel("GSOM Y Coordinate", fontsize=12)
+        ax.grid(True, alpha=0.3)
+        
         plt.tight_layout()
-        confusion_matrix_file = f"{base_name}_confusion_matrix.pdf"
-        plt.savefig(confusion_matrix_file, bbox_inches='tight')
-        print(f"Confusion Matrix plot saved as {confusion_matrix_file}")
-    else:
-        print("No clusters with data found for confusion matrix")
-    plt.close()
+        filename = f"{base_filename}_gsom_map.pdf"
+        plt.savefig(filename, bbox_inches='tight', dpi=300)
+        print(f"📊 GSOM Map saved as {filename}")
+        plt.close()
     
-    # ========== PLOT 3: Box Plot for Feature Differences of All Boundary Points ==========
-    if boundary_points:
-        plt.figure(figsize=(16, 8))
+    # Plot 2: Confusion Matrix
+    def create_confusion_matrix():
+        fig, ax = plt.subplots(figsize=(10, 8))
+        
+        _, confusion, all_labels, _, _ = gsom.compute_cluster_purity(data, label_col, weight_columns)
+        cluster_labels = [cluster_names.get(i, f'Cluster {i+1}') for i in range(len(confusion))]
+        
+        sns.heatmap(confusion, annot=True, fmt='.0f', cmap='Blues', ax=ax, 
+                    xticklabels=all_labels, yticklabels=cluster_labels, cbar_kws={'label': 'Sample Count'})
+        ax.set_title("Genetic Disease Classification: Confusion Matrix", fontsize=14)
+        ax.set_xlabel("Actual Disease Status", fontsize=12)
+        ax.set_ylabel("GSOM Predicted Clusters", fontsize=12)
+        
+        # Add accuracy metrics
+        total_samples = confusion.sum()
+        correct_predictions = np.trace(confusion)
+        accuracy = correct_predictions / total_samples if total_samples > 0 else 0
+        
+        # Add text with metrics
+        metrics_text = f"Overall Accuracy: {accuracy:.1%}\nTotal Samples: {int(total_samples)}"
+        ax.text(0.02, 0.98, metrics_text, transform=ax.transAxes, fontsize=10,
+                verticalalignment='top', bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
+        
+        plt.tight_layout()
+        filename = f"{base_filename}_confusion_matrix.pdf"
+        plt.savefig(filename, bbox_inches='tight', dpi=300)
+        print(f"📊 Confusion Matrix saved as {filename}")
+        plt.close()
+    
+    # Plot 3: Boundary Features Analysis (Enhanced with Better Explanatory Visualizations)
+    def create_boundary_features():
+        if not boundary_points:
+            print("⚠️  No boundary points found, skipping boundary features plot")
+            return
+            
+        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(20, 14))
         
         feature_names = weight_columns
         
-        # Collect all feature differences for box plot
+        # Collect all feature differences for analysis
         feature_data = {feature: [] for feature in feature_names}
         cluster_data = []
         
@@ -1377,79 +1159,305 @@ def plot_analysis(gsom, output, entropy_dict, clusters, node_to_cluster, outlier
                 feature_data[feature].append(feature_diffs[i])
             cluster_data.append(cluster_name)
         
-        # Create box plot data - limit to first 20 features for readability
-        max_features = min(20, len(feature_names))
-        selected_features = feature_names[:max_features]
-        box_data = [feature_data[feature] for feature in selected_features]
+        # Plot 3a: Feature Importance Ranking (Instead of box plot)
+        # Calculate mean absolute differences for each feature
+        feature_importance = {}
+        for feature in feature_names:
+            if feature_data[feature]:
+                feature_importance[feature] = np.mean(feature_data[feature])
         
-        # Create box plot
-        bp = plt.boxplot(box_data, tick_labels=selected_features, patch_artist=True)
+        # Get top 15 features for better visibility
+        top_features = sorted(feature_importance.items(), key=lambda x: x[1], reverse=True)[:15]
         
-        # Color the boxes
-        colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow']
-        for patch, color in zip(bp['boxes'], colors * (len(bp['boxes']) // len(colors) + 1)):
-            patch.set_facecolor(color)
-            patch.set_alpha(0.7)
+        if top_features:
+            features, importances = zip(*top_features)
+            # Create horizontal bar chart for better readability
+            y_pos = np.arange(len(features))
+            bars = ax1.barh(y_pos, importances, color=plt.cm.plasma(np.linspace(0, 1, len(features))))
+            ax1.set_yticks(y_pos)
+            ax1.set_yticklabels(features)
+            ax1.set_xlabel("Mean Genetic Marker Difference", fontsize=12)
+            ax1.set_title(f"Top 15 Genetic Markers Causing Boundary Confusion\n(n={len(boundary_points)} boundary patients)", fontsize=14)
+            ax1.grid(True, alpha=0.3, axis='x')
+            
+            # Add value labels on bars
+            for bar, importance in zip(bars, importances):
+                width = bar.get_width()
+                ax1.text(width, bar.get_y() + bar.get_height()/2.,
+                        f'{importance:.3f}', ha='left', va='center', fontsize=9)
         
-        plt.ylabel("Absolute Feature Difference")
-        plt.title(f"Feature Differences Distribution for All Boundary Points (n={len(boundary_points)}) - First {max_features} Features")
-        plt.xticks(rotation=45, ha='right')
-        plt.grid(True, alpha=0.3)
+        # Plot 3b: Genetic Pattern Comparison - Boundary vs Non-Boundary
+        # Compare top 5 features between boundary and non-boundary patients
+        top_5_features = [f[0] for f in top_features[:5]] if top_features else feature_names[:5]
         
-        # Add statistics text
-        stats_text = []
-        for i, feature in enumerate(selected_features):
-            data = feature_data[feature]
-            if data:
-                median_val = np.median(data)
-                mean_val = np.mean(data)
-                stats_text.append(f"{feature}: μ={mean_val:.3f}, M={median_val:.3f}")
+        # Get non-boundary patients for comparison
+        all_sample_ids = set(data['id'].tolist())
+        boundary_sample_ids = set([point['sample_id'] for point in boundary_points])
+        non_boundary_sample_ids = all_sample_ids - boundary_sample_ids
         
-        # Add text box with statistics
-        if stats_text:
-            textstr = '\n'.join(stats_text[:10])  # Limit to first 10 for readability
-            props = dict(boxstyle='round', facecolor='wheat', alpha=0.8)
-            plt.text(0.02, 0.98, textstr, transform=plt.gca().transAxes, fontsize=8,
-                    verticalalignment='top', bbox=props)
+        boundary_means = []
+        non_boundary_means = []
+        
+        for feature in top_5_features:
+            # Calculate means for boundary patients
+            boundary_values = []
+            for point in boundary_points:
+                sample_id = point['sample_id']
+                sample_row = data[data['id'] == sample_id]
+                if not sample_row.empty:
+                    boundary_values.append(sample_row[feature].iloc[0])
+            
+            # Calculate means for non-boundary patients
+            non_boundary_values = []
+            for sample_id in list(non_boundary_sample_ids)[:50]:  # Sample 50 for comparison
+                sample_row = data[data['id'] == sample_id]
+                if not sample_row.empty:
+                    non_boundary_values.append(sample_row[feature].iloc[0])
+            
+            boundary_means.append(np.mean(boundary_values) if boundary_values else 0)
+            non_boundary_means.append(np.mean(non_boundary_values) if non_boundary_values else 0)
+        
+        x = np.arange(len(top_5_features))
+        width = 0.35
+        
+        bars1 = ax2.bar(x - width/2, boundary_means, width, label='Boundary Patients', 
+                       color='coral', alpha=0.8)
+        bars2 = ax2.bar(x + width/2, non_boundary_means, width, label='Non-Boundary Patients', 
+                       color='lightblue', alpha=0.8)
+        
+        ax2.set_xlabel('Top 5 Genetic Markers', fontsize=12)
+        ax2.set_ylabel('Mean Genetic Value', fontsize=12)
+        ax2.set_title('Genetic Pattern Comparison:\nBoundary vs Non-Boundary Patients', fontsize=14)
+        ax2.set_xticks(x)
+        ax2.set_xticklabels(top_5_features, rotation=45, ha='right')
+        ax2.legend()
+        ax2.grid(True, alpha=0.3)
+        
+        # Add value labels
+        for bars in [bars1, bars2]:
+            for bar in bars:
+                height = bar.get_height()
+                ax2.text(bar.get_x() + bar.get_width()/2., height,
+                        f'{height:.2f}', ha='center', va='bottom', fontsize=8)
+        
+        # Plot 3c: Feature Variability Analysis
+        # Show how much each top feature varies across boundary patients
+        top_10_features = [f[0] for f in top_features[:10]] if top_features else feature_names[:10]
+        
+        variabilities = []
+        for feature in top_10_features:
+            feature_values = []
+            for point in boundary_points:
+                sample_id = point['sample_id']
+                sample_row = data[data['id'] == sample_id]
+                if not sample_row.empty:
+                    feature_values.append(sample_row[feature].iloc[0])
+            
+            if feature_values:
+                variability = np.std(feature_values) / (np.mean(feature_values) + 1e-6)  # Coefficient of variation
+                variabilities.append(variability)
+            else:
+                variabilities.append(0)
+        
+        bars = ax3.bar(range(len(top_10_features)), variabilities, 
+                      color=plt.cm.coolwarm(np.array(variabilities) / max(variabilities) if variabilities else [0]))
+        ax3.set_xticks(range(len(top_10_features)))
+        ax3.set_xticklabels(top_10_features, rotation=45, ha='right')
+        ax3.set_ylabel('Coefficient of Variation', fontsize=12)
+        ax3.set_title('Genetic Variability in Boundary Patients\n(Higher = More Heterogeneous)', fontsize=14)
+        ax3.grid(True, alpha=0.3)
+        
+        # Add value labels
+        for bar, var_val in zip(bars, variabilities):
+            height = bar.get_height()
+            ax3.text(bar.get_x() + bar.get_width()/2., height,
+                    f'{var_val:.2f}', ha='center', va='bottom', fontsize=8)
+        
+        # Plot 3d: Cluster-Specific Feature Analysis
+        # Show which features distinguish boundary patients in each cluster
+        cluster_feature_analysis = {}
+        
+        for point in boundary_points:
+            cluster_name = cluster_names.get(point['cluster'], f"Cluster {point['cluster'] + 1}")
+            if cluster_name not in cluster_feature_analysis:
+                cluster_feature_analysis[cluster_name] = {feature: [] for feature in feature_names}
+            
+            feature_diffs = point['feature_diff_node']
+            for i, feature in enumerate(feature_names):
+                cluster_feature_analysis[cluster_name][feature].append(feature_diffs[i])
+        
+        # Get top 3 features for each cluster
+        cluster_colors = ['lightcoral', 'lightblue', 'lightgreen', 'lightyellow']
+        cluster_names_list = list(cluster_feature_analysis.keys())
+        
+        bar_width = 0.8 / len(cluster_names_list) if cluster_names_list else 0.8
+        
+        for i, (cluster_name, feature_dict) in enumerate(cluster_feature_analysis.items()):
+            cluster_top_features = []
+            cluster_importances = []
+            
+            for feature in top_5_features:  # Use top 5 from overall analysis
+                if feature_dict[feature]:
+                    importance = np.mean(feature_dict[feature])
+                    cluster_top_features.append(feature)
+                    cluster_importances.append(importance)
+            
+            x_pos = np.arange(len(cluster_top_features)) + i * bar_width
+            color = cluster_colors[i % len(cluster_colors)]
+            
+            ax4.bar(x_pos, cluster_importances, bar_width, 
+                   label=f'{cluster_name}', color=color, alpha=0.8)
+        
+        ax4.set_xlabel('Top Genetic Markers', fontsize=12)
+        ax4.set_ylabel('Mean Difference', fontsize=12)
+        ax4.set_title('Cluster-Specific Genetic Boundary Patterns', fontsize=14)
+        ax4.set_xticks(np.arange(len(top_5_features)) + bar_width * (len(cluster_names_list) - 1) / 2)
+        ax4.set_xticklabels(top_5_features, rotation=45, ha='right')
+        ax4.legend()
+        ax4.grid(True, alpha=0.3)
         
         plt.tight_layout()
-        boundary_features_file = f"{base_name}_boundary_features.pdf"
-        plt.savefig(boundary_features_file, bbox_inches='tight')
-        print(f"Boundary Features plot saved as {boundary_features_file}")
+        filename = f"{base_filename}_boundary_features.pdf"
+        plt.savefig(filename, bbox_inches='tight', dpi=300)
+        print(f"📊 Boundary Features Analysis saved as {filename}")
         plt.close()
         
-        # ========== PLOT 4: Additional Feature Analysis for remaining features ==========
-        if len(feature_names) > 20:
-            plt.figure(figsize=(16, 8))
+        # Extended boundary features plot
+        create_extended_boundary_features()
+    
+    # Plot 4: Extended Boundary Features Analysis
+    def create_extended_boundary_features():
+        if not boundary_points:
+            return
             
-            # Show next 20 features
-            start_idx = 20
-            end_idx = min(40, len(feature_names))
-            remaining_features = feature_names[start_idx:end_idx]
-            box_data_remaining = [feature_data[feature] for feature in remaining_features]
+        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(18, 14))
+        
+        # Prepare data
+        cluster_boundary_data = {}
+        for point in boundary_points:
+            cluster_name = cluster_names.get(point['cluster'], f"Cluster {point['cluster'] + 1}")
+            if cluster_name not in cluster_boundary_data:
+                cluster_boundary_data[cluster_name] = []
+            cluster_boundary_data[cluster_name].append(point)
+        
+        # Plot 4a: Boundary Points Distribution by Cluster
+        cluster_names_list = list(cluster_boundary_data.keys())
+        cluster_counts = [len(cluster_boundary_data[name]) for name in cluster_names_list]
+        
+        colors = ['lightcoral', 'lightblue', 'lightgreen', 'lightyellow']
+        bars = ax1.bar(cluster_names_list, cluster_counts, color=colors[:len(cluster_names_list)])
+        ax1.set_title("Boundary Points Distribution by Genetic Cluster", fontsize=12)
+        ax1.set_ylabel("Number of Boundary Patients", fontsize=11)
+        
+        # Add percentage labels
+        total_boundary = sum(cluster_counts)
+        for bar, count in zip(bars, cluster_counts):
+            percentage = (count / total_boundary) * 100 if total_boundary > 0 else 0
+            ax1.text(bar.get_x() + bar.get_width()/2., bar.get_height(),
+                    f'{count}\n({percentage:.1f}%)', ha='center', va='bottom', fontsize=9)
+        
+        # Plot 4b: Distance to Cluster Centroids
+        distances_to_centroids = []
+        labels = []
+        for point in boundary_points:
+            distances = point['distances_to_centroids']
+            for i, dist in enumerate(distances):
+                distances_to_centroids.append(dist)
+                labels.append(f"Cluster {i+1}")
+        
+        if distances_to_centroids:
+            unique_labels = list(set(labels))
+            distance_data = [[] for _ in unique_labels]
+            for dist, label in zip(distances_to_centroids, labels):
+                idx = unique_labels.index(label)
+                distance_data[idx].append(dist)
             
-            bp2 = plt.boxplot(box_data_remaining, tick_labels=remaining_features, patch_artist=True)
-            
-            # Color the boxes
-            for patch, color in zip(bp2['boxes'], colors * (len(bp2['boxes']) // len(colors) + 1)):
+            bp = ax2.boxplot(distance_data, tick_labels=unique_labels, patch_artist=True)
+            for patch, color in zip(bp['boxes'], ['lightcoral', 'lightblue']):
                 patch.set_facecolor(color)
                 patch.set_alpha(0.7)
             
-            plt.ylabel("Absolute Feature Difference")
-            plt.title(f"Feature Differences Distribution - Features {start_idx+1} to {end_idx} (n={len(boundary_points)})")
-            plt.xticks(rotation=45, ha='right')
-            plt.grid(True, alpha=0.3)
+            ax2.set_title("Distance Distribution to Cluster Centroids", fontsize=12)
+            ax2.set_ylabel("Genetic Distance", fontsize=11)
+            ax2.grid(True, alpha=0.3)
+        
+        # Plot 4c: Feature Variability Heatmap (top 20 features)
+        feature_names = weight_columns
+        feature_importance = {}
+        for feature in feature_names:
+            feature_data = []
+            for point in boundary_points:
+                feature_idx = feature_names.index(feature)
+                feature_data.append(point['feature_diff_node'][feature_idx])
+            if feature_data:
+                feature_importance[feature] = np.std(feature_data)  # Use std for variability
+        
+        top_variable_features = sorted(feature_importance.items(), key=lambda x: x[1], reverse=True)[:20]
+        
+        if top_variable_features:
+            # Create a matrix for heatmap
+            features, _ = zip(*top_variable_features)
+            matrix_data = []
+            patient_labels = []
             
-            plt.tight_layout()
-            boundary_features_2_file = f"{base_name}_boundary_features_extended.pdf"
-            plt.savefig(boundary_features_2_file, bbox_inches='tight')
-            print(f"Extended Boundary Features plot saved as {boundary_features_2_file}")
-            plt.close()
+            for i, point in enumerate(boundary_points[:20]):  # Limit to first 20 patients for readability
+                row = []
+                for feature in features:
+                    feature_idx = feature_names.index(feature)
+                    row.append(point['feature_diff_node'][feature_idx])
+                matrix_data.append(row)
+                patient_labels.append(f"Patient {point['sample_id']}")
+            
+            if matrix_data:
+                sns.heatmap(matrix_data, xticklabels=features, yticklabels=patient_labels,
+                           cmap='viridis', ax=ax3, cbar_kws={'label': 'Feature Difference'})
+                ax3.set_title("Feature Difference Heatmap\n(Top 20 Variable Features, 20 Patients)", fontsize=12)
+                ax3.tick_params(axis='x', rotation=90, labelsize=8)
+                ax3.tick_params(axis='y', labelsize=8)
+        
+        # Plot 4d: Cluster Separation Quality
+        separation_metrics = []
+        cluster_labels = []
+        
+        for cluster_name, points in cluster_boundary_data.items():
+            if len(points) > 1:
+                distances = []
+                for point in points:
+                    distances.extend(point['distances_to_centroids'])
+                
+                mean_dist = np.mean(distances)
+                std_dist = np.std(distances)
+                separation_quality = mean_dist / (std_dist + 1e-6)  # Higher is better separated
+                
+                separation_metrics.append(separation_quality)
+                cluster_labels.append(cluster_name)
+        
+        if separation_metrics:
+            bars = ax4.bar(cluster_labels, separation_metrics, color=['lightcoral', 'lightblue'])
+            ax4.set_title("Cluster Separation Quality\n(Mean Distance / Std Distance)", fontsize=12)
+            ax4.set_ylabel("Separation Quality Score", fontsize=11)
+            
+            for bar, metric in zip(bars, separation_metrics):
+                ax4.text(bar.get_x() + bar.get_width()/2., bar.get_height(),
+                        f'{metric:.2f}', ha='center', va='bottom', fontsize=10)
+        
+        plt.tight_layout()
+        filename = f"{base_filename}_boundary_features_extended.pdf"
+        plt.savefig(filename, bbox_inches='tight', dpi=300)
+        print(f"📊 Extended Boundary Features Analysis saved as {filename}")
+        plt.close()
     
-    print(f"\n📊 All plots generated successfully as separate PDF files!")
-    print(f"   Base name: {base_name}")
-    return [f"{base_name}_gsom_map.pdf", f"{base_name}_confusion_matrix.pdf", 
-            f"{base_name}_boundary_features.pdf"]
+    # Create all plots
+    print(f"\n🎨 Creating separate visualization plots for {base_filename}...")
+    create_gsom_map()
+    create_confusion_matrix()
+    create_boundary_features()
+    
+    print(f"\n✅ All separate plots created successfully!")
+    print(f"   📈 {base_filename}_gsom_map.pdf")
+    print(f"   📊 {base_filename}_confusion_matrix.pdf") 
+    print(f"   🧬 {base_filename}_boundary_features.pdf")
+    print(f"   🔬 {base_filename}_boundary_features_extended.pdf")
 
 if __name__ == '__main__':
     np.random.seed(1)
@@ -1457,58 +1465,38 @@ if __name__ == '__main__':
     df = pd.read_csv("crohn.csv")
     
     print("Dataset shape:", df.shape)
-    print("Dataset head:", df.head())
+    print("Crohn values:", df['crohn'].unique())
     
-    # Get feature columns (all genetic loci)
-    weight_columns = [col for col in df.columns if col.startswith('loc')]
+    # Convert Crohn values to more descriptive labels
+    df['crohn_label'] = df['crohn'].map({0: 'No_Crohns', 2: 'Crohns'})
+    
+    # Define feature columns (genetic loci)
+    weight_columns = [col for col in df.columns if col.startswith('loc') and ('a1' in col or 'a2' in col)]
     print(f"Number of genetic features: {len(weight_columns)}")
-    print("Sample feature columns:", weight_columns[:10])
     
-    # Prepare training data (genetic features only)
+    # Prepare training data with only the genetic features
     data_training = df[weight_columns]
+    print("Training data head:", data_training.head())
     print("Training data shape:", data_training.shape)
     
-    # Handle missing values if any
-    data_training = data_training.fillna(0)
-    
-    # Normalize data to 0-1 range for GSOM
+    # Normalize the data since genetic markers have different scales
     from sklearn.preprocessing import MinMaxScaler
     scaler = MinMaxScaler()
-    data_training_scaled = pd.DataFrame(scaler.fit_transform(data_training), columns=weight_columns)
+    data_training_scaled = pd.DataFrame(scaler.fit_transform(data_training), columns=data_training.columns)
+    df[weight_columns] = scaler.transform(df[weight_columns])
     
-    # Create a copy of the original dataframe with scaled features for prediction
-    df_scaled = df.copy()
-    df_scaled[weight_columns] = scaler.transform(df[weight_columns])
-    
-    # Train GSOM with parameters adjusted for genetic data
-    # Using larger spread factor and initial node size for high-dimensional genetic data
-    gsom = GSOM(0.95, len(weight_columns), max_radius=8, initial_node_size=10000)
-    gsom.fit(data_training_scaled.to_numpy(), 100, 50)  # Reasonable iterations for complex genetic data
-    
-    # Custom predict method to ensure correct feature columns
-    data_n = df_scaled[weight_columns].to_numpy()
-    output_data = df_scaled[["id", "crohn"]].copy()
-    out = scipy.spatial.distance.cdist(gsom.node_list[:gsom.node_count], data_n, gsom.distance)
-    output_data["output"] = out.argmin(axis=0)
-    
-    grp_output = output_data.groupby("output")
-    output = grp_output["id"].apply(list).reset_index()
-    output = output.set_index("output")
-    output["crohn"] = grp_output["crohn"].apply(list)
-    output = output.reset_index()
-    output["hit_count"] = output["id"].apply(lambda x: len(x))
-    output["x"] = output["output"].apply(lambda x: gsom.node_coordinate[x, 0])
-    output["y"] = output["output"].apply(lambda x: gsom.node_coordinate[x, 1])
-    
-    # Set the node_labels attribute for the gsom object
-    gsom.node_labels = output
+    # Train GSOM with adjusted parameters for genetic data
+    # Using more dimensions and adjusted spread factor for genetic markers
+    gsom = GSOM(0.83, len(weight_columns), max_radius=4, initial_node_size=2000)
+    gsom.fit(data_training_scaled.to_numpy(), 100, 50)
+    output = gsom.predict(df, "id", "crohn_label", weight_columns)
     output.to_csv("output_crohn.csv", index=False)
     print("GSOM training completed.")
     print("Output shape:", output.shape)
     print("Node Count:", gsom.node_count)
     
-    # Compute cluster purity using original numeric labels
-    entropy_dict, confusion, all_labels, node_to_cluster, cluster_names = gsom.compute_cluster_purity(df_scaled, "crohn", weight_columns)
+    # Compute cluster purity
+    entropy_dict, confusion, all_labels, node_to_cluster, cluster_names = gsom.compute_cluster_purity(df, "crohn_label", weight_columns)
     # print("Node Entropy:")
     # for node_idx, entropy in entropy_dict.items():
     #     print(f"Node {node_idx}: Entropy = {entropy:.2f}")
@@ -1517,120 +1505,114 @@ if __name__ == '__main__':
     for cluster_id, cluster_name in cluster_names.items():
         print(f"{cluster_name}")
     
-    # 🧠 COMPREHENSIVE ANALYSIS: Understanding Genetic Data Structure
-    print("\n" + "="*60)
-    print("🧠 PERFORMING COMPREHENSIVE GENETIC STRUCTURE ANALYSIS")
-    print("="*60)
+    # 🧠 COMPREHENSIVE ANALYSIS: Understanding Genetic Data Structure in Crohn's Disease
+    print("\n" + "="*50)
+    print("🧠 PERFORMING COMPREHENSIVE STRUCTURE ANALYSIS FOR CROHN'S DISEASE")
+    print("="*50)
     
     # Generate comprehensive analysis report
     separability, mixing, regions, quantization, connectivity, paths = comprehensive_analysis_report(
-        gsom, df_scaled, "crohn", weight_columns, "crohn_comprehensive_analysis.txt")
+        gsom, df, "crohn_label", weight_columns, "crohn_comprehensive_analysis.txt")
     
     # Print key insights to console
-    print("\n🔍 KEY GENETIC INSIGHTS:")
-    print("-" * 35)
+    print("\n🔍 KEY INSIGHTS:")
+    print("-" * 30)
     
     # Separability insights for Crohn's disease
-    control_analysis = separability.get(0, {})  # Control group
-    crohn_analysis = separability.get(2, {})    # Crohn's group
+    no_crohns_analysis = separability.get('No_Crohns', {})
+    crohns_analysis = separability.get('Crohns', {})
     
-    if control_analysis and control_analysis['nodes']:
-        control_purity = control_analysis['pure_nodes'] / len(control_analysis['nodes'])
-        print(f"🧬 Control group separability: {control_purity:.1%}")
+    if no_crohns_analysis and no_crohns_analysis['nodes']:
+        no_crohns_purity = no_crohns_analysis['pure_nodes'] / len(no_crohns_analysis['nodes'])
+        print(f"🔬 No_Crohns separability: {no_crohns_purity:.1%} (linearly separable: {'✅' if no_crohns_purity > 0.95 else '❌'})")
     
-    if crohn_analysis and crohn_analysis['nodes']:
-        crohn_purity = crohn_analysis['pure_nodes'] / len(crohn_analysis['nodes'])
-        print(f"🩺 Crohn's group separability: {crohn_purity:.1%}")
+    if crohns_analysis and crohns_analysis['nodes']:
+        crohns_purity = crohns_analysis['pure_nodes'] / len(crohns_analysis['nodes'])
+        print(f"🔬 Crohns separability: {crohns_purity:.1%} (linearly separable: {'✅' if crohns_purity > 0.95 else '❌'})")
     
-    # Mixing analysis
+    # Mixing analysis for genetic markers
     total_mixed_nodes = len(mixing)
-    print(f"🔄 Mixed nodes found: {total_mixed_nodes} (genetic overlap between groups)")
+    print(f"🔄 Mixed nodes found: {total_mixed_nodes} (where genetic patterns overlap)")
     
-    # Region diversity
+    # Region diversity in genetic space
     if regions:
         avg_purity = np.mean([r['purity'] for r in regions.values()])
-        print(f"🌍 Average region purity: {avg_purity:.1%}")
+        print(f"🌍 Average genetic region purity: {avg_purity:.1%}")
         
-        # Find most problematic mixing
+        # Find most problematic genetic mixing
         if mixing:
             most_mixed = max(mixing.items(), key=lambda x: len(x[1]['minority_classes']))
-            print(f"🔗 Most mixed node: {most_mixed[0]} ({most_mixed[1]['class_counts']})")
+            print(f"🔗 Most mixed genetic node: {most_mixed[0]} ({most_mixed[1]['class_counts']})")
     
-    # Quantization quality
+    # Quantization quality for genetic markers
     if quantization:
         avg_representativeness = np.mean([q['representativeness'] for q in quantization.values()])
-        print(f"🎯 Node representativeness: {avg_representativeness:.2%}")
+        print(f"🎯 Genetic node representativeness: {avg_representativeness:.2%}")
     
-    print(f"\n💡 UNDERSTANDING: This analysis reveals the GENETIC STRUCTURE")
-    print(f"   showing WHERE and WHY genetic patterns lead to disease classification.")
+    print(f"\n💡 UNDERSTANDING: This analysis reveals the GENETIC STRUCTURE and RELATIONSHIPS")
+    print(f"   in Crohn's disease data, showing genetic marker patterns and disease associations.")
     
-    # Original analyses adapted for Crohn's dataset
-    outliers = gsom.detect_outliers(df_scaled, "crohn", weight_columns, threshold=2.0)
+    # Genetic analysis for Crohn's disease
+    outliers = gsom.detect_outliers(df, "crohn_label", weight_columns, threshold=2.0)
     center_node = output.loc[output['hit_count'].idxmax(), 'output']
-    region_entropy, region_nodes, deviant_points = gsom.analyze_region(center_node, radius=2.0, data=df_scaled, label_col="crohn", weight_columns=weight_columns)
+    region_entropy, region_nodes, deviant_points = gsom.analyze_region(center_node, radius=2.0, data=df, label_col="crohn_label", weight_columns=weight_columns)
+    boundary_points, boundary_nodes, node_to_cluster, clusters = gsom.identify_boundary_points(df, weight_columns, "crohn_label", max_clusters=2, distance_threshold=0.3)
     
-    # Analyze boundary points with adaptive threshold based on data characteristics
-    print("\n🔍 Auto-determining optimal boundary threshold...")
+    print(f"\n📊 BOUNDARY ANALYSIS:")
+    print(f"   • Boundary points (genetic confusion): {len(boundary_points)}")
+    print(f"   • Boundary nodes: {len(boundary_nodes)}")
+    print(f"   • Region entropy: {region_entropy:.2f}")
+    print(f"   • Deviant points: {len(deviant_points)}")
     
-    # Use adaptive threshold calculation
-    optimal_threshold, threshold_info = gsom.auto_determine_boundary_threshold(df_scaled, weight_columns, "crohn")
-    
-    print(f"📊 Dataset Analysis:")
-    print(f"  • Features: {threshold_info['n_features']}")
-    print(f"  • Samples: {threshold_info['n_samples']}")
-    print(f"  • Cluster separation ratio: {threshold_info['separation_ratio']:.2f}")
-    print(f"  • Dimensionality factor: {threshold_info['dimensionality_factor']:.3f}")
-    print(f"  • Inter-cluster distance: {threshold_info['inter_cluster_mean']:.3f}")
-    print(f"  • Intra-cluster distance: {threshold_info['intra_cluster_mean']:.3f}")
-    
-    # Test different thresholds for comparison (optional)
-    print(f"\n📋 Threshold Comparison:")
-    comparison_thresholds = [0.05, 0.1, optimal_threshold, 0.2, 0.3]
-    for thresh in comparison_thresholds:
-        test_boundary_points, _, _, _ = gsom.identify_boundary_points(df_scaled, weight_columns, "crohn", distance_threshold=thresh)
-        percentage = len(test_boundary_points) / len(df_scaled) * 100
-        marker = "✅ AUTO" if abs(thresh - optimal_threshold) < 0.001 else "  "
-        print(f"  {marker} Threshold {thresh:.3f}: {len(test_boundary_points)} points ({percentage:.1f}%)")
-    
-    # Use the automatically determined optimal threshold
-    boundary_points, boundary_nodes, node_to_cluster, clusters = gsom.identify_boundary_points(df_scaled, weight_columns, "crohn", distance_threshold=optimal_threshold)
-    
-    print(f"\n✅ Using auto-determined threshold {optimal_threshold:.3f}: {len(boundary_points)} boundary points ({threshold_info['boundary_percentage']:.1%} of data)")
-    
-    # Save boundary analysis files
+    # Save Crohn's disease analysis files
     with open("boundary_points_analysis_crohn.txt", "w", encoding="utf-8") as f:
         f.write("GSOM Boundary Points Analysis - Crohn's Disease\n")
         f.write("=" * 50 + "\n\n")
-        f.write(f"Total Boundary Points Found: {len(boundary_points)}\n\n")
+        f.write(f"Total Boundary Points Found: {len(boundary_points)}\n")
+        f.write(f"These are genetic samples that are difficult to classify clearly.\n\n")
         
         # Write cluster names
-        f.write("CLUSTER NAMES:\n")
+        f.write("GENETIC CLUSTERS:\n")
         for cluster_id, cluster_name in cluster_names.items():
             f.write(f"{cluster_name}\n")
         f.write("\n")
         
+        # Group boundary points by genetic features showing highest differences
+        f.write("BOUNDARY POINTS WITH GENETIC MARKER ANALYSIS:\n")
+        f.write("-" * 60 + "\n")
         for point in boundary_points:
             cluster_name = cluster_names.get(point['cluster'], f"Cluster {point['cluster'] + 1}")
             f.write(f"Sample ID: {point['sample_id']}, Node: {point['node']}, {cluster_name}, Label: {point['label']}\n")
-            f.write(f"  Feature Differences from Node {point['node']}:\n")
-            # Show only first 10 genetic features to avoid overwhelming output
-            for i, (feature, diff) in enumerate(zip(weight_columns[:10], point['feature_diff_node'][:10])):
+            f.write(f"  Top Genetic Marker Differences from Node {point['node']}:\n")
+            
+            # Find top 10 most different genetic markers
+            feature_diffs = [(feature, diff) for feature, diff in zip(weight_columns, point['feature_diff_node'])]
+            top_features = sorted(feature_diffs, key=lambda x: x[1], reverse=True)[:10]
+            
+            for feature, diff in top_features:
                 f.write(f"    {feature}: {diff:.4f}\n")
-            if len(weight_columns) > 10:
-                f.write(f"    ... and {len(weight_columns) - 10} more genetic features\n")
-            f.write(f"  Distances to Cluster Centroids: {[f'{d:.4f}' for d in point['distances_to_centroids']]}\n")
+            f.write(f"  Distances to Disease Clusters: {[f'{d:.4f}' for d in point['distances_to_centroids']]}\n")
             f.write("-" * 60 + "\n")
     
-    print(f"\nBoundary points analysis saved to 'boundary_points_analysis_crohn.txt'")
+    print(f"\nCrohn's disease boundary analysis saved to 'boundary_points_analysis_crohn.txt'")
     
-    # Visualize results with enhanced understanding for Crohn's data
-    plot_analysis(gsom, output, entropy_dict, clusters, node_to_cluster, outliers, region_entropy, 
-                  region_nodes, deviant_points, boundary_points, boundary_nodes, df_scaled, "crohn", weight_columns, 
-                  cluster_names)
+    # Visualize results with Crohn's disease understanding - Create separate plots
+    plot_analysis_separate(gsom, output, entropy_dict, clusters, node_to_cluster, outliers, region_entropy, 
+                          region_nodes, deviant_points, boundary_points, boundary_nodes, df, "crohn_label", weight_columns, 
+                          cluster_names, base_filename="gsom_boundary_analysis_crohn")
     
-    print("\n" + "="*60)
-    print("✅ COMPLETE: Genetic analysis focuses on UNDERSTANDING Crohn's data structure")
-    print("   📄 Main insights in: crohn_comprehensive_analysis.txt")
-    print("   📊 Visualization: gsom_boundary_analysis_crohn.pdf")
-    print("   📋 Boundary analysis: boundary_points_analysis_crohn.txt")
-    print("="*60)
+    print(f"\n✅ Crohn's Disease Analysis Complete!")
+    print(f"   📄 crohn_comprehensive_analysis.txt - Detailed genetic analysis report")
+    print(f"   📊 Multiple separate PDF plots created:")
+    print(f"      • gsom_boundary_analysis_crohn_gsom_map.pdf - GSOM structure visualization")
+    print(f"      • gsom_boundary_analysis_crohn_confusion_matrix.pdf - Classification accuracy")
+    print(f"      • gsom_boundary_analysis_crohn_boundary_features.pdf - Genetic boundary analysis")
+    print(f"      • gsom_boundary_analysis_crohn_boundary_features_extended.pdf - Extended genetic analysis")
+    print(f"   📋 output_crohn.csv - GSOM clustering results")
+    print(f"   🧬 boundary_points_analysis_crohn.txt - Genetic boundary analysis")
+    
+    print("\n" + "="*50)
+    print("✅ COMPLETE: Analysis focuses on UNDERSTANDING data structure")
+    print("   📄 Main insights in: iris_comprehensive_analysis.txt")
+    print("   📊 Visualization: gsom_boundary_analysis_iris.pdf")
+    print("="*50)

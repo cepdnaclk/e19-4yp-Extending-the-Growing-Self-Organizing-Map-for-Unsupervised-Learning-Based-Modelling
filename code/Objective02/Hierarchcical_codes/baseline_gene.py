@@ -16,7 +16,11 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_har
 
 # ---------- CONFIG ----------
 INPUT_CSV = "../example/data/GSE/transposed_with_meta.csv"
+<<<<<<< Updated upstream
 OUT_DIR   = "../output_gene_clustering_baselines_all"
+=======
+OUT_DIR   = "../output_gene_clustering_baselines"
+>>>>>>> Stashed changes
 K_LIST    = [2, 4, 6, 8, 10]
 PCA_VARIANCE = 0.9
 LINKAGE_METHOD = "average"
