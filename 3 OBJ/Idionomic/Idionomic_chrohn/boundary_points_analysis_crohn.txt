@@ -1,0 +1,414 @@
+GSOM Boundary Points Analysis - Crohn's Disease
+==================================================
+
+Total Boundary Points Found: 27
+
+CLUSTER NAMES:
+Large Mixed: Class 2 (64.7%)
+Large Dominant: Class 0 (72.6%)
+
+Sample ID: 3887, Node: 130, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 130:
+    loc1.a1: 0.0685
+    loc1.a2: 0.0319
+    loc2.a1: 0.0107
+    loc2.a2: 0.0779
+    loc3.a1: 0.0419
+    loc3.a2: 0.0279
+    loc4.a1: 0.0350
+    loc4.a2: 0.0270
+    loc5.a1: 0.0221
+    loc5.a2: 0.0188
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['2.5282', '6.0193', '1.8134', '1.8209', '3.0733']
+------------------------------------------------------------
+Sample ID: 741, Node: 133, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 133:
+    loc1.a1: 0.2474
+    loc1.a2: 0.1067
+    loc2.a1: 0.0421
+    loc2.a2: 0.2063
+    loc3.a1: 0.3490
+    loc3.a2: 0.1581
+    loc4.a1: 0.2348
+    loc4.a2: 0.1049
+    loc5.a1: 0.3112
+    loc5.a2: 0.0656
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['2.9482', '5.8592', '2.3391', '2.3474', '3.0693']
+------------------------------------------------------------
+Sample ID: 2714, Node: 183, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 183:
+    loc1.a1: 0.3997
+    loc1.a2: 0.0951
+    loc2.a1: 0.0405
+    loc2.a2: 0.4353
+    loc3.a1: 0.3872
+    loc3.a2: 0.1426
+    loc4.a1: 0.2562
+    loc4.a2: 0.0946
+    loc5.a1: 0.1107
+    loc5.a2: 0.0209
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['2.6867', '6.0926', '2.3111', '2.2930', '2.9721']
+------------------------------------------------------------
+Sample ID: 3761, Node: 339, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 339:
+    loc1.a1: 0.0833
+    loc1.a2: 0.0088
+    loc2.a1: 0.0082
+    loc2.a2: 0.0819
+    loc3.a1: 0.1743
+    loc3.a2: 0.0045
+    loc4.a1: 0.0625
+    loc4.a2: 0.0020
+    loc5.a1: 0.0438
+    loc5.a2: 0.0009
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.3272', '6.3071', '3.2445', '3.1549', '3.1593']
+------------------------------------------------------------
+Sample ID: 3260, Node: 602, Large Mixed: Class 2 (64.7%), Label: 0
+  Feature Differences from Node 602:
+    loc1.a1: 0.0406
+    loc1.a2: 0.0606
+    loc2.a1: 0.0342
+    loc2.a2: 0.0573
+    loc3.a1: 0.0207
+    loc3.a2: 0.0418
+    loc4.a1: 0.0062
+    loc4.a2: 0.0242
+    loc5.a1: 0.0083
+    loc5.a2: 0.0232
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.3469', '5.5426', '3.2251', '3.2192', '3.9750']
+------------------------------------------------------------
+Sample ID: 2962, Node: 602, Large Mixed: Class 2 (64.7%), Label: 0
+  Feature Differences from Node 602:
+    loc1.a1: 0.0406
+    loc1.a2: 0.0606
+    loc2.a1: 0.0342
+    loc2.a2: 0.0573
+    loc3.a1: 0.0207
+    loc3.a2: 0.0418
+    loc4.a1: 0.0062
+    loc4.a2: 0.0242
+    loc5.a1: 0.0083
+    loc5.a2: 0.0232
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.9297', '5.2959', '3.9358', '3.9207', '4.6199']
+------------------------------------------------------------
+Sample ID: 1878, Node: 642, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 642:
+    loc1.a1: 0.1469
+    loc1.a2: 0.1450
+    loc2.a1: 0.0028
+    loc2.a2: 0.0025
+    loc3.a1: 0.0029
+    loc3.a2: 0.0009
+    loc4.a1: 0.0021
+    loc4.a2: 0.0008
+    loc5.a1: 0.0147
+    loc5.a2: 0.0161
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.2227', '6.3359', '4.2265', '4.2762', '4.3229']
+------------------------------------------------------------
+Sample ID: 755, Node: 711, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 711:
+    loc1.a1: 0.0198
+    loc1.a2: 0.0343
+    loc2.a1: 0.0848
+    loc2.a2: 0.1271
+    loc3.a1: 0.0155
+    loc3.a2: 0.0376
+    loc4.a1: 0.0104
+    loc4.a2: 0.0255
+    loc5.a1: 0.0788
+    loc5.a2: 0.0823
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.0163', '6.5553', '4.0122', '4.0915', '4.1888']
+------------------------------------------------------------
+Sample ID: 1630, Node: 742, Large Mixed: Class 2 (64.7%), Label: 2
+  Feature Differences from Node 742:
+    loc1.a1: 0.0031
+    loc1.a2: 0.3783
+    loc2.a1: 0.0873
+    loc2.a2: 0.4519
+    loc3.a1: 0.0006
+    loc3.a2: 0.4270
+    loc4.a1: 0.0000
+    loc4.a2: 0.2851
+    loc5.a1: 0.1004
+    loc5.a2: 0.1079
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.5665', '6.1160', '5.2480', '5.1497', '4.5544']
+------------------------------------------------------------
+Sample ID: 2120, Node: 897, Large Mixed: Class 2 (64.7%), Label: 2
+  Feature Differences from Node 897:
+    loc1.a1: 0.1171
+    loc1.a2: 0.1164
+    loc2.a1: 0.0028
+    loc2.a2: 0.0031
+    loc3.a1: 0.0033
+    loc3.a2: 0.0018
+    loc4.a1: 0.0015
+    loc4.a2: 0.0012
+    loc5.a1: 0.0020
+    loc5.a2: 0.0005
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.5019', '6.4292', '3.3271', '3.3181', '3.8504']
+------------------------------------------------------------
+Sample ID: 1722, Node: 916, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 916:
+    loc1.a1: 0.0890
+    loc1.a2: 0.0836
+    loc2.a1: 0.0081
+    loc2.a2: 0.0059
+    loc3.a1: 0.0080
+    loc3.a2: 0.0021
+    loc4.a1: 0.0056
+    loc4.a2: 0.0018
+    loc5.a1: 0.4336
+    loc5.a2: 0.4295
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.2482', '6.3407', '4.2607', '4.3232', '4.6222']
+------------------------------------------------------------
+Sample ID: 3883, Node: 961, Large Mixed: Class 2 (64.7%), Label: 2
+  Feature Differences from Node 961:
+    loc1.a1: 0.0184
+    loc1.a2: 0.0318
+    loc2.a1: 0.0456
+    loc2.a2: 0.0331
+    loc3.a1: 0.0002
+    loc3.a2: 0.4783
+    loc4.a1: 0.0001
+    loc4.a2: 0.0260
+    loc5.a1: 0.0103
+    loc5.a2: 0.0132
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.2404', '6.9594', '4.5812', '4.5518', '4.2384']
+------------------------------------------------------------
+Sample ID: 18222, Node: 1041, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 1041:
+    loc1.a1: 0.0768
+    loc1.a2: 0.0751
+    loc2.a1: 0.0026
+    loc2.a2: 0.0024
+    loc3.a1: 0.0027
+    loc3.a2: 0.0009
+    loc4.a1: 0.0019
+    loc4.a2: 0.0008
+    loc5.a1: 0.0131
+    loc5.a2: 0.0144
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.7876', '6.4061', '3.7744', '3.8822', '3.7956']
+------------------------------------------------------------
+Sample ID: 2559, Node: 1152, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 1152:
+    loc1.a1: 0.0904
+    loc1.a2: 0.0566
+    loc2.a1: 0.0448
+    loc2.a2: 0.0570
+    loc3.a1: 0.0623
+    loc3.a2: 0.0029
+    loc4.a1: 0.0404
+    loc4.a2: 0.0160
+    loc5.a1: 0.0235
+    loc5.a2: 0.0167
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['5.1323', '6.6400', '5.5628', '5.4720', '5.1324']
+------------------------------------------------------------
+Sample ID: 2913, Node: 1420, Large Mixed: Class 2 (64.7%), Label: 2
+  Feature Differences from Node 1420:
+    loc1.a1: 0.0209
+    loc1.a2: 0.3022
+    loc2.a1: 0.3042
+    loc2.a2: 0.3889
+    loc3.a1: 0.0017
+    loc3.a2: 0.3361
+    loc4.a1: 0.0011
+    loc4.a2: 0.2208
+    loc5.a1: 0.0375
+    loc5.a2: 0.1434
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.7577', '6.5025', '3.7567', '3.8552', '4.3438']
+------------------------------------------------------------
+Sample ID: 3595, Node: 1444, Large Mixed: Class 2 (64.7%), Label: 0
+  Feature Differences from Node 1444:
+    loc1.a1: 0.1997
+    loc1.a2: 0.1990
+    loc2.a1: 0.0021
+    loc2.a2: 0.0021
+    loc3.a1: 0.0024
+    loc3.a2: 0.0011
+    loc4.a1: 0.0012
+    loc4.a2: 0.0008
+    loc5.a1: 0.0012
+    loc5.a2: 0.0005
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['2.8795', '6.1103', '2.3753', '2.3889', '3.3569']
+------------------------------------------------------------
+Sample ID: 2733, Node: 1947, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 1947:
+    loc1.a1: 0.0861
+    loc1.a2: 0.0013
+    loc2.a1: 0.0100
+    loc2.a2: 0.0942
+    loc3.a1: 0.0964
+    loc3.a2: 0.0010
+    loc4.a1: 0.0643
+    loc4.a2: 0.0007
+    loc5.a1: 0.0580
+    loc5.a2: 0.0027
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.1681', '5.4609', '4.3259', '4.2508', '4.1485']
+------------------------------------------------------------
+Sample ID: 2860, Node: 1998, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 1998:
+    loc1.a1: 0.1048
+    loc1.a2: 0.0016
+    loc2.a1: 0.0122
+    loc2.a2: 0.1147
+    loc3.a1: 0.1173
+    loc3.a2: 0.0012
+    loc4.a1: 0.0782
+    loc4.a2: 0.0009
+    loc5.a1: 0.0706
+    loc5.a2: 0.0032
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['5.3304', '6.6216', '5.5371', '5.5456', '5.3169']
+------------------------------------------------------------
+Sample ID: 3315, Node: 2752, Large Mixed: Class 2 (64.7%), Label: 2
+  Feature Differences from Node 2752:
+    loc1.a1: 0.4782
+    loc1.a2: 0.0638
+    loc2.a1: 0.4982
+    loc2.a2: 0.0661
+    loc3.a1: 0.5734
+    loc3.a2: 0.0363
+    loc4.a1: 0.3789
+    loc4.a2: 0.0277
+    loc5.a1: 0.3805
+    loc5.a2: 0.0258
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.9839', '5.4785', '4.0015', '4.0009', '4.3896']
+------------------------------------------------------------
+Sample ID: 3244, Node: 2789, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 2789:
+    loc1.a1: 0.3230
+    loc1.a2: 0.3287
+    loc2.a1: 0.3612
+    loc2.a2: 0.3914
+    loc3.a1: 0.3238
+    loc3.a2: 0.4141
+    loc4.a1: 0.1154
+    loc4.a2: 0.3735
+    loc5.a1: 0.2021
+    loc5.a2: 0.3423
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.8850', '6.2615', '5.2982', '5.3005', '4.8674']
+------------------------------------------------------------
+Sample ID: 17434, Node: 2824, Large Dominant: Class 0 (72.6%), Label: 0
+  Feature Differences from Node 2824:
+    loc1.a1: 0.0837
+    loc1.a2: 0.0072
+    loc2.a1: 0.0149
+    loc2.a2: 0.0797
+    loc3.a1: 0.0935
+    loc3.a2: 0.0075
+    loc4.a1: 0.0623
+    loc4.a2: 0.0050
+    loc5.a1: 0.0321
+    loc5.a2: 0.0022
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.6220', '6.9531', '4.6286', '4.6608', '4.6074']
+------------------------------------------------------------
+Sample ID: 3413, Node: 2856, Large Mixed: Class 2 (64.7%), Label: 0
+  Feature Differences from Node 2856:
+    loc1.a1: 0.7863
+    loc1.a2: 0.8214
+    loc2.a1: 0.0345
+    loc2.a2: 0.0386
+    loc3.a1: 0.2602
+    loc3.a2: 0.2210
+    loc4.a1: 0.0344
+    loc4.a2: 0.0082
+    loc5.a1: 0.0335
+    loc5.a2: 0.0068
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.6382', '5.7250', '5.0251', '4.9429', '4.6214']
+------------------------------------------------------------
+Sample ID: 2554, Node: 2864, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 2864:
+    loc1.a1: 0.1682
+    loc1.a2: 0.0502
+    loc2.a1: 0.0910
+    loc2.a2: 0.1285
+    loc3.a1: 0.1891
+    loc3.a2: 0.0564
+    loc4.a1: 0.1260
+    loc4.a2: 0.0376
+    loc5.a1: 0.1155
+    loc5.a2: 0.0371
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.9701', '6.4411', '3.9800', '4.1786', '4.0449']
+------------------------------------------------------------
+Sample ID: 2283, Node: 2891, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 2891:
+    loc1.a1: 0.4867
+    loc1.a2: 0.0572
+    loc2.a1: 0.5028
+    loc2.a2: 0.0743
+    loc3.a1: 0.5478
+    loc3.a2: 0.0641
+    loc4.a1: 0.3652
+    loc4.a2: 0.0427
+    loc5.a1: 0.3756
+    loc5.a2: 0.0422
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['4.8797', '7.0804', '5.0694', '5.1578', '4.8677']
+------------------------------------------------------------
+Sample ID: 2770, Node: 2956, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 2956:
+    loc1.a1: 0.0186
+    loc1.a2: 0.0038
+    loc2.a1: 0.0056
+    loc2.a2: 0.0207
+    loc3.a1: 0.2211
+    loc3.a2: 0.2043
+    loc4.a1: 0.0140
+    loc4.a2: 0.0028
+    loc5.a1: 0.0136
+    loc5.a2: 0.0024
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['5.6306', '6.7222', '6.4058', '6.3081', '5.6171']
+------------------------------------------------------------
+Sample ID: 2817, Node: 2956, Large Dominant: Class 0 (72.6%), Label: 2
+  Feature Differences from Node 2956:
+    loc1.a1: 0.0186
+    loc1.a2: 0.0038
+    loc2.a1: 0.0056
+    loc2.a2: 0.0207
+    loc3.a1: 0.0289
+    loc3.a2: 0.0457
+    loc4.a1: 0.0140
+    loc4.a2: 0.0028
+    loc5.a1: 0.0136
+    loc5.a2: 0.0024
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['5.2587', '6.3201', '6.0154', '5.8621', '5.2697']
+------------------------------------------------------------
+Sample ID: 4023, Node: 2958, Large Mixed: Class 2 (64.7%), Label: 0
+  Feature Differences from Node 2958:
+    loc1.a1: 0.0743
+    loc1.a2: 0.0465
+    loc2.a1: 0.0374
+    loc2.a2: 0.0295
+    loc3.a1: 0.0332
+    loc3.a2: 0.0021
+    loc4.a1: 0.0280
+    loc4.a2: 0.0072
+    loc5.a1: 0.0273
+    loc5.a2: 0.0063
+    ... and 196 more genetic features
+  Distances to Cluster Centroids: ['3.5182', '5.3975', '3.5262', '3.6369', '4.1427']
+------------------------------------------------------------
